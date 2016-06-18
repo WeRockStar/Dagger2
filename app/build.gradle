@@ -33,4 +33,5 @@ dependencies {
     androidTestCompile 'com.android.support.test:runner:0.5'
     androidTestCompile 'com.android.support:support-annotations:24.0.0'
     apt 'com.google.dagger:dagger-compiler:2.5'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.3.1'
 }
