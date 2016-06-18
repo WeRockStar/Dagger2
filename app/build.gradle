@@ -30,4 +30,6 @@ dependencies {
     androidTestCompile 'com.android.support:support-annotations:24.0.0'
     compile 'com.google.dagger:dagger:2.5'
     apt 'com.google.dagger:dagger-compiler:2.5'
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
 }
