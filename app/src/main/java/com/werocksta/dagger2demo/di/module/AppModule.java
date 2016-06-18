@@ -44,7 +44,7 @@ public class AppModule {
     @Singleton
     public Retrofit provideRetrofit(OkHttpClient okHttpClient) {
         return new Retrofit.Builder()
-                .baseUrl("")
+                .baseUrl("https://api.github.com/users/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(okHttpClient)
                 .build();
