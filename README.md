@@ -5,15 +5,15 @@
 ###### build.gradle project level
 
 ``` groovy
-    buildscript {
-        repositories {
-            jcenter()
-        }
-        dependencies {
-            classpath 'com.android.tools.build:gradle:2.2.0-alpha3'
-            classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
-        }
+buildscript {
+    repositories {
+        jcenter()
     }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.2.0-alpha3'
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
+    }
+}
 ```
 
 ###### build.gradle module level
