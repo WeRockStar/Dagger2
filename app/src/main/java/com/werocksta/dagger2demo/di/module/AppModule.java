@@ -2,6 +2,7 @@ package com.werocksta.dagger2demo.di.module;
 
 
 import android.app.Application;
+import android.content.Context;
 
 import com.werocksta.dagger2demo.BuildConfig;
 import com.werocksta.dagger2demo.manager.ApiService;
@@ -26,7 +27,7 @@ public class AppModule {
 
     @Provides
     @Singleton
-    public Application provideApplication() {
+    public Context provideApplication() {
         return this.application;
     }
 
