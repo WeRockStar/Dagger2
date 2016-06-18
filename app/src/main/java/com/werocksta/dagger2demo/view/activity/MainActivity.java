@@ -1,4 +1,4 @@
-package com.werocksta.dagger2demo.view;
+package com.werocksta.dagger2demo.view.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
