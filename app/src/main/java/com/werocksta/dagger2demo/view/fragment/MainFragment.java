@@ -16,12 +16,17 @@ import javax.inject.Inject;
 
 public class MainFragment extends Fragment {
 
+    @Inject
+    ApiService service;
+    
     public MainFragment() {
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+
+        ((MainApplication) getActivity().getApplication()).getComponent().inject(this);
     }
 
     @Override
