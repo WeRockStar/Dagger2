@@ -16,7 +16,7 @@ buildscript {
 }
 ```
 
-###### build.gradle module level
+###### build.gradle application module level
 
 ``` groovy
 apply plugin: 'com.neenbedankt.android-apt'
