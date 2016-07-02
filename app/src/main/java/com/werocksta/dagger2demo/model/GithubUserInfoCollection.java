@@ -16,4 +16,20 @@ public class GithubUserInfoCollection {
 
     @SerializedName("repos_url")
     private String repoUrl;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public String getRepoUrl() {
+        return repoUrl;
+    }
 }
