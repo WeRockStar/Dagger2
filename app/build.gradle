@@ -14,6 +14,7 @@ android {
     }
     lintOptions {
         abortOnError false
+        disable 'InvalidPackage','AppLinksAutoVerifyError'
     }
     buildTypes {
         release {
