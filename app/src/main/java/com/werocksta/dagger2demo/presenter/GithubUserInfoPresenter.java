@@ -6,9 +6,11 @@ public interface GithubUserInfoPresenter {
 
     void getUserInfo(String username);
 
+    void onStop();
+
     interface View {
         void loading();
-        
+
         void getUserInfoSuccess(GithubUserInfoCollection userInfo);
 
         void getUserInfoError(String message);

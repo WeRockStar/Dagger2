@@ -86,4 +86,11 @@ public class MainFragment extends Fragment implements GithubUserInfoPresenter.Vi
     public void getUserInfoComplete() {
         progressDialog.cancel();
     }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        presenter.onStop();
+    }
 }
