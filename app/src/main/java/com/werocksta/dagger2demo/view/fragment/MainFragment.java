@@ -26,6 +26,7 @@ import com.werocksta.dagger2demo.presenter.RepoPresenterImpl;
 import javax.inject.Inject;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainFragment extends Fragment implements GithubUserInfoPresenter.View {
@@ -53,7 +54,7 @@ public class MainFragment extends Fragment implements GithubUserInfoPresenter.Vi
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
-
+        ButterKnife.bind(this, view);
         presenter = new GithubUserInfoPresenterImpl(this, service);
         progressDialog = new ProgressDialog(getContext());
         return view;
@@ -65,6 +66,7 @@ public class MainFragment extends Fragment implements GithubUserInfoPresenter.Vi
         progressDialog.setIndeterminate(true);
         progressDialog.show();
         presenter.getUserInfo(edtUsername.getText().toString());
+        Log.d("Clicked", "Clicked");
     }
 
     @Override
@@ -80,5 +82,6 @@ public class MainFragment extends Fragment implements GithubUserInfoPresenter.Vi
     @Override
     public void getUserInfoComplete() {
         progressDialog.cancel();
+        Log.d("Completed", "Completed");
     }
 }
