@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.werocksta.dagger2demo.MainApplication;
 import com.werocksta.dagger2demo.R;
 import com.werocksta.dagger2demo.manager.ApiService;
@@ -62,16 +63,18 @@ public class MainFragment extends Fragment implements GithubUserInfoPresenter.Vi
 
     @OnClick(R.id.btnLoad)
     void onClickLoadUserInfo() {
+        presenter.getUserInfo(edtUsername.getText().toString());
+    }
+
+    @Override
+    public void loading() {
         progressDialog.setMessage("Loading..");
         progressDialog.setIndeterminate(true);
         progressDialog.show();
-        presenter.getUserInfo(edtUsername.getText().toString());
-        Log.d("Clicked", "Clicked");
     }
 
     @Override
     public void getUserInfoSuccess(GithubUserInfoCollection userInfo) {
-        Log.d("username", userInfo.getUsername());
     }
 
     @Override
@@ -82,6 +85,5 @@ public class MainFragment extends Fragment implements GithubUserInfoPresenter.Vi
     @Override
     public void getUserInfoComplete() {
         progressDialog.cancel();
-        Log.d("Completed", "Completed");
     }
 }

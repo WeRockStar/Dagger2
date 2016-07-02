@@ -3,11 +3,11 @@ package com.werocksta.dagger2demo.presenter;
 import com.werocksta.dagger2demo.manager.ApiService;
 import com.werocksta.dagger2demo.model.GithubUserInfoCollection;
 
-import java.util.concurrent.TimeUnit;
 
+import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action1;
+import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
 public class GithubUserInfoPresenterImpl implements GithubUserInfoPresenter {
@@ -22,13 +22,15 @@ public class GithubUserInfoPresenterImpl implements GithubUserInfoPresenter {
 
     @Override
     public void getUserInfo(String username) {
+        view.loading();
+        
         service.getUserInfo(username)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doOnNext(new Action1<GithubUserInfoCollection>() {
+                .onErrorResumeNext(new Func1<Throwable, Observable<? extends GithubUserInfoCollection>>() {
                     @Override
-                    public void call(GithubUserInfoCollection githubUserInfoCollection) {
-                        view.getUserInfoComplete();
+                    public Observable<? extends GithubUserInfoCollection> call(Throwable throwable) {
+                        return Observable.error(throwable);
                     }
                 })
                 .subscribe(new Subscriber<GithubUserInfoCollection>() {
