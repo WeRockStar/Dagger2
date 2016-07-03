@@ -9,9 +9,9 @@ import rx.Observable;
 
 public interface ApiService {
 
-    @GET("{user}")
+    @GET("users/{user}")
     Observable<GithubUserInfoCollection> getUserInfo(@Path("user") String user);
 
-    @GET("{user}/repos")
+    @GET("users/{user}/repos")
     Observable<RepoCollection> getRepo(@Path("users") String user);
 }
