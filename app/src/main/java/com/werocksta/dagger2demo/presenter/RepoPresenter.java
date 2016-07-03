@@ -6,9 +6,13 @@ public interface RepoPresenter {
 
     void getRepo(String user);
 
-    public interface View {
+    interface View {
+        void loading();
+
         void displayRepo(RepoCollection repo);
 
         void getRepoError(String message);
+
+        void loadComplete();
     }
 }

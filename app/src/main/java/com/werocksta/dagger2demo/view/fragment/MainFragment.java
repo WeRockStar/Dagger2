@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.werocksta.dagger2demo.MainApplication;
 import com.werocksta.dagger2demo.R;
 import com.werocksta.dagger2demo.manager.ApiService;
@@ -90,14 +91,13 @@ public class MainFragment extends Fragment implements GithubUserInfoPresenter.Vi
     @Override
     public void getUserInfoSuccess(final GithubUserInfoCollection userInfo) {
         tvUsername.setText(userInfo.getUsername());
-        Glide.with(this).load(userInfo.getImageUrl()).into(ivProfile);
+        Glide.with(this).load(userInfo.getImageUrl()).diskCacheStrategy(DiskCacheStrategy.RESULT).into(ivProfile);
         tvRepo.setClickable(true);
         tvRepo.setText(userInfo.getRepoUrl());
 
         tvRepo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("Click", "Click");
                 ((MainActivity) getActivity()).onClickRepoList(userInfo.getUsername());
             }
         });

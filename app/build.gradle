@@ -48,4 +48,5 @@ dependencies {
     androidTestCompile 'com.android.support:support-annotations:24.0.0'
     apt 'com.google.dagger:dagger-compiler:2.5'
     apt 'com.jakewharton:butterknife-compiler:8.1.0'
+    compile 'com.github.castorflex.smoothprogressbar:library:1.1.0'
 }

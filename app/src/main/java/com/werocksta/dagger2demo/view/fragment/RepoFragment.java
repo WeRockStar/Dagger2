@@ -13,13 +13,15 @@ import android.view.ViewGroup;
 import com.werocksta.dagger2demo.MainApplication;
 import com.werocksta.dagger2demo.R;
 import com.werocksta.dagger2demo.manager.ApiService;
+import com.werocksta.dagger2demo.model.RepoCollection;
+import com.werocksta.dagger2demo.presenter.RepoPresenter;
 
 import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class RepoFragment extends Fragment {
+public class RepoFragment extends Fragment implements RepoPresenter.View {
 
     @BindView(R.id.rvList)
     RecyclerView rvList;
@@ -60,4 +62,23 @@ public class RepoFragment extends Fragment {
 
     }
 
+    @Override
+    public void loading() {
+
+    }
+
+    @Override
+    public void displayRepo(RepoCollection repo) {
+
+    }
+
+    @Override
+    public void getRepoError(String message) {
+
+    }
+
+    @Override
+    public void loadComplete() {
+
+    }
 }
