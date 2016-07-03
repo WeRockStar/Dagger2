@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -37,6 +39,15 @@ public class MainFragment extends Fragment implements GithubUserInfoPresenter.Vi
 
     @BindView(R.id.edtUsername)
     EditText edtUsername;
+
+    @BindView(R.id.ivProfile)
+    ImageView ivProfile;
+
+    @BindView(R.id.tvUsername)
+    TextView tvUsername;
+
+    @BindView(R.id.tvRepo)
+    TextView tvRepo;
 
     GithubUserInfoPresenter presenter;
     ProgressDialog progressDialog;
@@ -75,6 +86,9 @@ public class MainFragment extends Fragment implements GithubUserInfoPresenter.Vi
 
     @Override
     public void getUserInfoSuccess(GithubUserInfoCollection userInfo) {
+        tvUsername.setText(userInfo.getUsername());
+        Glide.with(this).load(userInfo.getImageUrl()).into(ivProfile);
+        tvRepo.setText(userInfo.getRepoUrl());
     }
 
     @Override
