@@ -24,7 +24,7 @@ public class GithubRepoAdapter extends RecyclerView.Adapter<GithubRepoAdapter.Re
 
     @Override
     public RepoViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.repo_item_row, parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.repo_item_row, parent, false);
         return new RepoViewHolder(view);
     }
 
@@ -32,6 +32,7 @@ public class GithubRepoAdapter extends RecyclerView.Adapter<GithubRepoAdapter.Re
     public void onBindViewHolder(RepoViewHolder holder, int position) {
         RepoCollection repoCollection = repo.get(position);
         holder.tvName.setText(repoCollection.getNameRepo());
+        holder.tvLanguage.setText(repoCollection.getLanguage());
     }
 
     @Override

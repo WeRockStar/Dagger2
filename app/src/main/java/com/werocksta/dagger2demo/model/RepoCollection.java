@@ -16,6 +16,9 @@ public class RepoCollection {
     @SerializedName("full_name")
     private String fullNameRepo;
 
+    @SerializedName("language")
+    private String language;
+
     public int getId() {
         return id;
     }
@@ -28,4 +31,7 @@ public class RepoCollection {
         return fullNameRepo;
     }
 
+    public String getLanguage() {
+        return language;
+    }
 }
