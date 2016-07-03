@@ -55,4 +55,9 @@ public class RepoPresenterImpl implements RepoPresenter {
                     }
                 }));
     }
+
+    @Override
+    public void onStop() {
+        subscription.clear();
+    }
 }

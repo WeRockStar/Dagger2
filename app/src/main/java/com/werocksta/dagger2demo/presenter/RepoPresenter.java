@@ -6,6 +6,8 @@ public interface RepoPresenter {
 
     void getRepo(String user);
 
+    void onStop();
+
     interface View {
         void loading();
 
