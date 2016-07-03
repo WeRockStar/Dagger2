@@ -5,6 +5,8 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -88,7 +90,9 @@ public class MainFragment extends Fragment implements GithubUserInfoPresenter.Vi
     public void getUserInfoSuccess(GithubUserInfoCollection userInfo) {
         tvUsername.setText(userInfo.getUsername());
         Glide.with(this).load(userInfo.getImageUrl()).into(ivProfile);
-        tvRepo.setText(userInfo.getRepoUrl());
+        String url = "<a href='" + userInfo.getRepoUrl() + "'>Repo url</a>";
+        tvRepo.setMovementMethod(LinkMovementMethod.getInstance());
+        tvRepo.setText(Html.fromHtml(url));
     }
 
     @Override
