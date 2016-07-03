@@ -3,6 +3,8 @@ package com.werocksta.dagger2demo.presenter;
 import com.werocksta.dagger2demo.manager.ApiService;
 import com.werocksta.dagger2demo.model.RepoCollection;
 
+import java.util.List;
+
 import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
@@ -30,14 +32,14 @@ public class RepoPresenterImpl implements RepoPresenter {
 
         subscription.add(service.getRepo(user)
                 .subscribeOn(Schedulers.io())
-                .onErrorResumeNext(new Func1<Throwable, Observable<? extends RepoCollection>>() {
+                .observeOn(AndroidSchedulers.mainThread())
+                .onErrorResumeNext(new Func1<Throwable, Observable<? extends List<RepoCollection>>>() {
                     @Override
-                    public Observable<? extends RepoCollection> call(Throwable throwable) {
+                    public Observable<? extends List<RepoCollection>> call(Throwable throwable) {
                         return Observable.error(throwable);
                     }
                 })
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<RepoCollection>() {
+                .subscribe(new Subscriber<List<RepoCollection>>() {
                     @Override
                     public void onCompleted() {
                         view.loadComplete();
@@ -45,13 +47,13 @@ public class RepoPresenterImpl implements RepoPresenter {
 
                     @Override
                     public void onError(Throwable e) {
-                        view.getRepoError(e.getMessage());
                         view.loadComplete();
+                        view.getRepoError(e.getMessage());
                     }
 
                     @Override
-                    public void onNext(RepoCollection repoCollection) {
-                        view.displayRepo(repoCollection);
+                    public void onNext(List<RepoCollection> repoCollections) {
+                        view.displayRepo(repoCollections);
                     }
                 }));
     }
