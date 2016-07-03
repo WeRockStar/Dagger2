@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import com.werocksta.dagger2demo.R;
 import com.werocksta.dagger2demo.view.fragment.MainFragment;
+import com.werocksta.dagger2demo.view.fragment.RepoFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -15,6 +16,13 @@ public class MainActivity extends AppCompatActivity {
 
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.contentContainer, new MainFragment())
+                .commit();
+    }
+
+    public void onClickRepoList(String user) {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.contentContainer, RepoFragment.newInstance(user))
+                .addToBackStack(null)
                 .commit();
     }
 }

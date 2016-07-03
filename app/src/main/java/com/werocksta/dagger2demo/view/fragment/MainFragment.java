@@ -27,6 +27,7 @@ import com.werocksta.dagger2demo.presenter.GithubUserInfoPresenter;
 import com.werocksta.dagger2demo.presenter.GithubUserInfoPresenterImpl;
 import com.werocksta.dagger2demo.presenter.RepoPresenter;
 import com.werocksta.dagger2demo.presenter.RepoPresenterImpl;
+import com.werocksta.dagger2demo.view.activity.MainActivity;
 
 import javax.inject.Inject;
 
@@ -87,13 +88,21 @@ public class MainFragment extends Fragment implements GithubUserInfoPresenter.Vi
     }
 
     @Override
-    public void getUserInfoSuccess(GithubUserInfoCollection userInfo) {
+    public void getUserInfoSuccess(final GithubUserInfoCollection userInfo) {
         tvUsername.setText(userInfo.getUsername());
         Glide.with(this).load(userInfo.getImageUrl()).into(ivProfile);
-        String url = "<a href='" + userInfo.getRepoUrl() + "'>Repo url</a>";
-        tvRepo.setMovementMethod(LinkMovementMethod.getInstance());
-        tvRepo.setText(Html.fromHtml(url));
+        tvRepo.setClickable(true);
+        tvRepo.setText(userInfo.getRepoUrl());
+
+        tvRepo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d("Click", "Click");
+                ((MainActivity) getActivity()).onClickRepoList(userInfo.getUsername());
+            }
+        });
     }
+
 
     @Override
     public void getUserInfoError(String message) {
