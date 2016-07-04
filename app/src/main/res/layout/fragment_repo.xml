@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:indeterminate="true"
         app:spbStyle="@style/SmoothProgressBar"
-        app:spb_reversed="false" />
+         />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rvList"
