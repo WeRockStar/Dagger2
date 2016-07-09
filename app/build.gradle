@@ -33,7 +33,7 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:24.0.0'
-    compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha3'
+    compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha4'
     compile 'com.google.dagger:dagger:2.5'
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
