@@ -51,7 +51,7 @@ dependencies {
     androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'
     androidTestCompile 'com.android.support.test:runner:0.5'
     androidTestCompile 'com.android.support:support-annotations:24.1.1'
-    apt 'com.google.dagger:dagger-compiler:2.5'
+    apt 'com.google.dagger:dagger-compiler:2.6'
     apt 'com.jakewharton:butterknife-compiler:8.1.0'
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }
