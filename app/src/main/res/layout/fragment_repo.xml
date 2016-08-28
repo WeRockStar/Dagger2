@@ -1,17 +1,16 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.werocksta.dagger2demo.view.fragment.RepoFragment">
 
-    <fr.castorflex.android.smoothprogressbar.SmoothProgressBar xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <fr.castorflex.android.smoothprogressbar.SmoothProgressBar
         android:id="@+id/smootProgressBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:indeterminate="true"
-        app:spbStyle="@style/SmoothProgressBar"
-         />
+        app:spbStyle="@style/SmoothProgressBar" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rvList"

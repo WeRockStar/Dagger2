@@ -4,7 +4,7 @@ import android.app.Application;
 
 import com.werocksta.dagger2demo.di.component.AppComponent;
 import com.werocksta.dagger2demo.di.component.DaggerAppComponent;
-import com.werocksta.dagger2demo.di.module.AppModule;
+import com.werocksta.dagger2demo.di.module.HttpModule;
 
 public class MainApplication extends Application {
 
@@ -15,7 +15,7 @@ public class MainApplication extends Application {
         super.onCreate();
 
         component = DaggerAppComponent.builder()
-                .appModule(new AppModule(this))
+                .httpModule(new HttpModule(this))
                 .build();
     }
 
