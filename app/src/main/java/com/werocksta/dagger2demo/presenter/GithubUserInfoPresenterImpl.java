@@ -30,29 +30,13 @@ public class GithubUserInfoPresenterImpl implements GithubUserInfoPresenter {
         subscription.add(service.getUserInfo(username)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .onErrorResumeNext(new Func1<Throwable, Observable<? extends GithubUserInfoCollection>>() {
-                    @Override
-                    public Observable<? extends GithubUserInfoCollection> call(Throwable throwable) {
-                        return Observable.error(throwable);
-                    }
-                })
-                .subscribe(new Subscriber<GithubUserInfoCollection>() {
-                    @Override
-                    public void onCompleted() {
-                        view.getUserInfoComplete();
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        view.getUserInfoComplete();
-                        view.getUserInfoError(e.getMessage());
-                    }
-
-                    @Override
-                    public void onNext(GithubUserInfoCollection githubUserInfoCollection) {
-                        view.getUserInfoSuccess(githubUserInfoCollection);
-                    }
-                }));
+                .onErrorResumeNext(Observable::error)
+                .doOnTerminate(() -> view.getUserInfoComplete())
+                .subscribe(
+                        result -> view.getUserInfoSuccess(result),
+                        t -> view.getUserInfoError(t.getMessage()),
+                        () -> view.getUserInfoComplete())
+        );
     }
 
     @Override
