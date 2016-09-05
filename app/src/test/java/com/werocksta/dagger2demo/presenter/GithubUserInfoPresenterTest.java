@@ -53,4 +53,13 @@ public class GithubUserInfoPresenterTest {
         verify(view).getUserInfoSuccess(userInfo);
         verify(view, times(2)).getUserInfoComplete();
     }
+
+    @Test
+    public void getUserInfoErrorShouldHaveException() throws Exception {
+        when(service.getUserInfo("WeRockStar")).thenReturn(Observable.error(new Throwable()));
+        presenter.getUserInfo("WeRockStar");
+        verify(view).loading();
+        verify(view).getUserInfoError(null);
+        verify(view, times(1)).getUserInfoComplete();
+    }
 }
