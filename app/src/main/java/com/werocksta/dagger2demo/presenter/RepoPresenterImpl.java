@@ -33,29 +33,12 @@ public class RepoPresenterImpl implements RepoPresenter {
         subscription.add(service.getRepo(user)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .onErrorResumeNext(new Func1<Throwable, Observable<? extends List<RepoCollection>>>() {
-                    @Override
-                    public Observable<? extends List<RepoCollection>> call(Throwable throwable) {
-                        return Observable.error(throwable);
-                    }
-                })
-                .subscribe(new Subscriber<List<RepoCollection>>() {
-                    @Override
-                    public void onCompleted() {
-                        view.loadComplete();
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        view.loadComplete();
-                        view.getRepoError(e.getMessage());
-                    }
-
-                    @Override
-                    public void onNext(List<RepoCollection> repoCollections) {
-                        view.displayRepo(repoCollections);
-                    }
-                }));
+                .onErrorResumeNext(Observable::error)
+                .doOnTerminate(() -> view.loadComplete())
+                .subscribe(
+                        repo -> view.displayRepo(repo),
+                        throwable -> view.getRepoError(throwable.getMessage()),
+                        () -> view.loadComplete()));
     }
 
     @Override
