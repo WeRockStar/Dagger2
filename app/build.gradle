@@ -52,6 +52,7 @@ dependencies {
     compile "com.squareup.retrofit2:converter-gson:$retrofitVersion"
     compile "com.squareup.retrofit2:adapter-rxjava:$retrofitVersion"
     compile 'io.reactivex:rxandroid:1.2.1'
+    testCompile "org.robolectric:robolectric:3.1.1"
     compile 'io.reactivex:rxjava:1.1.9'
     compile "com.android.support:support-v4:$supportVersion"
     compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'
