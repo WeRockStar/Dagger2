@@ -95,12 +95,7 @@ public class MainFragment extends Fragment implements GithubUserInfoPresenter.Vi
         tvRepo.setClickable(true);
         tvRepo.setText(userInfo.getRepoUrl());
 
-        tvRepo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ((MainActivity) getActivity()).onClickRepoList(userInfo.getUsername());
-            }
-        });
+        tvRepo.setOnClickListener(view -> ((MainActivity) getActivity()).onClickRepoList(userInfo.getUsername()));
     }
 
 
