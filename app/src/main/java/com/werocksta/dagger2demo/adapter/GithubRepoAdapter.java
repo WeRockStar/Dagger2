@@ -1,5 +1,6 @@
 package com.werocksta.dagger2demo.adapter;
 
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,10 +14,12 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class GithubRepoAdapter extends RecyclerView.Adapter<GithubRepoAdapter.RepoViewHolder> {
 
     private List<RepoCollection> repo;
+    private OnClickRepo listener;
 
     public void setRepoList(List<RepoCollection> list) {
         this.repo = list;
@@ -40,10 +43,13 @@ public class GithubRepoAdapter extends RecyclerView.Adapter<GithubRepoAdapter.Re
         return repo == null ? 0 : repo.size();
     }
 
-    class RepoViewHolder extends RecyclerView.ViewHolder {
+    class RepoViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         @BindView(R.id.tvName)
         TextView tvName;
+
+        @BindView(R.id.card)
+        CardView cvRepo;
 
         @BindView(R.id.tvLanguage)
         TextView tvLanguage;
@@ -52,6 +58,22 @@ public class GithubRepoAdapter extends RecyclerView.Adapter<GithubRepoAdapter.Re
             super(itemView);
 
             ButterKnife.bind(this, itemView);
+            cvRepo.setOnClickListener(this);
         }
+
+        @Override
+        public void onClick(View v) {
+            if (listener != null) {
+                listener.onClickRepoItem(repo.get(getAdapterPosition()));
+            }
+        }
+    }
+
+    public interface OnClickRepo {
+        void onClickRepoItem(RepoCollection repo);
+    }
+
+    public void setOnClickRepo(OnClickRepo listener) {
+        this.listener = listener;
     }
 }

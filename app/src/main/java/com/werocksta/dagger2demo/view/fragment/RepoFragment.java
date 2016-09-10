@@ -2,7 +2,9 @@ package com.werocksta.dagger2demo.view.fragment;
 
 
 import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.customtabs.CustomTabsIntent;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -27,7 +29,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import fr.castorflex.android.smoothprogressbar.SmoothProgressBar;
 
-public class RepoFragment extends Fragment implements RepoPresenter.View {
+public class RepoFragment extends Fragment implements RepoPresenter.View, GithubRepoAdapter.OnClickRepo {
 
     @BindView(R.id.rvList)
     RecyclerView rvList;
@@ -87,6 +89,7 @@ public class RepoFragment extends Fragment implements RepoPresenter.View {
 
     @Override
     public void displayRepo(List<RepoCollection> repo) {
+        adapter.setOnClickRepo(this);
         adapter.setRepoList(repo);
         adapter.notifyDataSetChanged();
     }
@@ -99,5 +102,12 @@ public class RepoFragment extends Fragment implements RepoPresenter.View {
     @Override
     public void loadComplete() {
         smoothProgressBar.progressiveStop();
+    }
+
+    @Override
+    public void onClickRepoItem(RepoCollection repo) {
+        CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
+        CustomTabsIntent customTabsIntent = builder.build();
+        customTabsIntent.launchUrl(getActivity(), Uri.parse(repo.getHtmlUrl()));
     }
 }

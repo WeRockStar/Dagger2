@@ -19,6 +19,9 @@ public class RepoCollection {
     @SerializedName("language")
     private String language;
 
+    @SerializedName("html_url")
+    private String htmlUrl;
+
     public int getId() {
         return id;
     }
@@ -33,5 +36,9 @@ public class RepoCollection {
 
     public String getLanguage() {
         return language;
+    }
+
+    public String getHtmlUrl() {
+        return htmlUrl;
     }
 }
