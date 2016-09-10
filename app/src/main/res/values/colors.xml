@@ -3,10 +3,13 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="colorOne">#46b14e</color>
+    <color name="colorTwo">#dc793f</color>
+    <color name="colorThree">#3ea6c2</color>
 
-    <integer-array name="gplus_colors">
-        <item>@color/colorPrimary</item>
-        <item>@color/colorPrimaryDark</item>
-        <item>@color/colorAccent</item>
+    <integer-array name="smooth">
+        <item>@color/colorOne</item>
+        <item>@color/colorTwo</item>
+        <item>@color/colorThree</item>
     </integer-array>
 </resources>

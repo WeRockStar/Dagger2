@@ -117,6 +117,7 @@ public class MainFragment extends Fragment implements GithubUserInfoPresenter.Vi
     @Override
     public void getUserInfoComplete() {
         progressDialog.cancel();
+        (new KeyboardUtil()).hideKeyboard(edtUsername, mContext);
     }
 
     @Override
