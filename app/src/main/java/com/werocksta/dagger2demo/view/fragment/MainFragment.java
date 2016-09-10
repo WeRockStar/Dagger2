@@ -1,6 +1,7 @@
 package com.werocksta.dagger2demo.view.fragment;
 
 
+import android.app.Application;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
@@ -28,6 +29,7 @@ import com.werocksta.dagger2demo.presenter.GithubUserInfoPresenter;
 import com.werocksta.dagger2demo.presenter.GithubUserInfoPresenterImpl;
 import com.werocksta.dagger2demo.presenter.RepoPresenter;
 import com.werocksta.dagger2demo.presenter.RepoPresenterImpl;
+import com.werocksta.dagger2demo.util.KeyboardUtil;
 import com.werocksta.dagger2demo.view.activity.MainActivity;
 
 import javax.inject.Inject;
@@ -52,6 +54,9 @@ public class MainFragment extends Fragment implements GithubUserInfoPresenter.Vi
 
     @BindView(R.id.tvRepo)
     TextView tvRepo;
+
+    @Inject
+    Context mContext;
 
     GithubUserInfoPresenter presenter;
     ProgressDialog progressDialog;
@@ -79,6 +84,11 @@ public class MainFragment extends Fragment implements GithubUserInfoPresenter.Vi
     @OnClick(R.id.btnLoad)
     void onClickLoadUserInfo() {
         presenter.getUserInfo(edtUsername.getText().toString());
+    }
+
+    @OnClick(R.id.rootLayout)
+    void hideKeyboard() {
+        (new KeyboardUtil()).hideKeyboard(edtUsername, mContext);
     }
 
     @Override
