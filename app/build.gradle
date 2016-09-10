@@ -47,6 +47,7 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha7'
     compile "com.android.support:appcompat-v7:$supportVersion"
+    compile "com.android.support:customtabs:$supportVersion"
     compile "com.google.dagger:dagger:$daggerVersion"
     compile "com.squareup.retrofit2:retrofit:$retrofitVersion"
     compile "com.squareup.retrofit2:converter-gson:$retrofitVersion"
