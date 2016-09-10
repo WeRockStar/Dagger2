@@ -23,7 +23,7 @@ apply plugin: 'com.neenbedankt.android-apt'
 
 dependencies {
     ...
-    compile 'com.google.dagger:dagger:2.5'
-    apt 'com.google.dagger:dagger-compiler:2.5'
+    compile 'com.google.dagger:dagger:2.6.1'
+    apt 'com.google.dagger:dagger-compiler:2.6.1'
 }
 ```
