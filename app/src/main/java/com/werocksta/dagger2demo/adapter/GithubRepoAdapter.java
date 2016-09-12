@@ -1,5 +1,6 @@
 package com.werocksta.dagger2demo.adapter;
 
+import android.content.Context;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 
 import com.werocksta.dagger2demo.R;
 import com.werocksta.dagger2demo.model.RepoCollection;
+import com.werocksta.dagger2demo.widget.CustomRecyclerView;
 
 import java.util.List;
 
@@ -16,7 +18,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class GithubRepoAdapter extends RecyclerView.Adapter<GithubRepoAdapter.RepoViewHolder> {
+public class GithubRepoAdapter extends CustomRecyclerView {
 
     private List<RepoCollection> repo;
     private OnClickRepo listener;
@@ -32,10 +34,11 @@ public class GithubRepoAdapter extends RecyclerView.Adapter<GithubRepoAdapter.Re
     }
 
     @Override
-    public void onBindViewHolder(RepoViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         RepoCollection repoCollection = repo.get(position);
-        holder.tvName.setText(repoCollection.getNameRepo());
-        holder.tvLanguage.setText(repoCollection.getLanguage());
+        RepoViewHolder viewHolder = (RepoViewHolder) holder;
+        viewHolder.tvName.setText(repoCollection.getNameRepo());
+        viewHolder.tvLanguage.setText(repoCollection.getLanguage());
     }
 
     @Override
