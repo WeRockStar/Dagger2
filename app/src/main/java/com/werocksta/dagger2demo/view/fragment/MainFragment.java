@@ -117,6 +117,7 @@ public class MainFragment extends Fragment implements GithubUserInfoPresenter.Vi
         super.onStop();
 
         presenter.onStop();
+        
     }
 
 }
