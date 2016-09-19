@@ -35,7 +35,7 @@ android {
 }
 
 ext {
-    supportVersion = "24.2.0"
+    supportVersion = "24.2.1"
     daggerVersion = "2.7"
     retrofitVersion = "2.1.0"
     butterknifeVersion = "8.4.0"
