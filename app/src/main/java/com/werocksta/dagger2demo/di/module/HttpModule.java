@@ -6,6 +6,7 @@ import android.content.Context;
 
 import com.werocksta.dagger2demo.BuildConfig;
 import com.werocksta.dagger2demo.manager.ApiService;
+import com.werocksta.dagger2demo.util.Constant;
 
 import javax.inject.Singleton;
 
@@ -19,18 +20,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 @Module
 public class HttpModule {
-
-    private Application application;
-
-    public HttpModule(Application application) {
-        this.application = application;
-    }
-
-    @Provides
-    @Singleton
-    public Context provideContext() {
-        return this.application;
-    }
 
     @Provides
     @Singleton
@@ -46,7 +35,7 @@ public class HttpModule {
     @Singleton
     public Retrofit provideRetrofit(OkHttpClient okHttpClient) {
         return new Retrofit.Builder()
-                .baseUrl("https://api.github.com/")
+                .baseUrl(Constant.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .client(okHttpClient)
