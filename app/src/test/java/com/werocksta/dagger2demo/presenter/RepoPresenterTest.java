@@ -51,7 +51,7 @@ public class RepoPresenterTest {
         presenter.getRepo("WeRockStar");
         verify(view).loading();
         verify(view).displayRepo(collections);
-        verify(view, times(2)).loadComplete();
+        verify(view).loadComplete();
     }
 
     @Test
@@ -60,6 +60,6 @@ public class RepoPresenterTest {
         presenter.getRepo("WeRockStar");
         verify(view).loading();
         verify(view).getRepoError(null);
-        verify(view, times(1)).loadComplete();
+        verify(view).loadComplete();
     }
 }

@@ -30,9 +30,4 @@ public class MainActivityTest {
         assertNotNull(activity);
     }
 
-    @Test
-    public void name() throws Exception {
-
-
-    }
 }

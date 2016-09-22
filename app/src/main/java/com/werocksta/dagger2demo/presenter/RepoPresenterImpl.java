@@ -37,8 +37,8 @@ public class RepoPresenterImpl implements RepoPresenter {
                 .doOnTerminate(() -> view.loadComplete())
                 .subscribe(
                         repo -> view.displayRepo(repo),
-                        throwable -> view.getRepoError(throwable.getMessage()),
-                        () -> view.loadComplete()));
+                        throwable -> view.getRepoError(throwable.getMessage())
+                ));
     }
 
     @Override

@@ -51,7 +51,7 @@ public class GithubUserInfoPresenterTest {
         presenter.getUserInfo("WeRockStar");
         verify(view).loading();
         verify(view).getUserInfoSuccess(userInfo);
-        verify(view, times(2)).getUserInfoComplete();
+        verify(view).getUserInfoComplete();
     }
 
     @Test
@@ -60,6 +60,6 @@ public class GithubUserInfoPresenterTest {
         presenter.getUserInfo("WeRockStar");
         verify(view).loading();
         verify(view).getUserInfoError(null);
-        verify(view, times(1)).getUserInfoComplete();
+        verify(view).getUserInfoComplete();
     }
 }

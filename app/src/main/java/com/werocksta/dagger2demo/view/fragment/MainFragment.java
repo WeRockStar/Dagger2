@@ -31,7 +31,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MainFragment extends Fragment implements GithubUserInfoPresenter.View{
+public class MainFragment extends Fragment implements GithubUserInfoPresenter.View {
 
     @Inject
     ApiService service;
@@ -100,7 +100,6 @@ public class MainFragment extends Fragment implements GithubUserInfoPresenter.Vi
         tvRepo.setOnClickListener(view -> ((MainActivity) getActivity()).onClickRepoList(userInfo.getUsername()));
     }
 
-
     @Override
     public void getUserInfoError(String message) {
         Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
@@ -117,7 +116,6 @@ public class MainFragment extends Fragment implements GithubUserInfoPresenter.Vi
         super.onStop();
 
         presenter.onStop();
-        
     }
 
 }

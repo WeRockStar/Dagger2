@@ -33,9 +33,8 @@ public class GithubUserInfoPresenterImpl implements GithubUserInfoPresenter {
                 .onErrorResumeNext(Observable::error)
                 .doOnTerminate(() -> view.getUserInfoComplete())
                 .subscribe(
-                        result -> view.getUserInfoSuccess(result),
-                        t -> view.getUserInfoError(t.getMessage()),
-                        () -> view.getUserInfoComplete())
+                        view::getUserInfoSuccess,
+                        throwable -> view.getUserInfoError(throwable.getMessage()))
         );
     }
 
