@@ -15,7 +15,6 @@ import org.mockito.MockitoAnnotations;
 import rx.Observable;
 
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -36,7 +35,7 @@ public class GithubUserInfoPresenterTest {
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-        presenter = new GithubUserInfoPresenterImpl(view, service);
+        presenter = new GithubUserInfoPresenter(view, service);
     }
 
     @Test

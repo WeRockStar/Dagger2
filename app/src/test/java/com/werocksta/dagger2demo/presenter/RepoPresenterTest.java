@@ -16,7 +16,6 @@ import java.util.List;
 import rx.Observable;
 
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -36,7 +35,7 @@ public class RepoPresenterTest {
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-        presenter = new RepoPresenterImpl(view, service);
+        presenter = new RepoPresenter(view, service);
     }
 
     @Test

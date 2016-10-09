@@ -19,7 +19,6 @@ import com.werocksta.dagger2demo.adapter.GithubRepoAdapter;
 import com.werocksta.dagger2demo.manager.ApiService;
 import com.werocksta.dagger2demo.model.RepoCollection;
 import com.werocksta.dagger2demo.presenter.RepoPresenter;
-import com.werocksta.dagger2demo.presenter.RepoPresenterImpl;
 
 import java.util.List;
 
@@ -72,7 +71,7 @@ public class RepoFragment extends Fragment implements RepoPresenter.View, Github
         View view = inflater.inflate(R.layout.fragment_repo, container, false);
         ButterKnife.bind(this, view);
 
-        presenter = new RepoPresenterImpl(this, service);
+        presenter = new RepoPresenter(this, service);
         presenter.getRepo(getArguments().getString(EXTRA_USER));
 
         adapter = new GithubRepoAdapter();
@@ -112,5 +111,12 @@ public class RepoFragment extends Fragment implements RepoPresenter.View, Github
     @Override
     public void onClickRepoItem(RepoCollection repo) {
         customTabsIntent.launchUrl(getActivity(), Uri.parse(repo.getHtmlUrl()));
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        presenter.onStop();
     }
 }

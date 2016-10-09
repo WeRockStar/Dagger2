@@ -19,9 +19,7 @@ import com.werocksta.dagger2demo.MainApplication;
 import com.werocksta.dagger2demo.R;
 import com.werocksta.dagger2demo.manager.ApiService;
 import com.werocksta.dagger2demo.model.GithubUserInfoCollection;
-import com.werocksta.dagger2demo.model.RepoCollection;
 import com.werocksta.dagger2demo.presenter.GithubUserInfoPresenter;
-import com.werocksta.dagger2demo.presenter.GithubUserInfoPresenterImpl;
 import com.werocksta.dagger2demo.util.KeyboardUtil;
 import com.werocksta.dagger2demo.view.activity.MainActivity;
 
@@ -69,7 +67,7 @@ public class MainFragment extends Fragment implements GithubUserInfoPresenter.Vi
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
         ButterKnife.bind(this, view);
-        presenter = new GithubUserInfoPresenterImpl(this, service);
+        presenter = new GithubUserInfoPresenter(this, service);
         progressDialog = new ProgressDialog(getContext());
         return view;
     }
