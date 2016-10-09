@@ -77,9 +77,8 @@ public class RepoFragment extends Fragment implements RepoPresenter.View, Github
     }
 
     private void setUpView() {
-        rvList.setHasFixedSize(false);
-        rvList.setLayoutManager(new LinearLayoutManager(getContext(),
-                LinearLayoutManager.VERTICAL, false));
+        rvList.setHasFixedSize(true);
+        rvList.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         rvList.setItemAnimator(new DefaultItemAnimator());
         rvList.setAdapter(adapter);
     }
