@@ -32,8 +32,8 @@ public class RepoPresenterImpl implements RepoPresenter {
 
         subscription.add(service.getRepo(user)
                 .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
                 .onErrorResumeNext(Observable::error)
+                .observeOn(AndroidSchedulers.mainThread())
                 .doOnTerminate(() -> view.loadComplete())
                 .subscribe(
                         repo -> view.displayRepo(repo),

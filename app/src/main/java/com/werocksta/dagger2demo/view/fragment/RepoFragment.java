@@ -72,14 +72,15 @@ public class RepoFragment extends Fragment implements RepoPresenter.View, Github
         View view = inflater.inflate(R.layout.fragment_repo, container, false);
         ButterKnife.bind(this, view);
 
-        adapter = new GithubRepoAdapter();
         presenter = new RepoPresenterImpl(this, service);
-        setUpView();
         presenter.getRepo(getArguments().getString(EXTRA_USER));
+
+        adapter = new GithubRepoAdapter();
+        configurationRecyclerView();
         return view;
     }
 
-    private void setUpView() {
+    private void configurationRecyclerView() {
         rvList.setHasFixedSize(true);
         rvList.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         rvList.setItemAnimator(new DefaultItemAnimator());
