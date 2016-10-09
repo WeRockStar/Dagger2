@@ -40,6 +40,9 @@ public class RepoFragment extends Fragment implements RepoPresenter.View, Github
     @Inject
     ApiService service;
 
+    @Inject
+    CustomTabsIntent customTabsIntent;
+
     RepoPresenter presenter;
     GithubRepoAdapter adapter;
 
@@ -107,8 +110,6 @@ public class RepoFragment extends Fragment implements RepoPresenter.View, Github
 
     @Override
     public void onClickRepoItem(RepoCollection repo) {
-        CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
-        CustomTabsIntent customTabsIntent = builder.build();
         customTabsIntent.launchUrl(getActivity(), Uri.parse(repo.getHtmlUrl()));
     }
 }
