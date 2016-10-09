@@ -10,11 +10,8 @@ public interface GithubUserInfoPresenter {
 
     interface View {
         void loading();
-
         void getUserInfoSuccess(GithubUserInfoCollection userInfo);
-
         void getUserInfoError(String message);
-
         void getUserInfoComplete();
     }
 }

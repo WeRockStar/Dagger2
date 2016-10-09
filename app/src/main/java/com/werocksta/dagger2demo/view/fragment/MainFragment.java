@@ -86,7 +86,7 @@ public class MainFragment extends Fragment implements GithubUserInfoPresenter.Vi
 
     @Override
     public void loading() {
-        progressDialog.setMessage("Loading..");
+        progressDialog.setMessage(getString(R.string.loading));
         progressDialog.setIndeterminate(true);
         progressDialog.show();
     }
@@ -94,10 +94,15 @@ public class MainFragment extends Fragment implements GithubUserInfoPresenter.Vi
     @Override
     public void getUserInfoSuccess(final GithubUserInfoCollection userInfo) {
         tvUsername.setText(userInfo.getUsername());
-        Glide.with(this).load(userInfo.getImageUrl()).diskCacheStrategy(DiskCacheStrategy.RESULT).into(ivProfile);
         tvRepo.setClickable(true);
         tvRepo.setText(userInfo.getRepoUrl());
         tvRepo.setOnClickListener(view -> ((MainActivity) getActivity()).onClickRepoList(userInfo.getUsername()));
+
+        displayAvatarImage(userInfo.getImageUrl());
+    }
+
+    private void displayAvatarImage(String avatarUrl) {
+        Glide.with(this).load(avatarUrl).diskCacheStrategy(DiskCacheStrategy.RESULT).into(ivProfile);
     }
 
     @Override

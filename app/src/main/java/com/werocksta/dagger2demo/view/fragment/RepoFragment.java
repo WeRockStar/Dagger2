@@ -43,6 +43,8 @@ public class RepoFragment extends Fragment implements RepoPresenter.View, Github
     RepoPresenter presenter;
     GithubRepoAdapter adapter;
 
+    public static final String EXTRA_USER = "EXTRA_USER";
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -53,7 +55,7 @@ public class RepoFragment extends Fragment implements RepoPresenter.View, Github
     public static RepoFragment newInstance(String user) {
         RepoFragment fragment = new RepoFragment();
         Bundle bundle = new Bundle();
-        bundle.putString("user", user);
+        bundle.putString(EXTRA_USER, user);
         fragment.setArguments(bundle);
         return fragment;
     }
@@ -70,7 +72,7 @@ public class RepoFragment extends Fragment implements RepoPresenter.View, Github
         adapter = new GithubRepoAdapter();
         presenter = new RepoPresenterImpl(this, service);
         setUpView();
-        presenter.getRepo(getArguments().getString("user"));
+        presenter.getRepo(getArguments().getString(EXTRA_USER));
         return view;
     }
 
