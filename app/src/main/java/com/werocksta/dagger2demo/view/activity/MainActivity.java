@@ -1,5 +1,7 @@
 package com.werocksta.dagger2demo.view.activity;
 
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -14,15 +16,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        getSupportFragmentManager().beginTransaction()
-                .add(R.id.contentContainer, new MainFragment())
-                .commit();
+        changeFragment(new MainFragment(), false);
+    }
+
+    private void changeFragment(Fragment fragment, boolean hasAddBackStack) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction().replace(R.id.contentContainer, fragment);
+        if (hasAddBackStack) {
+            transaction.addToBackStack(null).commit();
+            return;
+        }
+        transaction.commit();
     }
 
     public void onClickRepoList(String user) {
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.contentContainer, RepoFragment.newInstance(user))
-                .addToBackStack(null)
-                .commit();
+        changeFragment(RepoFragment.newInstance(user), true);
     }
 }
