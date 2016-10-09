@@ -1,6 +1,8 @@
 ### Google Dagger 2
 ##### Fully static, compile-time dependency injection framework for both Java and Android.
 
+[![CircleCI](https://circleci.com/gh/WeRockStar/Dagger2/tree/master.svg?style=svg)](https://circleci.com/gh/WeRockStar/Dagger2/tree/master)
+
 #### Configuration
 ###### build.gradle project level
 
