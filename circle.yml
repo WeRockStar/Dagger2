@@ -15,7 +15,7 @@ dependencies:
         - /usr/local/android-sdk-linux/build-tools/24.0.3
 test:
     override:
-        - (./gradlew test):
+        - (./gradlew build assembleAndroidTest jacocoTestReport):
             timeout: 520
         - cp -r app/build/reports $CIRCLE_ARTIFACTS
     post:
