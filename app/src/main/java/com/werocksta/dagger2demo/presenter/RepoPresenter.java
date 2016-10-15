@@ -21,11 +21,8 @@ public class RepoPresenter {
 
     public interface View {
         void loading();
-
         void displayRepo(List<RepoCollection> repo);
-
         void getRepoError(String message);
-
         void loadComplete();
     }
 

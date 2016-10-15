@@ -79,6 +79,7 @@ dependencies {
     apt "com.google.dagger:dagger-compiler:$daggerVersion"
     apt "com.jakewharton:butterknife-compiler:$butterknifeVersion"
     testCompile "org.mockito:mockito-core:$mockitoVersion"
+    testCompile 'com.squareup.okio:okio:1.9.0'
 }
 repositories {
     mavenCentral()
