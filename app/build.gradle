@@ -8,7 +8,7 @@ android {
     buildToolsVersion "24.0.3"
     defaultConfig {
         applicationId "com.werocksta.dagger2demo"
-        minSdkVersion 16
+        minSdkVersion 15
         targetSdkVersion 24
         versionCode 1
         versionName "1.0"
