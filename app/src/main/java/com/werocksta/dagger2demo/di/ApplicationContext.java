@@ -1,11 +1,10 @@
 package com.werocksta.dagger2demo.di;
 
+
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
-import javax.inject.Scope;
-
-@Scope
+@ApplicationContext
 @Retention(RetentionPolicy.RUNTIME)
-public @interface ActivityScope {
+public @interface ApplicationContext {
 }

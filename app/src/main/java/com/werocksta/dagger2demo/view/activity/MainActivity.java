@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.werocksta.dagger2demo.MainApplication;
 import com.werocksta.dagger2demo.R;
 import com.werocksta.dagger2demo.di.component.ActivityComponent;
 import com.werocksta.dagger2demo.di.component.DaggerActivityComponent;
@@ -21,7 +22,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         component = DaggerActivityComponent.builder()
-                .activityModule(new ActivityModule())
+                .activityModule(new ActivityModule(this))
+                .appComponent(((MainApplication) getApplication()).getComponent())
                 .build();
 
         setContentView(R.layout.activity_main);
