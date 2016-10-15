@@ -6,16 +6,25 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.werocksta.dagger2demo.R;
+import com.werocksta.dagger2demo.di.component.ActivityComponent;
+import com.werocksta.dagger2demo.di.component.DaggerActivityComponent;
+import com.werocksta.dagger2demo.di.module.ActivityModule;
 import com.werocksta.dagger2demo.view.fragment.MainFragment;
 import com.werocksta.dagger2demo.view.fragment.RepoFragment;
 
 public class MainActivity extends AppCompatActivity {
 
+    ActivityComponent component;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
+        component = DaggerActivityComponent.builder()
+                .activityModule(new ActivityModule())
+                .build();
+
+        setContentView(R.layout.activity_main);
         changeFragment(new MainFragment(), false);
     }
 
@@ -30,5 +39,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickRepoList(String user) {
         changeFragment(RepoFragment.newInstance(user), true);
+    }
+
+    public ActivityComponent getComponent() {
+        return component;
     }
 }

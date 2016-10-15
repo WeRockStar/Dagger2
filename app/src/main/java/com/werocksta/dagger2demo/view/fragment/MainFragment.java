@@ -59,7 +59,8 @@ public class MainFragment extends Fragment implements GithubUserInfoPresenter.Vi
     public void onAttach(Context context) {
         super.onAttach(context);
 
-        ((MainApplication) getActivity().getApplication()).getComponent().inject(this);
+        ((MainApplication) getActivity().getApplication()).getComponent()
+                .inject(this);
     }
 
     @Override
