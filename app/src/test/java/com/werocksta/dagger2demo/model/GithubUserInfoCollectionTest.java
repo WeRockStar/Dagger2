@@ -25,22 +25,10 @@ public class GithubUserInfoCollectionTest {
     }
 
     @Test
-    public void should_see_username() throws Exception {
+    public void should_see_github_information() throws Exception {
         assertEquals("WeRockStar", collection.getUsername());
-    }
-
-    @Test
-    public void should_see_url_avatar() throws Exception {
         assertEquals("https://avatars.githubusercontent.com/u/5949511?v=3", collection.getImageUrl());
-    }
-
-    @Test
-    public void should_see_url_repo() throws Exception {
         assertEquals("https://api.github.com/users/WeRockStar/repos", collection.getRepoUrl());
-    }
-
-    @Test
-    public void should_see_id() throws Exception {
         assertEquals(5949511, collection.getId());
     }
 }
