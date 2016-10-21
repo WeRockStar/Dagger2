@@ -4,6 +4,7 @@
 
 
 
+
 ### Fully static, compile-time dependency injection framework for both Java and Android.
 #### Configuration
 ##### build.gradle project level
