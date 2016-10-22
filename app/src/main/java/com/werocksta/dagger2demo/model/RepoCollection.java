@@ -6,7 +6,6 @@ import java.util.List;
 
 public class RepoCollection {
 
-
     @SerializedName("id")
     private int id;
 
