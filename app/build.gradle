@@ -4,12 +4,12 @@ apply plugin: 'com.neenbedankt.android-apt'
 apply plugin: 'jacoco-android'
 
 android {
-    compileSdkVersion 24
-    buildToolsVersion "24.0.3"
+    compileSdkVersion 25
+    buildToolsVersion "25.0.0"
     defaultConfig {
         applicationId "com.werocksta.dagger2demo"
         minSdkVersion 15
-        targetSdkVersion 24
+        targetSdkVersion 25
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -39,7 +39,7 @@ android {
 }
 
 ext {
-    supportVersion = "24.2.1"
+    supportVersion = "25.0.0"
     daggerVersion = "2.7"
     retrofitVersion = "2.1.0"
     butterknifeVersion = "8.4.0"
