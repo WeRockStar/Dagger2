@@ -25,7 +25,5 @@ public interface AppComponent {
 
     void inject(RepoFragment fragment);
 
-    void inject(Application application);
-
     ApiService api();
 }
