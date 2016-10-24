@@ -4,6 +4,7 @@ import com.werocksta.dagger2demo.manager.ApiService;
 import com.werocksta.dagger2demo.model.GithubUserInfoCollection;
 import com.werocksta.dagger2demo.util.RxSchedulersOverrideRule;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -61,5 +62,10 @@ public class GithubUserInfoPresenterTest {
         verify(view).loading();
         verify(view).getUserInfoError(exception.getMessage());
         verify(view).getUserInfoComplete();
+    }
+
+    @After
+    public void tearDown() throws Exception {
+        presenter.onStop();
     }
 }

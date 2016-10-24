@@ -4,6 +4,7 @@ import com.werocksta.dagger2demo.manager.ApiService;
 import com.werocksta.dagger2demo.model.RepoCollection;
 import com.werocksta.dagger2demo.util.RxSchedulersOverrideRule;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -60,5 +61,10 @@ public class RepoPresenterTest {
         verify(view).loading();
         verify(view).getRepoError(null);
         verify(view).loadComplete();
+    }
+
+    @After
+    public void tearDown() throws Exception {
+        presenter.onStop();
     }
 }
