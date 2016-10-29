@@ -6,7 +6,6 @@ import android.content.Context;
 
 import com.werocksta.dagger2demo.di.ApplicationContext;
 
-import javax.inject.Named;
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -27,4 +26,5 @@ public class ApplicationModule {
     public Context provideContext() {
         return this.application;
     }
+
 }

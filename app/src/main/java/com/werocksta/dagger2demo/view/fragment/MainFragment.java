@@ -4,6 +4,7 @@ package com.werocksta.dagger2demo.view.fragment;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.customtabs.CustomTabsIntent;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,6 +25,7 @@ import com.werocksta.dagger2demo.util.KeyboardUtil;
 import com.werocksta.dagger2demo.view.activity.MainActivity;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -33,6 +35,10 @@ public class MainFragment extends Fragment implements GithubUserInfoPresenter.Vi
 
     @Inject
     ApiService service;
+
+
+    @Inject
+    CustomTabsIntent intent;
 
     @BindView(R.id.edtUsername)
     EditText edtUsername;

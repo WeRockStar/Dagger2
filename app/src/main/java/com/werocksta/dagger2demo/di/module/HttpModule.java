@@ -1,9 +1,6 @@
 package com.werocksta.dagger2demo.di.module;
 
 
-import android.app.Application;
-import android.content.Context;
-
 import com.werocksta.dagger2demo.BuildConfig;
 import com.werocksta.dagger2demo.manager.ApiService;
 import com.werocksta.dagger2demo.util.Constant;
