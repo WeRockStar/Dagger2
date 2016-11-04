@@ -3,11 +3,8 @@ package com.werocksta.dagger2demo.presenter;
 import com.werocksta.dagger2demo.manager.ApiService;
 import com.werocksta.dagger2demo.model.GithubUserInfoCollection;
 
-
 import rx.Observable;
-import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
 
@@ -43,10 +40,10 @@ public class GithubUserInfoPresenter {
                 .doOnTerminate(() -> view.getUserInfoComplete())
                 .subscribe(
                         gitUserInfo -> {
-                            view.getUserInfoSuccess(gitUserInfo)
+                            view.getUserInfoSuccess(gitUserInfo);
                         },
                         throwable -> {
-                            view.getUserInfoError(throwable.getMessage())
+                            view.getUserInfoError(throwable.getMessage());
                         }
                 )
         );
