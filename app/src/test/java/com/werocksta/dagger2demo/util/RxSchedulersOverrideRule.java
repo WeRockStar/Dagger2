@@ -8,6 +8,8 @@ import rx.Scheduler;
 import rx.android.plugins.RxAndroidPlugins;
 import rx.android.plugins.RxAndroidSchedulersHook;
 import rx.functions.Action0;
+import rx.functions.Func1;
+import rx.plugins.RxJavaHooks;
 import rx.plugins.RxJavaPlugins;
 import rx.plugins.RxJavaSchedulersHook;
 import rx.schedulers.Schedulers;
@@ -15,14 +17,9 @@ import rx.schedulers.Schedulers;
 
 public class RxSchedulersOverrideRule implements TestRule {
 
-    private final RxJavaSchedulersHook mRxJavaSchedulersHook = new RxJavaSchedulersHook() {
+    private final Func1<Scheduler, Scheduler> mRxJavaSchedulersHook = new Func1<Scheduler, Scheduler>() {
         @Override
-        public Scheduler getIOScheduler() {
-            return Schedulers.immediate();
-        }
-
-        @Override
-        public Scheduler getNewThreadScheduler() {
+        public Scheduler call(Scheduler scheduler) {
             return Schedulers.immediate();
         }
     };
@@ -41,14 +38,16 @@ public class RxSchedulersOverrideRule implements TestRule {
             public void evaluate() throws Throwable {
                 RxAndroidPlugins.getInstance().reset();
                 RxAndroidPlugins.getInstance().registerSchedulersHook(mRxAndroidSchedulersHook);
-                
-                RxJavaPlugins.getInstance().reset();
-                RxJavaPlugins.getInstance().registerSchedulersHook(mRxJavaSchedulersHook);
+
+                RxJavaHooks.reset();
+                RxJavaHooks.setOnIOScheduler(mRxJavaSchedulersHook);
+                RxJavaHooks.setOnNewThreadScheduler(mRxJavaSchedulersHook);
+                RxJavaHooks.setOnComputationScheduler(mRxJavaSchedulersHook);
 
                 base.evaluate();
 
                 RxAndroidPlugins.getInstance().reset();
-                RxJavaPlugins.getInstance().reset();
+                RxJavaHooks.reset();
             }
         };
     }
