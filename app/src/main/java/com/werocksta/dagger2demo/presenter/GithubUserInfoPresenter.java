@@ -19,8 +19,11 @@ public class GithubUserInfoPresenter {
 
     public interface View {
         void loading();
+
         void getUserInfoSuccess(GithubUserInfoCollection userInfo);
+
         void getUserInfoError(String message);
+
         void getUserInfoComplete();
     }
 
@@ -39,8 +42,13 @@ public class GithubUserInfoPresenter {
                 .onErrorResumeNext(Observable::error)
                 .doOnTerminate(() -> view.getUserInfoComplete())
                 .subscribe(
-                        view::getUserInfoSuccess,
-                        throwable -> view.getUserInfoError(throwable.getMessage()))
+                        gitUserInfo -> {
+                            view.getUserInfoSuccess(gitUserInfo)
+                        },
+                        throwable -> {
+                            view.getUserInfoError(throwable.getMessage())
+                        }
+                )
         );
     }
 
