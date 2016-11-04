@@ -25,7 +25,6 @@ import com.werocksta.dagger2demo.util.KeyboardUtil;
 import com.werocksta.dagger2demo.view.activity.MainActivity;
 
 import javax.inject.Inject;
-import javax.inject.Named;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
