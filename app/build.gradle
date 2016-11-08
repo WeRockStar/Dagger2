@@ -46,7 +46,7 @@ ext {
     mockitoVersion = "1.10.19"
     okHttpVersion = "3.4.1"
     robolectricVersion = "3.1.1"
-    rxJavaVersion = "1.2.1"
+    rxJavaVersion = "1.2.2"
     rxAndroidVersion = "1.2.1"
     glideVersion = "3.7.0"
 }

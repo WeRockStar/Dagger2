@@ -31,7 +31,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void changeFragment(Fragment fragment, boolean hasAddBackStack) {
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction().replace(R.id.contentContainer, fragment);
+        FragmentTransaction transaction = getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.contentContainer, fragment);
         if (hasAddBackStack) {
             transaction.addToBackStack(null).commit();
             return;
