@@ -10,9 +10,6 @@ dependencies:
     pre:
         - echo y | android update sdk --no-ui --all --filter tools,platform-tools,android-25,extra-google-m2repository,extra-android-support
         - echo y | android update sdk --no-ui --all --filter build-tools-25.0.0
-    cache_directories:
-        - /usr/local/android-sdk-linux/tools
-        - /usr/local/android-sdk-linux/build-tools/25.0.0
 test:
     override:
         - (./gradlew build assembleAndroidTest jacocoTestReport):
