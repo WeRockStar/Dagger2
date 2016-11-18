@@ -39,13 +39,13 @@ android {
 }
 
 ext {
-    supportVersion = "25.0.0"
+    supportVersion = "25.0.1"
     daggerVersion = "2.7"
     retrofitVersion = "2.1.0"
     butterknifeVersion = "8.4.0"
     mockitoVersion = "1.10.19"
     okHttpVersion = "3.4.1"
-    robolectricVersion = "3.1.1"
+    robolectricVersion = "3.1.4"
     rxJavaVersion = "1.2.2"
     rxAndroidVersion = "1.2.1"
     glideVersion = "3.7.0"
@@ -80,6 +80,7 @@ dependencies {
     apt "com.jakewharton:butterknife-compiler:$butterknifeVersion"
     testCompile "org.mockito:mockito-core:$mockitoVersion"
     testCompile 'com.squareup.okio:okio:1.9.0'
+
 }
 repositories {
     mavenCentral()
