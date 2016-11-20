@@ -28,4 +28,7 @@ after_success:
   - bash <(curl -s https://codecov.io/bash)
 
 notifications:
-  slack: werockstar:BTcJMlUJuQNUaA4YY3CZD8iDg
+  slack:
+    on_success: always
+    rooms:
+      - werockstar:wl61Y86uYultyrQHTR3RE9Cx#ci_notify
