@@ -1,9 +1,6 @@
-# Google Dagger 2
+# Google Dagger 2 (Demo)
 
 [![Build Status](https://travis-ci.org/WeRockStar/Dagger2.svg?branch=master)](https://travis-ci.org/WeRockStar/Dagger2) [![codecov](https://codecov.io/gh/WeRockStar/Dagger2/branch/master/graph/badge.svg)](https://codecov.io/gh/WeRockStar/Dagger2)
-
-
-
 
 ### Fully static, compile-time dependency injection framework for both Java and Android.
 #### Configuration
