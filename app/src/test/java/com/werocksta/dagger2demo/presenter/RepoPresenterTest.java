@@ -56,10 +56,11 @@ public class RepoPresenterTest {
 
     @Test
     public void getRepoErrorShouldReturnException() throws Exception {
-        when(service.getRepo("WeRockStar")).thenReturn(Observable.error(new Throwable()));
+        Throwable exception = new Throwable();
+        when(service.getRepo("WeRockStar")).thenReturn(Observable.error(exception));
         presenter.getRepo("WeRockStar");
         verify(view).loading();
-        verify(view).getRepoError(null);
+        verify(view).getRepoError(exception.getMessage());
         verify(view).loadComplete();
     }
 
