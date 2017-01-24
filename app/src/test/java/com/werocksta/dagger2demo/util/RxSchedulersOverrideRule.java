@@ -17,12 +17,7 @@ import rx.schedulers.Schedulers;
 
 public class RxSchedulersOverrideRule implements TestRule {
 
-    private final Func1<Scheduler, Scheduler> mRxJavaSchedulersHook = new Func1<Scheduler, Scheduler>() {
-        @Override
-        public Scheduler call(Scheduler scheduler) {
-            return Schedulers.immediate();
-        }
-    };
+    private final Func1<Scheduler, Scheduler> mRxJavaSchedulersHook = scheduler -> Schedulers.immediate();
 
     private final RxAndroidSchedulersHook mRxAndroidSchedulersHook = new RxAndroidSchedulersHook() {
         @Override
