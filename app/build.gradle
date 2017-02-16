@@ -63,6 +63,7 @@ dependencies {
     compile "io.reactivex:rxandroid:$rxAndroidVersion"
     testCompile "org.robolectric:robolectric:$robolectricVersion"
     compile "io.reactivex:rxjava:$rxJavaVersion"
+    compile 'nl.littlerobots.rxlint:rxlint:1.2'
     compile "com.android.support:support-v4:$supportVersion"
     compile "com.android.support:cardview-v7:$supportVersion"
     compile "com.android.support:recyclerview-v7:$supportVersion"
