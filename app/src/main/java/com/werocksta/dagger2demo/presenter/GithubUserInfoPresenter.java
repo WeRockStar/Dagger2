@@ -36,7 +36,6 @@ public class GithubUserInfoPresenter {
         subscription.add(service.getUserInfo(username)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .onErrorResumeNext(Observable::error)
                 .doOnTerminate(() -> view.getUserInfoComplete())
                 .subscribe(
                         gitUserInfo -> {
