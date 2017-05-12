@@ -16,7 +16,7 @@ import android.view.ViewGroup;
 import com.werocksta.dagger2demo.MainApplication;
 import com.werocksta.dagger2demo.R;
 import com.werocksta.dagger2demo.adapter.GithubRepoAdapter;
-import com.werocksta.dagger2demo.manager.ApiService;
+import com.werocksta.dagger2demo.api.ApiService;
 import com.werocksta.dagger2demo.model.RepoCollection;
 import com.werocksta.dagger2demo.presenter.RepoPresenter;
 

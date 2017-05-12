@@ -18,7 +18,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.werocksta.dagger2demo.MainApplication;
 import com.werocksta.dagger2demo.R;
-import com.werocksta.dagger2demo.manager.ApiService;
+import com.werocksta.dagger2demo.api.ApiService;
 import com.werocksta.dagger2demo.model.GithubUserInfoCollection;
 import com.werocksta.dagger2demo.presenter.GithubUserInfoPresenter;
 import com.werocksta.dagger2demo.util.KeyboardUtil;

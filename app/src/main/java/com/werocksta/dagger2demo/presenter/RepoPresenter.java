@@ -1,6 +1,6 @@
 package com.werocksta.dagger2demo.presenter;
 
-import com.werocksta.dagger2demo.manager.ApiService;
+import com.werocksta.dagger2demo.api.ApiService;
 import com.werocksta.dagger2demo.model.RepoCollection;
 
 import java.util.List;

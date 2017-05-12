@@ -1,4 +1,4 @@
-package com.werocksta.dagger2demo.manager;
+package com.werocksta.dagger2demo.api;
 
 import com.werocksta.dagger2demo.model.GithubUserInfoCollection;
 import com.werocksta.dagger2demo.model.RepoCollection;

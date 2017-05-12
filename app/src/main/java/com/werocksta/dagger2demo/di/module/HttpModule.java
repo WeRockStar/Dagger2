@@ -2,7 +2,7 @@ package com.werocksta.dagger2demo.di.module;
 
 
 import com.werocksta.dagger2demo.BuildConfig;
-import com.werocksta.dagger2demo.manager.ApiService;
+import com.werocksta.dagger2demo.api.ApiService;
 import com.werocksta.dagger2demo.util.Constant;
 
 import javax.inject.Singleton;
