@@ -20,7 +20,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @RunWith(JUnit4.class)
-public class GithubUserInfoPresenterTest {
+public class GithubUserPresenterTest {
 
     @Rule
     public RxSchedulersOverrideRule mRxSchedulersOverride = new RxSchedulersOverrideRule();
@@ -31,12 +31,13 @@ public class GithubUserInfoPresenterTest {
     GithubUserPresenter.View view;
 
     @Mock
-    GithubAPI service;
+    GithubAPI api;
 
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-        presenter = new GithubUserPresenter(view, service);
+        presenter = new GithubUserPresenter(api);
+        presenter.injectView(view);
     }
 
     @Test
@@ -47,7 +48,7 @@ public class GithubUserInfoPresenterTest {
     @Test
     public void getUserInfoShouldHaveUserInfo() throws Exception {
         GithubUserCollection userInfo = new GithubUserCollection();
-        when(service.getUser("WeRockStar")).thenReturn(Observable.just(userInfo));
+        when(api.getUser("WeRockStar")).thenReturn(Observable.just(userInfo));
         presenter.getUserInfo("WeRockStar");
         verify(view).loading();
         verify(view).getUserInfoSuccess(userInfo);
@@ -57,7 +58,7 @@ public class GithubUserInfoPresenterTest {
     @Test
     public void getUserInfoErrorShouldHaveException() throws Exception {
         Throwable exception = new Throwable();
-        when(service.getUser("WeRockStar")).thenReturn(Observable.error(exception));
+        when(api.getUser("WeRockStar")).thenReturn(Observable.error(exception));
         presenter.getUserInfo("WeRockStar");
         verify(view).loading();
         verify(view).getUserInfoError(exception.getMessage());

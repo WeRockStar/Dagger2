@@ -16,7 +16,7 @@ import rx.subscriptions.CompositeSubscription;
 public class RepoPresenter {
 
     private View view;
-    private GithubAPI service;
+    private GithubAPI api;
     private final CompositeSubscription subscription = new CompositeSubscription();
 
     public interface View {
@@ -31,7 +31,7 @@ public class RepoPresenter {
 
     @Inject
     public RepoPresenter(GithubAPI service) {
-        this.service = service;
+        this.api = service;
     }
 
     public void injectView(View view) {
@@ -41,7 +41,7 @@ public class RepoPresenter {
     public void getRepo(String user) {
         view.loading();
 
-        subscription.add(service.getRepo(user)
+        subscription.add(api.getRepo(user)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .onErrorResumeNext(Observable::error)

@@ -23,7 +23,7 @@ import static org.mockito.Mockito.when;
 public class RepoPresenterTest {
 
     @Mock
-    GithubAPI service;
+    GithubAPI api;
 
     @Mock
     RepoPresenter.View view;
@@ -36,7 +36,7 @@ public class RepoPresenterTest {
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-        presenter = new RepoPresenter(service);
+        presenter = new RepoPresenter(api);
         presenter.injectView(view);
     }
 
@@ -48,7 +48,7 @@ public class RepoPresenterTest {
     @Test
     public void getRepoShouldDisplayListRepo() throws Exception {
         List<RepoCollection> collections = new ArrayList<>();
-        when(service.getRepo("WeRockStar")).thenReturn(Observable.just(collections));
+        when(api.getRepo("WeRockStar")).thenReturn(Observable.just(collections));
         presenter.getRepo("WeRockStar");
         verify(view).loading();
         verify(view).displayRepo(collections);
@@ -58,7 +58,7 @@ public class RepoPresenterTest {
     @Test
     public void getRepoErrorShouldReturnException() throws Exception {
         Throwable exception = new Throwable();
-        when(service.getRepo("WeRockStar")).thenReturn(Observable.error(exception));
+        when(api.getRepo("WeRockStar")).thenReturn(Observable.error(exception));
         presenter.getRepo("WeRockStar");
         verify(view).loading();
         verify(view).getRepoError(exception.getMessage());
