@@ -7,11 +7,8 @@ import org.junit.runners.model.Statement;
 import rx.Scheduler;
 import rx.android.plugins.RxAndroidPlugins;
 import rx.android.plugins.RxAndroidSchedulersHook;
-import rx.functions.Action0;
 import rx.functions.Func1;
 import rx.plugins.RxJavaHooks;
-import rx.plugins.RxJavaPlugins;
-import rx.plugins.RxJavaSchedulersHook;
 import rx.schedulers.Schedulers;
 
 
