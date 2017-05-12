@@ -16,7 +16,6 @@ import android.view.ViewGroup;
 import com.werocksta.dagger2demo.MainApplication;
 import com.werocksta.dagger2demo.R;
 import com.werocksta.dagger2demo.adapter.GithubRepoAdapter;
-import com.werocksta.dagger2demo.api.ApiService;
 import com.werocksta.dagger2demo.model.RepoCollection;
 import com.werocksta.dagger2demo.presenter.RepoPresenter;
 
@@ -28,7 +27,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import fr.castorflex.android.smoothprogressbar.SmoothProgressBar;
 
-public class RepoFragment extends Fragment implements RepoPresenter.View, GithubRepoAdapter.OnClickRepo {
+public class RepoFragment extends Fragment implements RepoPresenter.View, GithubRepoAdapter.OnClickRepository {
 
     @BindView(R.id.rvList)
     RecyclerView rvList;
@@ -37,12 +36,11 @@ public class RepoFragment extends Fragment implements RepoPresenter.View, Github
     SmoothProgressBar smoothProgressBar;
 
     @Inject
-    ApiService service;
-
-    @Inject
     CustomTabsIntent customTabsIntent;
 
+    @Inject
     RepoPresenter presenter;
+
     GithubRepoAdapter adapter;
 
     public static final String EXTRA_USER = "EXTRA_USER";
@@ -71,7 +69,7 @@ public class RepoFragment extends Fragment implements RepoPresenter.View, Github
         View view = inflater.inflate(R.layout.fragment_repo, container, false);
         ButterKnife.bind(this, view);
 
-        presenter = new RepoPresenter(this, service);
+        presenter.injectView(this);
         presenter.getRepo(getArguments().getString(EXTRA_USER));
 
         adapter = new GithubRepoAdapter();
@@ -81,7 +79,7 @@ public class RepoFragment extends Fragment implements RepoPresenter.View, Github
 
     private void configurationRecyclerView() {
         rvList.setHasFixedSize(true);
-        rvList.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+        rvList.setLayoutManager(new LinearLayoutManager(getContext()));
         rvList.setItemAnimator(new DefaultItemAnimator());
         rvList.setAdapter(adapter);
     }
@@ -93,8 +91,7 @@ public class RepoFragment extends Fragment implements RepoPresenter.View, Github
 
     @Override
     public void displayRepo(List<RepoCollection> repo) {
-        adapter.setOnClickRepo(this);
-        adapter.setRepoList(repo);
+        adapter.setGithubAdapter(repo, this);
         adapter.notifyDataSetChanged();
     }
 
