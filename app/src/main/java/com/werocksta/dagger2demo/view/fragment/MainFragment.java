@@ -19,7 +19,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.werocksta.dagger2demo.MainApplication;
 import com.werocksta.dagger2demo.R;
 import com.werocksta.dagger2demo.api.ApiService;
-import com.werocksta.dagger2demo.model.GithubUserInfoCollection;
+import com.werocksta.dagger2demo.model.GithubUserCollection;
 import com.werocksta.dagger2demo.presenter.GithubUserInfoPresenter;
 import com.werocksta.dagger2demo.util.KeyboardUtil;
 import com.werocksta.dagger2demo.view.activity.MainActivity;
@@ -96,7 +96,7 @@ public class MainFragment extends Fragment implements GithubUserInfoPresenter.Vi
     }
 
     @Override
-    public void getUserInfoSuccess(final GithubUserInfoCollection userInfo) {
+    public void getUserInfoSuccess(final GithubUserCollection userInfo) {
         tvUsername.setText(userInfo.getUsername());
         tvRepo.setClickable(true);
         tvRepo.setText(userInfo.getRepoUrl());

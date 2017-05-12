@@ -1,7 +1,7 @@
 package com.werocksta.dagger2demo.presenter;
 
 import com.werocksta.dagger2demo.api.ApiService;
-import com.werocksta.dagger2demo.model.GithubUserInfoCollection;
+import com.werocksta.dagger2demo.model.GithubUserCollection;
 import com.werocksta.dagger2demo.util.RxSchedulersOverrideRule;
 
 import org.junit.After;
@@ -46,7 +46,7 @@ public class GithubUserInfoPresenterTest {
 
     @Test
     public void getUserInfoShouldHaveUserInfo() throws Exception {
-        GithubUserInfoCollection userInfo = new GithubUserInfoCollection();
+        GithubUserCollection userInfo = new GithubUserCollection();
         when(service.getUserInfo("WeRockStar")).thenReturn(Observable.just(userInfo));
         presenter.getUserInfo("WeRockStar");
         verify(view).loading();

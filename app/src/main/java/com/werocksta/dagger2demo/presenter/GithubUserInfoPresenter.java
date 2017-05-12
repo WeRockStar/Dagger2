@@ -1,7 +1,7 @@
 package com.werocksta.dagger2demo.presenter;
 
 import com.werocksta.dagger2demo.api.ApiService;
-import com.werocksta.dagger2demo.model.GithubUserInfoCollection;
+import com.werocksta.dagger2demo.model.GithubUserCollection;
 
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -16,7 +16,7 @@ public class GithubUserInfoPresenter {
     public interface View {
         void loading();
 
-        void getUserInfoSuccess(GithubUserInfoCollection userInfo);
+        void getUserInfoSuccess(GithubUserCollection userInfo);
 
         void getUserInfoError(String message);
 

@@ -3,7 +3,7 @@ package com.werocksta.dagger2demo.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class GithubUserInfoCollection {
+public class GithubUserCollection {
 
     @SerializedName("login")
     private String username;

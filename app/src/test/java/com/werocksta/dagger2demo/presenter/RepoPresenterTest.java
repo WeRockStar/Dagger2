@@ -36,7 +36,8 @@ public class RepoPresenterTest {
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-        presenter = new RepoPresenter(view, service);
+        presenter = new RepoPresenter(service);
+        presenter.injectView(view);
     }
 
     @Test

@@ -11,12 +11,12 @@ import static org.junit.Assert.*;
 public class GithubUserInfoCollectionTest {
 
     private String response;
-    private GithubUserInfoCollection collection;
+    private GithubUserCollection collection;
 
     @Before
     public void setUp() throws Exception {
         response = JsonResource.fromResource("github_profile.json");
-        collection = new Gson().fromJson(response, GithubUserInfoCollection.class);
+        collection = new Gson().fromJson(response, GithubUserCollection.class);
     }
 
     @Test
