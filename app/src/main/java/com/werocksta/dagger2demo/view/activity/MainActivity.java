@@ -27,22 +27,19 @@ public class MainActivity extends AppCompatActivity {
                 .build();
 
         setContentView(R.layout.activity_main);
-        changeFragment(new MainFragment(), false);
+        changeFragment(new MainFragment());
     }
 
-    private void changeFragment(Fragment fragment, boolean hasAddBackStack) {
-        FragmentTransaction transaction = getSupportFragmentManager()
+    private void changeFragment(Fragment fragment) {
+        getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.contentContainer, fragment);
-        if (hasAddBackStack) {
-            transaction.addToBackStack(null).commit();
-            return;
-        }
-        transaction.commit();
+                .add(R.id.contentContainer, fragment)
+                .addToBackStack(null)
+                .commit();
     }
 
     public void onClickRepoList(String user) {
-        changeFragment(RepoFragment.newInstance(user), true);
+        changeFragment(RepoFragment.newInstance(user));
     }
 
     public ActivityComponent getComponent() {

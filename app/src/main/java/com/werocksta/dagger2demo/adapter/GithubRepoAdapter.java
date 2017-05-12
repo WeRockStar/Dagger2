@@ -13,11 +13,11 @@ import java.util.List;
 
 public class GithubRepoAdapter extends CustomRecyclerView {
 
-    private List<RepoCollection> repo;
+    private List<RepoCollection> repoList;
     private OnClickRepository listener;
 
     public void setGithubAdapter(List<RepoCollection> repo, OnClickRepository listener) {
-        this.repo = repo;
+        this.repoList = repo;
         this.listener = listener;
     }
 
@@ -29,7 +29,7 @@ public class GithubRepoAdapter extends CustomRecyclerView {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        RepoCollection repository = repo.get(position);
+        RepoCollection repository = repoList.get(position);
         RepoViewHolder viewHolder = (RepoViewHolder) holder;
         viewHolder.tvName.setText(repository.getNameRepo());
         viewHolder.tvLanguage.setText(repository.getLanguage());
@@ -41,7 +41,8 @@ public class GithubRepoAdapter extends CustomRecyclerView {
 
     @Override
     public int getItemCount() {
-        return repo == null ? 0 : repo.size();
+        boolean repoEmpty = repoList == null;
+        return repoEmpty ? 0 : repoList.size();
     }
 
     public interface OnClickRepository {
