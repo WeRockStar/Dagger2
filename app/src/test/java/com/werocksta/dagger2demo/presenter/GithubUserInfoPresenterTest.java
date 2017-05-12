@@ -1,6 +1,6 @@
 package com.werocksta.dagger2demo.presenter;
 
-import com.werocksta.dagger2demo.api.ApiService;
+import com.werocksta.dagger2demo.api.GithubAPI;
 import com.werocksta.dagger2demo.model.GithubUserCollection;
 import com.werocksta.dagger2demo.util.RxSchedulersOverrideRule;
 
@@ -25,18 +25,18 @@ public class GithubUserInfoPresenterTest {
     @Rule
     public RxSchedulersOverrideRule mRxSchedulersOverride = new RxSchedulersOverrideRule();
 
-    GithubUserInfoPresenter presenter;
+    GithubUserPresenter presenter;
 
     @Mock
-    GithubUserInfoPresenter.View view;
+    GithubUserPresenter.View view;
 
     @Mock
-    ApiService service;
+    GithubAPI service;
 
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-        presenter = new GithubUserInfoPresenter(view, service);
+        presenter = new GithubUserPresenter(view, service);
     }
 
     @Test
@@ -47,7 +47,7 @@ public class GithubUserInfoPresenterTest {
     @Test
     public void getUserInfoShouldHaveUserInfo() throws Exception {
         GithubUserCollection userInfo = new GithubUserCollection();
-        when(service.getUserInfo("WeRockStar")).thenReturn(Observable.just(userInfo));
+        when(service.getUser("WeRockStar")).thenReturn(Observable.just(userInfo));
         presenter.getUserInfo("WeRockStar");
         verify(view).loading();
         verify(view).getUserInfoSuccess(userInfo);
@@ -57,7 +57,7 @@ public class GithubUserInfoPresenterTest {
     @Test
     public void getUserInfoErrorShouldHaveException() throws Exception {
         Throwable exception = new Throwable();
-        when(service.getUserInfo("WeRockStar")).thenReturn(Observable.error(exception));
+        when(service.getUser("WeRockStar")).thenReturn(Observable.error(exception));
         presenter.getUserInfo("WeRockStar");
         verify(view).loading();
         verify(view).getUserInfoError(exception.getMessage());

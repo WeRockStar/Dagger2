@@ -1,16 +1,16 @@
 package com.werocksta.dagger2demo.presenter;
 
-import com.werocksta.dagger2demo.api.ApiService;
+import com.werocksta.dagger2demo.api.GithubAPI;
 import com.werocksta.dagger2demo.model.GithubUserCollection;
 
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
 
-public class GithubUserInfoPresenter {
+public class GithubUserPresenter {
 
     private View view;
-    private ApiService service;
+    private GithubAPI service;
     private CompositeSubscription subscription;
 
     public interface View {
@@ -23,7 +23,7 @@ public class GithubUserInfoPresenter {
         void getUserInfoComplete();
     }
 
-    public GithubUserInfoPresenter(View view, ApiService service) {
+    public GithubUserPresenter(View view, GithubAPI service) {
         this.view = view;
         this.service = service;
         this.subscription = new CompositeSubscription();
@@ -32,7 +32,7 @@ public class GithubUserInfoPresenter {
     public void getUserInfo(String username) {
         view.loading();
 
-        subscription.add(service.getUserInfo(username)
+        subscription.add(service.getUser(username)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnTerminate(() -> view.getUserInfoComplete())

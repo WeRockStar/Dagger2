@@ -9,10 +9,10 @@ import retrofit2.http.GET;
 import retrofit2.http.Path;
 import rx.Observable;
 
-public interface ApiService {
+public interface GithubAPI {
 
     @GET("users/{user}")
-    Observable<GithubUserCollection> getUserInfo(@Path("user") String user);
+    Observable<GithubUserCollection> getUser(@Path("user") String user);
 
     @GET("users/{user}/repos")
     Observable<List<RepoCollection>> getRepo(@Path("user") String user);

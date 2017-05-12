@@ -2,7 +2,7 @@ package com.werocksta.dagger2demo.di.module;
 
 
 import com.werocksta.dagger2demo.BuildConfig;
-import com.werocksta.dagger2demo.api.ApiService;
+import com.werocksta.dagger2demo.api.GithubAPI;
 import com.werocksta.dagger2demo.util.Constant;
 
 import javax.inject.Singleton;
@@ -41,7 +41,7 @@ public class HttpModule {
 
     @Provides
     @Singleton
-    public ApiService provideApiService(Retrofit retrofit) {
-        return retrofit.create(ApiService.class);
+    public GithubAPI provideApiService(Retrofit retrofit) {
+        return retrofit.create(GithubAPI.class);
     }
 }

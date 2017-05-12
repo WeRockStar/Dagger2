@@ -1,6 +1,6 @@
 package com.werocksta.dagger2demo.presenter;
 
-import com.werocksta.dagger2demo.api.ApiService;
+import com.werocksta.dagger2demo.api.GithubAPI;
 import com.werocksta.dagger2demo.model.RepoCollection;
 import com.werocksta.dagger2demo.util.RxSchedulersOverrideRule;
 
@@ -23,7 +23,7 @@ import static org.mockito.Mockito.when;
 public class RepoPresenterTest {
 
     @Mock
-    ApiService service;
+    GithubAPI service;
 
     @Mock
     RepoPresenter.View view;

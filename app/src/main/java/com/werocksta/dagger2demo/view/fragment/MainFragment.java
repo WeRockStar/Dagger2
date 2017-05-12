@@ -18,9 +18,9 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.werocksta.dagger2demo.MainApplication;
 import com.werocksta.dagger2demo.R;
-import com.werocksta.dagger2demo.api.ApiService;
+import com.werocksta.dagger2demo.api.GithubAPI;
 import com.werocksta.dagger2demo.model.GithubUserCollection;
-import com.werocksta.dagger2demo.presenter.GithubUserInfoPresenter;
+import com.werocksta.dagger2demo.presenter.GithubUserPresenter;
 import com.werocksta.dagger2demo.util.KeyboardUtil;
 import com.werocksta.dagger2demo.view.activity.MainActivity;
 
@@ -30,10 +30,10 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MainFragment extends Fragment implements GithubUserInfoPresenter.View {
+public class MainFragment extends Fragment implements GithubUserPresenter.View {
 
     @Inject
-    ApiService service;
+    GithubAPI service;
 
 
     @Inject
@@ -54,7 +54,7 @@ public class MainFragment extends Fragment implements GithubUserInfoPresenter.Vi
     @Inject
     Context mContext;
 
-    GithubUserInfoPresenter presenter;
+    GithubUserPresenter presenter;
     ProgressDialog progressDialog;
 
     public MainFragment() {
@@ -73,7 +73,7 @@ public class MainFragment extends Fragment implements GithubUserInfoPresenter.Vi
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
         ButterKnife.bind(this, view);
-        presenter = new GithubUserInfoPresenter(this, service);
+        presenter = new GithubUserPresenter(this, service);
         progressDialog = new ProgressDialog(getContext());
         return view;
     }

@@ -1,6 +1,6 @@
 package com.werocksta.dagger2demo.presenter;
 
-import com.werocksta.dagger2demo.api.ApiService;
+import com.werocksta.dagger2demo.api.GithubAPI;
 import com.werocksta.dagger2demo.model.RepoCollection;
 
 import java.util.List;
@@ -16,7 +16,7 @@ import rx.subscriptions.CompositeSubscription;
 public class RepoPresenter {
 
     private View view;
-    private ApiService service;
+    private GithubAPI service;
     private final CompositeSubscription subscription = new CompositeSubscription();
 
     public interface View {
@@ -30,7 +30,7 @@ public class RepoPresenter {
     }
 
     @Inject
-    public RepoPresenter(ApiService service) {
+    public RepoPresenter(GithubAPI service) {
         this.service = service;
     }
 
