@@ -54,7 +54,9 @@ public class MainFragment extends Fragment implements GithubUserPresenter.View {
     @Inject
     Context mContext;
 
+    @Inject
     GithubUserPresenter presenter;
+
     ProgressDialog progressDialog;
 
     public MainFragment() {
@@ -73,7 +75,7 @@ public class MainFragment extends Fragment implements GithubUserPresenter.View {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
         ButterKnife.bind(this, view);
-        presenter = new GithubUserPresenter(this, service);
+        presenter.injectView(this);
         progressDialog = new ProgressDialog(getContext());
         return view;
     }

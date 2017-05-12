@@ -3,6 +3,8 @@ package com.werocksta.dagger2demo.presenter;
 import com.werocksta.dagger2demo.api.GithubAPI;
 import com.werocksta.dagger2demo.model.GithubUserCollection;
 
+import javax.inject.Inject;
+
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
@@ -10,8 +12,8 @@ import rx.subscriptions.CompositeSubscription;
 public class GithubUserPresenter {
 
     private View view;
-    private GithubAPI service;
-    private CompositeSubscription subscription;
+    private GithubAPI api;
+    private final CompositeSubscription subscription = new CompositeSubscription();
 
     public interface View {
         void loading();
@@ -23,16 +25,19 @@ public class GithubUserPresenter {
         void getUserInfoComplete();
     }
 
-    public GithubUserPresenter(View view, GithubAPI service) {
+    @Inject
+    public GithubUserPresenter(GithubAPI service) {
+        this.api = service;
+    }
+
+    public void injectView(View view) {
         this.view = view;
-        this.service = service;
-        this.subscription = new CompositeSubscription();
     }
 
     public void getUserInfo(String username) {
         view.loading();
 
-        subscription.add(service.getUser(username)
+        subscription.add(api.getUser(username)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnTerminate(() -> view.getUserInfoComplete())
