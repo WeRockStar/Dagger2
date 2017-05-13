@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private void changeFragment(Fragment fragment) {
         getSupportFragmentManager()
                 .beginTransaction()
-                .add(R.id.contentContainer, fragment)
+                .replace(R.id.contentContainer, fragment)
                 .addToBackStack(null)
                 .commit();
     }

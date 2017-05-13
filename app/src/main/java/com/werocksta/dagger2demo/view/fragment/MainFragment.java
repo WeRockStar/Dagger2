@@ -18,7 +18,6 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.werocksta.dagger2demo.MainApplication;
 import com.werocksta.dagger2demo.R;
-import com.werocksta.dagger2demo.api.GithubAPI;
 import com.werocksta.dagger2demo.model.GithubUserCollection;
 import com.werocksta.dagger2demo.presenter.GithubUserPresenter;
 import com.werocksta.dagger2demo.util.KeyboardUtil;
@@ -31,10 +30,6 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainFragment extends Fragment implements GithubUserPresenter.View {
-
-    @Inject
-    GithubAPI service;
-
 
     @Inject
     CustomTabsIntent intent;
