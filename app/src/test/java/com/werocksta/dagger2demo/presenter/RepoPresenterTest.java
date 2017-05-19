@@ -17,6 +17,7 @@ import java.util.List;
 import io.reactivex.Observable;
 
 import static org.junit.Assert.assertNotNull;
+import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -56,12 +57,11 @@ public class RepoPresenterTest {
     }
 
     @Test
-    public void getRepoErrorShouldReturnException() throws Exception {
-        Throwable exception = new Throwable();
-        when(api.getRepo("WeRockStar")).thenReturn(Observable.error(exception));
+    public void getRepoErrorShouldReturnEmptyArray() throws Exception {
+        when(api.getRepo("WeRockStar")).thenReturn(Observable.error(new Throwable()));
         presenter.getRepo("WeRockStar");
         verify(view).loading();
-        verify(view).getRepoError(exception.getMessage());
+        verify(view).displayRepo(new ArrayList<>());
         verify(view).loadComplete();
     }
 
