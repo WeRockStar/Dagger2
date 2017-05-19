@@ -26,13 +26,16 @@ public class MainActivity extends AppCompatActivity {
                 .build();
 
         setContentView(R.layout.activity_main);
-        changeFragment(new MainFragment());
+
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.contentContainer, new MainFragment())
+                .commit();
     }
 
     private void changeFragment(Fragment fragment) {
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.contentContainer, fragment)
+                .add(R.id.contentContainer, fragment)
                 .addToBackStack(null)
                 .commit();
     }

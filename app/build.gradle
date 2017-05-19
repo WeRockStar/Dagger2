@@ -1,4 +1,6 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 apply plugin: 'me.tatarka.retrolambda'
 apply plugin: 'com.neenbedankt.android-apt'
 apply plugin: 'jacoco-android'
@@ -74,10 +76,11 @@ dependencies {
     androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'
     androidTestCompile 'com.android.support.test:runner:0.5'
     androidTestCompile "com.android.support:support-annotations:$supportVersion"
-    apt "com.google.dagger:dagger-compiler:$daggerVersion"
-    apt "com.jakewharton:butterknife-compiler:$butterknifeVersion"
+    kapt "com.google.dagger:dagger-compiler:$daggerVersion"
+    kapt "com.jakewharton:butterknife-compiler:$butterknifeVersion"
     testCompile "org.mockito:mockito-core:$mockitoVersion"
     testCompile 'com.squareup.okio:okio:1.11.0'
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 
 }
 repositories {
