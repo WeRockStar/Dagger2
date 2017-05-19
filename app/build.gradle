@@ -45,8 +45,8 @@ ext {
     mockitoVersion = "1.10.19"
     okHttpVersion = "3.6.0"
     robolectricVersion = "3.1.4"
-    rxJavaVersion = "1.2.7"
-    rxAndroidVersion = "1.2.1"
+    rxJavaVersion = "2.1.0"
+    rxAndroidVersion = "2.0.1"
     glideVersion = "3.7.0"
 }
 
@@ -59,12 +59,12 @@ dependencies {
     compile "com.google.dagger:dagger:$daggerVersion"
     compile "com.squareup.retrofit2:retrofit:$retrofitVersion"
     compile "com.squareup.retrofit2:converter-gson:$retrofitVersion"
-    compile "com.squareup.retrofit2:adapter-rxjava:$retrofitVersion"
+    compile "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
     compile "com.squareup.okhttp3:okhttp:$okHttpVersion"
     compile "com.squareup.okhttp3:logging-interceptor:$okHttpVersion"
-    compile "io.reactivex:rxandroid:$rxAndroidVersion"
+    compile "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
+    compile "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion"
     testCompile "org.robolectric:robolectric:$robolectricVersion"
-    compile "io.reactivex:rxjava:$rxJavaVersion"
     compile 'nl.littlerobots.rxlint:rxlint:1.2'
     compile "com.android.support:support-v4:$supportVersion"
     compile "com.android.support:cardview-v7:$supportVersion"

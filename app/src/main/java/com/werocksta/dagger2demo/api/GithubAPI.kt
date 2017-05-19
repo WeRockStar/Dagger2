@@ -2,10 +2,10 @@ package com.werocksta.dagger2demo.api
 
 import com.werocksta.dagger2demo.model.GithubUserCollection
 import com.werocksta.dagger2demo.model.RepoCollection
+import io.reactivex.Observable
 
 import retrofit2.http.GET
 import retrofit2.http.Path
-import rx.Observable
 
 interface GithubAPI {
 

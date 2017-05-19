@@ -5,15 +5,16 @@ import com.werocksta.dagger2demo.model.GithubUserCollection;
 
 import javax.inject.Inject;
 
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
-import rx.subscriptions.CompositeSubscription;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.schedulers.Schedulers;
+
 
 public class GithubUserPresenter {
 
     private View view;
     private GithubAPI api;
-    private final CompositeSubscription subscription = new CompositeSubscription();
+    private final CompositeDisposable subscription = new CompositeDisposable();
 
     public interface View {
         void loading();
