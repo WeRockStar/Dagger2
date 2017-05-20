@@ -19,6 +19,8 @@ import com.werocksta.dagger2demo.adapter.GithubRepoAdapter;
 import com.werocksta.dagger2demo.model.RepoCollection;
 import com.werocksta.dagger2demo.presenter.RepoPresenter;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.List;
 
 import javax.inject.Inject;
@@ -90,13 +92,7 @@ public class RepoFragment extends Fragment implements RepoPresenter.View, Github
     }
 
     @Override
-    public void displayRepo(List<RepoCollection> repo) {
-        adapter.setGithubAdapter(repo, this);
-        adapter.notifyDataSetChanged();
-    }
-
-    @Override
-    public void getRepoError(String message) {
+    public void getRepoError(@NotNull String message) {
         smoothProgressBar.progressiveStop();
     }
 
@@ -106,7 +102,7 @@ public class RepoFragment extends Fragment implements RepoPresenter.View, Github
     }
 
     @Override
-    public void onClickRepoItem(RepoCollection repo) {
+    public void onClickRepoItem(@NotNull RepoCollection repo) {
         customTabsIntent.launchUrl(getActivity(), Uri.parse(repo.getHtmlUrl()));
     }
 
@@ -115,5 +111,11 @@ public class RepoFragment extends Fragment implements RepoPresenter.View, Github
         super.onStop();
 
         presenter.onStop();
+    }
+
+    @Override
+    public void displayRepo(@NotNull List<? extends RepoCollection> repo) {
+        adapter.setGithubAdapter(repo, this);
+        adapter.notifyDataSetChanged();
     }
 }
