@@ -64,6 +64,15 @@ public class RepoPresenterTest {
         verify(view).loadComplete();
     }
 
+    @Test
+    public void getRepoErrorShouldReturn() throws Exception {
+        when(api.getRepo("WeRockStar")).thenReturn(Observable.error(new Throwable()));
+        presenter.getRepo("WeRockStar");
+        verify(view).loading();
+        verify(view).displayRepo(new ArrayList<>());
+        verify(view).loadComplete();
+    }
+
     @After
     public void tearDown() throws Exception {
         presenter.onStop();

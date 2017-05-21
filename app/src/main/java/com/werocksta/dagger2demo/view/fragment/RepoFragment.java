@@ -92,11 +92,6 @@ public class RepoFragment extends Fragment implements RepoPresenter.View, Github
     }
 
     @Override
-    public void getRepoError(@NotNull String message) {
-        smoothProgressBar.progressiveStop();
-    }
-
-    @Override
     public void loadComplete() {
         smoothProgressBar.progressiveStop();
     }

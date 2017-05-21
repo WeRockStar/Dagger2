@@ -5,7 +5,6 @@ import com.werocksta.dagger2demo.model.RepoCollection
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
-import retrofit2.HttpException
 import java.util.*
 import javax.inject.Inject
 
@@ -20,8 +19,6 @@ constructor(private val api: GithubAPI) {
         fun loading()
 
         fun displayRepo(repo: List<RepoCollection>)
-
-        fun getRepoError(message: String)
 
         fun loadComplete()
     }
@@ -39,11 +36,7 @@ constructor(private val api: GithubAPI) {
                 .doOnTerminate { view.loadComplete() }
                 .onErrorReturnItem(ArrayList<RepoCollection>())
                 .subscribe({ repo -> view.displayRepo(repo) }
-                ) { throwable ->
-                    val exception = throwable as HttpException
-                    view.getRepoError(exception.message())
-
-                })
+                ))
     }
 
 
