@@ -10,7 +10,7 @@ import com.werocksta.dagger2demo.widget.CustomRecyclerView
 class GithubRepoAdapter : CustomRecyclerView() {
 
     private var repositories: List<RepoCollection>? = null
-    private var clickRepository: OnClickRepository? = null
+    private lateinit var clickRepository: OnClickRepository
 
     fun setGithubAdapter(repositories: List<RepoCollection>, clickRepository: OnClickRepository) {
         this.repositories = repositories
@@ -28,7 +28,7 @@ class GithubRepoAdapter : CustomRecyclerView() {
         viewHolder.tvName.text = repository.nameRepo
         viewHolder.tvLanguage.text = repository.language
 
-        viewHolder.cvRepo.setOnClickListener { v -> clickRepository!!.onClickRepoItem(repository) }
+        viewHolder.cvRepo.setOnClickListener { v -> clickRepository.onClickRepoItem(repository) }
     }
 
     override fun getItemCount(): Int = repositories?.size ?: 0
