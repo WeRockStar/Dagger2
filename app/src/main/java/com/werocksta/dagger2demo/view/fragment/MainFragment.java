@@ -23,6 +23,8 @@ import com.werocksta.dagger2demo.presenter.GithubUserPresenter;
 import com.werocksta.dagger2demo.util.KeyboardUtil;
 import com.werocksta.dagger2demo.view.activity.MainActivity;
 
+import org.jetbrains.annotations.NotNull;
+
 import javax.inject.Inject;
 
 import butterknife.BindView;
@@ -93,7 +95,7 @@ public class MainFragment extends Fragment implements GithubUserPresenter.View {
     }
 
     @Override
-    public void getUserInfoSuccess(final GithubUserCollection userInfo) {
+    public void getUserInfoSuccess(@NotNull final GithubUserCollection userInfo) {
         tvUsername.setText(userInfo.getUsername());
         tvRepo.setClickable(true);
         tvRepo.setText(userInfo.getRepoUrl());
