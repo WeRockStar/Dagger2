@@ -29,7 +29,6 @@ constructor(private val api: GithubAPI) {
 
     fun getRepo(user: String) {
         view.loading()
-
         subscription.add(api.getRepo(user)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

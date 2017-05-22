@@ -31,7 +31,6 @@ class GithubUserPresenter @Inject constructor(private val api: GithubAPI) {
 
     fun getUserInfo(username: String) {
         view.loading()
-
         subscription.add(api.getUser(username)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
