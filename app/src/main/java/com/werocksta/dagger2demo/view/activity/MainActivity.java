@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickRepoList(String user) {
-        changeFragment(RepoFragment.newInstance(user));
+        changeFragment(RepoFragment.Companion.newInstance(user));
     }
 
     public ActivityComponent getComponent() {
