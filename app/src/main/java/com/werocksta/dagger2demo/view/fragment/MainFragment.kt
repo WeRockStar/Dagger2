@@ -83,7 +83,7 @@ class MainFragment : Fragment(), GithubUserPresenter.View {
         tvUsername.text = userInfo.username
         tvRepo.isClickable = true
         tvRepo.text = userInfo.repoUrl
-        tvRepo.setOnClickListener { view -> (activity as MainActivity).onClickRepoList(userInfo.username) }
+        tvRepo.setOnClickListener { (activity as MainActivity).onClickRepoList(userInfo.username) }
 
         displayAvatarImage(userInfo.imageUrl)
     }
