@@ -51,12 +51,12 @@ class RepoFragment : Fragment(), RepoPresenter.View, GithubRepoAdapter.OnClickRe
         presenter.injectView(this)
         presenter.getRepo(arguments.getString(EXTRA_USER))
 
-        adapter = GithubRepoAdapter()
         configurationRecyclerView()
         return view
     }
 
     private fun configurationRecyclerView() {
+        adapter = GithubRepoAdapter()
         rvList.setHasFixedSize(true)
         rvList.layoutManager = LinearLayoutManager(context)
         rvList.itemAnimator = DefaultItemAnimator()
@@ -81,8 +81,8 @@ class RepoFragment : Fragment(), RepoPresenter.View, GithubRepoAdapter.OnClickRe
         presenter.onStop()
     }
 
-    override fun displayRepo(repo: List<RepoCollection>) {
-        adapter.setGithubAdapter(repo, this)
+    override fun displayRepo(repos: List<RepoCollection>) {
+        adapter.setAdapter(repos, this)
         adapter.notifyDataSetChanged()
     }
 

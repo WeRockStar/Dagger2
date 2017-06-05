@@ -18,7 +18,7 @@ constructor(private val api: GithubAPI) {
     interface View {
         fun loading()
 
-        fun displayRepo(repo: List<RepoCollection>)
+        fun displayRepo(repos: List<RepoCollection>)
 
         fun loadComplete()
     }

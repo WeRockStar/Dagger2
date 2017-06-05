@@ -12,7 +12,7 @@ class GithubRepoAdapter : CustomRecyclerView() {
     private var repositories: List<RepoCollection>? = null
     private lateinit var clickRepository: OnClickRepository
 
-    fun setGithubAdapter(repositories: List<RepoCollection>, clickRepository: OnClickRepository) {
+    fun setAdapter(repositories: List<RepoCollection>, clickRepository: OnClickRepository) {
         this.repositories = repositories
         this.clickRepository = clickRepository
     }
