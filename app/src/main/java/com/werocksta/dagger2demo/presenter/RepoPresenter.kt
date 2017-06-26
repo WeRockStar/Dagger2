@@ -34,8 +34,7 @@ constructor(private val api: GithubAPI) {
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnTerminate { view.loadComplete() }
                 .onErrorReturnItem(ArrayList<RepoCollection>())
-                .subscribe({ repo -> view.displayRepo(repo) }
-                ))
+                .subscribe({ repo -> view.displayRepo(repo) }))
     }
 
 

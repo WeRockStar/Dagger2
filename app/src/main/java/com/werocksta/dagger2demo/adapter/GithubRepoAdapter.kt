@@ -28,7 +28,7 @@ class GithubRepoAdapter : CustomRecyclerView() {
         viewHolder.tvName.text = repository.nameRepo
         viewHolder.tvLanguage.text = repository.language
 
-        viewHolder.cvRepo.setOnClickListener { v -> clickRepository.onClickRepoItem(repository) }
+        viewHolder.cvRepo.setOnClickListener { clickRepository.onClickRepoItem(repository) }
     }
 
     override fun getItemCount(): Int = repositories?.size ?: 0
