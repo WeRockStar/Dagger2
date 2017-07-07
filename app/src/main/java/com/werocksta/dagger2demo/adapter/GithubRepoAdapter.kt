@@ -1,13 +1,12 @@
 package com.werocksta.dagger2demo.adapter
 
-import android.support.v7.widget.RecyclerView
+    import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.werocksta.dagger2demo.R
 import com.werocksta.dagger2demo.model.RepoCollection
-import com.werocksta.dagger2demo.widget.CustomRecyclerView
 
-class GithubRepoAdapter : CustomRecyclerView() {
+class GithubRepoAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var repositories: List<RepoCollection>? = null
     private lateinit var clickRepository: OnClickRepository
