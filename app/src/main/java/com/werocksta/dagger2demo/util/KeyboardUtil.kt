@@ -5,10 +5,9 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import javax.inject.Inject
 
-class KeyboardUtil @Inject constructor(val context: Context){
+class KeyboardUtil @Inject constructor(val context: Context, val inputMethodManager: InputMethodManager) {
 
     fun hideKeyboard(view: View) {
-        (context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager)
-                .hideSoftInputFromWindow(view.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
+        inputMethodManager.hideSoftInputFromWindow(view.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
     }
 }

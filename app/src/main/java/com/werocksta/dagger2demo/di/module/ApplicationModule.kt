@@ -3,6 +3,7 @@ package com.werocksta.dagger2demo.di.module
 
 import android.app.Application
 import android.content.Context
+import android.view.inputmethod.InputMethodManager
 
 import com.werocksta.dagger2demo.di.ApplicationContext
 
@@ -18,6 +19,10 @@ class ApplicationModule(private val application: Application) {
     @Singleton
     @ApplicationContext
     fun provideContext(): Context = this.application
+
+    @Provides
+    @Singleton
+    fun provideInputMethod() = application.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
 
 
 }
