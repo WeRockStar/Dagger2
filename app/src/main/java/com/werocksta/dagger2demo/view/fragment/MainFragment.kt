@@ -13,7 +13,9 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-
+import butterknife.BindView
+import butterknife.ButterKnife
+import butterknife.OnClick
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.werocksta.dagger2demo.MainApplication
@@ -22,12 +24,7 @@ import com.werocksta.dagger2demo.model.GithubUserCollection
 import com.werocksta.dagger2demo.presenter.GithubUserPresenter
 import com.werocksta.dagger2demo.util.KeyboardUtil
 import com.werocksta.dagger2demo.view.activity.MainActivity
-
 import javax.inject.Inject
-
-import butterknife.BindView
-import butterknife.ButterKnife
-import butterknife.OnClick
 
 class MainFragment : Fragment(), GithubUserPresenter.View {
 
@@ -41,7 +38,7 @@ class MainFragment : Fragment(), GithubUserPresenter.View {
 
     @BindView(R.id.tvRepo) lateinit var tvRepo: TextView
 
-    @Inject lateinit var mContext: Context
+    @Inject lateinit var keyboard: KeyboardUtil
 
     @Inject lateinit var presenter: GithubUserPresenter
 
@@ -70,7 +67,7 @@ class MainFragment : Fragment(), GithubUserPresenter.View {
 
     @OnClick(R.id.rootLayout)
     internal fun hideKeyboard() {
-        KeyboardUtil().hideKeyboard(edtUsername, mContext)
+        keyboard.hideKeyboard(edtUsername)
     }
 
     override fun loading() {
@@ -98,7 +95,7 @@ class MainFragment : Fragment(), GithubUserPresenter.View {
 
     override fun getUserInfoComplete() {
         progressDialog.cancel()
-        KeyboardUtil().hideKeyboard(edtUsername, mContext)
+        keyboard.hideKeyboard(edtUsername)
     }
 
     override fun onStop() {
