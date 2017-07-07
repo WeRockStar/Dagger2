@@ -10,7 +10,7 @@
 ``` groovy
 dependencies {
     ...
-    compile 'com.google.dagger:dagger:2.9'
-    apt 'com.google.dagger:dagger-compiler:2.9'
+    implementation 'com.google.dagger:dagger:2.9'
+    kapt 'com.google.dagger:dagger-compiler:2.9'
 }
 ```
