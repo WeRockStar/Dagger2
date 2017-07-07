@@ -4,7 +4,9 @@ import android.content.Context
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import org.junit.Before
+import org.junit.Ignore
 import org.junit.Test
+import org.mockito.Matchers
 import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.MockitoAnnotations
@@ -25,7 +27,10 @@ class KeyboardUtilTest {
 
     @Test
     fun keyboard_should_hide() {
+        Mockito.`when`(inputMethodManager.hideSoftInputFromWindow(view.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)).thenReturn(true)
+
         keyboard.hideKeyboard(view)
-        Mockito.verify(inputMethodManager).hideSoftInputFromInputMethod(Mockito.any(), Mockito.any())
+
+        Mockito.verify(inputMethodManager).hideSoftInputFromWindow(view.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
     }
 }

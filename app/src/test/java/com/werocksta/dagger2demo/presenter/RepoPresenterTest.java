@@ -22,11 +22,9 @@ import static org.mockito.Mockito.when;
 
 public class RepoPresenterTest {
 
-    @Mock
-    GithubAPI api;
+    @Mock public GithubAPI api;
 
-    @Mock
-    RepoPresenter.View view;
+    @Mock public RepoPresenter.View view;
 
     @Rule
     public RxSchedulersOverrideRule mRxSchedulersRule = new RxSchedulersOverrideRule();
