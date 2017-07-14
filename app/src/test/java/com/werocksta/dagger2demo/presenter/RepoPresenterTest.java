@@ -45,9 +45,11 @@ public class RepoPresenterTest {
 
     @Test
     public void getRepoShouldDisplayListRepo() throws Exception {
+        String user = "WeRockStar";
         List<RepoCollection> collections = new ArrayList<>();
-        when(api.getRepo("WeRockStar")).thenReturn(Observable.just(collections));
-        presenter.getRepo("WeRockStar");
+
+        when(api.getRepo(user)).thenReturn(Observable.just(collections));
+        presenter.getRepo(user);
 
         verify(view).loading();
         verify(view).displayRepo(collections);
@@ -56,8 +58,10 @@ public class RepoPresenterTest {
 
     @Test
     public void getRepoErrorShouldReturnEmptyArray() throws Exception {
-        when(api.getRepo("WeRockStar")).thenReturn(Observable.error(new Throwable()));
-        presenter.getRepo("WeRockStar");
+        String emptyUser = "";
+
+        when(api.getRepo(emptyUser)).thenReturn(Observable.error(new Throwable()));
+        presenter.getRepo(emptyUser);
 
         verify(view).loading();
         verify(view).displayRepo(new ArrayList<>());
