@@ -78,9 +78,11 @@ class MainFragment : Fragment(), GithubUserPresenter.View {
 
     override fun getUserInfoSuccess(userInfo: GithubUserCollection) {
         tvUsername.text = userInfo.username
-        tvRepo.isClickable = true
-        tvRepo.text = userInfo.repoUrl
-        tvRepo.setOnClickListener { (activity as MainActivity).onClickRepoList(userInfo.username) }
+        tvRepo.apply {
+            isClickable = true
+            text = userInfo.repoUrl
+            setOnClickListener { (activity as MainActivity).onClickRepoList(userInfo.username) }
+        }
 
         displayAvatarImage(userInfo.imageUrl)
     }

@@ -57,10 +57,12 @@ class RepoFragment : Fragment(), RepoPresenter.View, GithubRepoAdapter.OnClickRe
 
     private fun configurationRecyclerView() {
         adapter = GithubRepoAdapter()
-        rvList.setHasFixedSize(true)
-        rvList.layoutManager = LinearLayoutManager(context)
-        rvList.itemAnimator = DefaultItemAnimator()
-        rvList.adapter = adapter
+        rvList.apply {
+            setHasFixedSize(true)
+            layoutManager = LinearLayoutManager(context)
+            itemAnimator = DefaultItemAnimator()
+            setAdapter(adapter)
+        }
     }
 
     override fun loading() {
