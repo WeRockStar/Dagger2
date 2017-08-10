@@ -60,13 +60,11 @@ class MainFragment : Fragment(), GithubUserPresenter.View {
         return view
     }
 
-    @OnClick(R.id.btnLoad)
-    internal fun onClickLoadUserInfo() {
+    @OnClick(R.id.btnLoad) fun onClickLoadUserInfo() {
         presenter.getUserInfo(edtUsername.text.toString())
     }
 
-    @OnClick(R.id.rootLayout)
-    internal fun hideKeyboard() {
+    @OnClick(R.id.rootLayout) fun hideKeyboard() {
         keyboard.hideKeyboard(edtUsername)
     }
 
