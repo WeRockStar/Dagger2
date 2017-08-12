@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import com.werocksta.dagger2demo.R
 import com.werocksta.dagger2demo.model.RepoCollection
 
-class GithubRepoAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class RepoAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var repositories: List<RepoCollection>? = null
     private lateinit var clickRepository: OnClickRepository

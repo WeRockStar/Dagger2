@@ -15,7 +15,7 @@ import android.view.ViewGroup
 
 import com.werocksta.dagger2demo.MainApplication
 import com.werocksta.dagger2demo.R
-import com.werocksta.dagger2demo.adapter.GithubRepoAdapter
+import com.werocksta.dagger2demo.adapter.RepoAdapter
 import com.werocksta.dagger2demo.model.RepoCollection
 import com.werocksta.dagger2demo.presenter.RepoPresenter
 
@@ -25,7 +25,7 @@ import butterknife.BindView
 import butterknife.ButterKnife
 import fr.castorflex.android.smoothprogressbar.SmoothProgressBar
 
-class RepoFragment : Fragment(), RepoPresenter.View, GithubRepoAdapter.OnClickRepository {
+class RepoFragment : Fragment(), RepoPresenter.View, RepoAdapter.OnClickRepository {
 
     @BindView(R.id.rvList) lateinit var rvList: RecyclerView
 
@@ -35,7 +35,7 @@ class RepoFragment : Fragment(), RepoPresenter.View, GithubRepoAdapter.OnClickRe
 
     @Inject lateinit var presenter: RepoPresenter
 
-    lateinit var adapter: GithubRepoAdapter
+    lateinit var githubAdapter: RepoAdapter
 
     override fun onAttach(context: Context?) {
         super.onAttach(context)
@@ -56,13 +56,13 @@ class RepoFragment : Fragment(), RepoPresenter.View, GithubRepoAdapter.OnClickRe
     }
 
     private fun configurationRecyclerView() {
-        adapter = GithubRepoAdapter()
+        githubAdapter = RepoAdapter()
         rvList.apply {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(context)
             itemAnimator = DefaultItemAnimator()
-            setAdapter(adapter)
         }
+        rvList.adapter = githubAdapter
     }
 
     override fun loading() {
@@ -84,12 +84,11 @@ class RepoFragment : Fragment(), RepoPresenter.View, GithubRepoAdapter.OnClickRe
     }
 
     override fun displayRepo(repos: List<RepoCollection>) {
-        adapter.setAdapter(repos, this)
-        adapter.notifyDataSetChanged()
+        githubAdapter.setAdapter(repos, this)
+        githubAdapter.notifyDataSetChanged()
     }
 
     companion object {
-
         val EXTRA_USER = "EXTRA_USER"
 
         fun newInstance(user: String): RepoFragment {
