@@ -1,5 +1,7 @@
 package com.werocksta.dagger2demo.util;
 
+import android.support.annotation.NonNull;
+
 import org.junit.rules.TestRule;
 import org.junit.runner.Description;
 import org.junit.runners.model.Statement;
@@ -15,6 +17,7 @@ import io.reactivex.schedulers.Schedulers;
 
 public class RxSchedulersOverrideRule implements TestRule {
 
+    @NonNull
     private Function<Callable<Scheduler>, Scheduler> mRxJavaSchedulersHook = new Function<Callable<Scheduler>, Scheduler>() {
         @Override
         public Scheduler apply(Callable<Scheduler> schedulerCallable) throws Exception {
@@ -22,6 +25,7 @@ public class RxSchedulersOverrideRule implements TestRule {
         }
     };
 
+    @NonNull
     private Function<Scheduler, Scheduler> mSchedulerFunction = new Function<Scheduler, Scheduler>() {
         @Override
         public Scheduler apply(Scheduler scheduler) throws Exception {
@@ -29,8 +33,9 @@ public class RxSchedulersOverrideRule implements TestRule {
         }
     };
 
+    @NonNull
     @Override
-    public Statement apply(Statement base, Description description) {
+    public Statement apply(@NonNull Statement base, Description description) {
         return new Statement() {
             @Override
             public void evaluate() throws Throwable {

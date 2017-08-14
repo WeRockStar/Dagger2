@@ -1,5 +1,7 @@
 package com.werocksta.dagger2demo.presenter;
 
+import android.support.annotation.NonNull;
+
 import com.werocksta.dagger2demo.api.GithubAPI;
 import com.werocksta.dagger2demo.model.RepoCollection;
 import com.werocksta.dagger2demo.util.RxSchedulersOverrideRule;
@@ -26,6 +28,7 @@ public class RepoPresenterTest {
 
     @Mock public RepoPresenter.View view;
 
+    @NonNull
     @Rule
     public RxSchedulersOverrideRule mRxSchedulersRule = new RxSchedulersOverrideRule();
 
