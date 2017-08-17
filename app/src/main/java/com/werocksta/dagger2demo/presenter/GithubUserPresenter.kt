@@ -35,12 +35,11 @@ class GithubUserPresenter @Inject constructor(private val api: GithubAPI) {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnTerminate { view.getUserInfoComplete() }
-                .subscribe(
-                        { gitUserInfo ->
-                            view.getUserInfoSuccess(gitUserInfo)
-                        }
-                ) { throwable ->
-                    view.getUserInfoError(throwable.message)
+                .subscribe({
+                    view.getUserInfoSuccess(it)
+                }
+                ) {
+                    view.getUserInfoError(it.message)
                 }
         )
     }
