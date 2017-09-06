@@ -15,5 +15,3 @@ test:
         - (./gradlew clean build jacocoTestReport assembleAndroidTest):
             timeout: 520
         - cp -r app/build/reports $CIRCLE_ARTIFACTS
-    post:
-        - bash <(curl -s https://codecov.io/bash)
