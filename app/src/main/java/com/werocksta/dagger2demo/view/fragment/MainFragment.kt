@@ -1,17 +1,13 @@
 package com.werocksta.dagger2demo.view.fragment
 
 
-import android.app.ProgressDialog
 import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import butterknife.BindView
 import butterknife.ButterKnife
 import butterknife.OnClick
@@ -28,18 +24,14 @@ import javax.inject.Inject
 class MainFragment : Fragment(), GithubUserPresenter.View {
 
     @BindView(R.id.edtUsername) lateinit var edtUsername: EditText
-
     @BindView(R.id.ivProfile) lateinit var ivProfile: ImageView
-
     @BindView(R.id.tvUsername) lateinit var tvUsername: TextView
-
     @BindView(R.id.tvRepo) lateinit var tvRepo: TextView
+    @BindView(R.id.progressBar) lateinit var progressBar: ProgressBar
 
     @Inject lateinit var keyboard: KeyboardUtil
 
     @Inject lateinit var presenter: GithubUserPresenter
-
-    private lateinit var progressDialog: ProgressDialog
 
     override fun onAttach(context: Context?) {
         super.onAttach(context)
@@ -53,7 +45,6 @@ class MainFragment : Fragment(), GithubUserPresenter.View {
         val view = inflater!!.inflate(R.layout.fragment_main, container, false)
         ButterKnife.bind(this, view)
         presenter.injectView(this)
-        progressDialog = ProgressDialog(context)
         return view
     }
 
@@ -66,9 +57,7 @@ class MainFragment : Fragment(), GithubUserPresenter.View {
     }
 
     override fun loading() {
-        progressDialog.setMessage(getString(R.string.loading))
-        progressDialog.isIndeterminate = true
-        progressDialog.show()
+        progressBar.visibility = View.VISIBLE
     }
 
     override fun getUserInfoSuccess(userInfo: GithubUserCollection) {
@@ -91,7 +80,7 @@ class MainFragment : Fragment(), GithubUserPresenter.View {
     }
 
     override fun getUserInfoComplete() {
-        progressDialog.cancel()
+        progressBar.visibility = View.GONE
         keyboard.hideKeyboard(edtUsername)
     }
 
