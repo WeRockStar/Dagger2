@@ -14,7 +14,7 @@ import com.werocksta.dagger2demo.view.fragment.RepoFragment
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var component: ActivityComponent
+    private lateinit var component: ActivityComponent
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

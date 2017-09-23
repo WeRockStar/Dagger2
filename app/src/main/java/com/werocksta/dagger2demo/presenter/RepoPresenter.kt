@@ -33,7 +33,7 @@ constructor(private val api: GithubAPI) {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnTerminate { view.loadComplete() }
-                .onErrorReturnItem(ArrayList())
+                .onErrorReturnItem(emptyList())
                 .subscribe({ view.displayRepo(it) }))
     }
 
