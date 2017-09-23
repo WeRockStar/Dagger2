@@ -56,13 +56,11 @@ class RepoFragment : Fragment(), RepoPresenter.View, RepoAdapter.OnClickReposito
     }
 
     private fun configurationRecyclerView() {
-        githubAdapter = RepoAdapter()
         rvList.apply {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(context)
             itemAnimator = DefaultItemAnimator()
         }
-        rvList.adapter = githubAdapter
     }
 
     override fun loading() {
@@ -84,8 +82,9 @@ class RepoFragment : Fragment(), RepoPresenter.View, RepoAdapter.OnClickReposito
     }
 
     override fun displayRepo(repos: List<RepoCollection>) {
-        githubAdapter.setAdapter(repos, this)
+        githubAdapter = RepoAdapter(repos, this)
         githubAdapter.notifyDataSetChanged()
+        rvList.adapter = githubAdapter
     }
 
     companion object {

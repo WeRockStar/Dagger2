@@ -1,20 +1,12 @@
 package com.werocksta.dagger2demo.adapter
 
-    import android.support.v7.widget.RecyclerView
+import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.werocksta.dagger2demo.R
 import com.werocksta.dagger2demo.model.RepoCollection
 
-class RepoAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-
-    private var repositories: List<RepoCollection>? = null
-    private lateinit var clickRepository: OnClickRepository
-
-    fun setAdapter(repositories: List<RepoCollection>, clickRepository: OnClickRepository) {
-        this.repositories = repositories
-        this.clickRepository = clickRepository
-    }
+class RepoAdapter constructor(private val repositories: List<RepoCollection>,private val clickRepository: OnClickRepository) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RepoViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.repo_item_row, parent, false)
@@ -22,7 +14,7 @@ class RepoAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val repository = repositories!![position]
+        val repository = repositories[position]
         val viewHolder = holder as RepoViewHolder
         viewHolder.tvName.text = repository.nameRepo
         viewHolder.tvLanguage.text = repository.language
@@ -30,7 +22,7 @@ class RepoAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         viewHolder.cvRepo.setOnClickListener { clickRepository.onClickRepoItem(repository) }
     }
 
-    override fun getItemCount(): Int = repositories?.size ?: 0
+    override fun getItemCount(): Int = repositories.size
 
     interface OnClickRepository {
         fun onClickRepoItem(repo: RepoCollection)
