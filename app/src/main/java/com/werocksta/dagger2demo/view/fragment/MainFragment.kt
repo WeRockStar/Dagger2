@@ -4,7 +4,6 @@ package com.werocksta.dagger2demo.view.fragment
 import android.app.ProgressDialog
 import android.content.Context
 import android.os.Bundle
-import android.support.customtabs.CustomTabsIntent
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -28,8 +27,6 @@ import javax.inject.Inject
 
 class MainFragment : Fragment(), GithubUserPresenter.View {
 
-    @Inject lateinit var intent: CustomTabsIntent
-
     @BindView(R.id.edtUsername) lateinit var edtUsername: EditText
 
     @BindView(R.id.ivProfile) lateinit var ivProfile: ImageView
@@ -42,7 +39,7 @@ class MainFragment : Fragment(), GithubUserPresenter.View {
 
     @Inject lateinit var presenter: GithubUserPresenter
 
-    lateinit var progressDialog: ProgressDialog
+    private lateinit var progressDialog: ProgressDialog
 
     override fun onAttach(context: Context?) {
         super.onAttach(context)

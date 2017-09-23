@@ -35,7 +35,7 @@ class RepoFragment : Fragment(), RepoPresenter.View, RepoAdapter.OnClickReposito
 
     @Inject lateinit var presenter: RepoPresenter
 
-    lateinit var githubAdapter: RepoAdapter
+    private lateinit var githubAdapter: RepoAdapter
 
     override fun onAttach(context: Context?) {
         super.onAttach(context)
@@ -49,11 +49,13 @@ class RepoFragment : Fragment(), RepoPresenter.View, RepoAdapter.OnClickReposito
         ButterKnife.bind(this, view)
 
         presenter.injectView(this)
-        presenter.getRepo(arguments.getString(EXTRA_USER))
+        presenter.getRepo(user)
 
         configurationRecyclerView()
         return view
     }
+
+    private val user get() = arguments.getString(EXTRA_USER)
 
     private fun configurationRecyclerView() {
         rvList.apply {
