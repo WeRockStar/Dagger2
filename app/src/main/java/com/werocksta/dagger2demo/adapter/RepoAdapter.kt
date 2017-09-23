@@ -6,7 +6,9 @@ import android.view.ViewGroup
 import com.werocksta.dagger2demo.R
 import com.werocksta.dagger2demo.model.RepoCollection
 
-class RepoAdapter constructor(private val repositories: List<RepoCollection>,private val clickRepository: OnClickRepository) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class RepoAdapter constructor(private val repositories: List<RepoCollection>,
+                              private val clickRepository: OnClickRepository)
+    : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RepoViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.repo_item_row, parent, false)
