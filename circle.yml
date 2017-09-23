@@ -8,8 +8,8 @@ machine:
 
 dependencies:
     pre:
-        - echo y | android update sdk --no-ui --all --filter tools,platform-tools,android-25,extra-google-m2repository,extra-android-support
-        - echo y | android update sdk --no-ui --all --filter build-tools-25.0.3
+        - echo y | android update sdk --no-ui --all --filter tools,platform-tools,android-26,extra-google-m2repository,extra-android-support
+        - echo y | android update sdk --no-ui --all --filter build-tools-26.0.1
 test:
     override:
         - (./gradlew clean build jacocoTestReport assembleAndroidTest lint):
