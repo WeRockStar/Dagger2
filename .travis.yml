@@ -22,7 +22,7 @@ android:
 
 script:
   # Unit Test
-  - ./gradlew clean build jacocoTestReport assembleAndroidTest lint
+  - ./gradlew clean build jacocoTestReportDebug assembleAndroidTest lint
 after_success:
   - bash <(curl -s https://codecov.io/bash)
 
