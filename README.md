@@ -16,3 +16,18 @@ dependencies {
     kapt 'com.google.dagger:dagger-compiler:2.9'
 }
 ```
+
+### You can use libraries or tools.
+- RxJava2, RxAndroid2 
+- Retrofit, OkHttp, OkHttp logging 
+- Gson
+- Dagger 2 
+- ButterKnife 
+
+#### or Testing framework 
+- Junit 
+- Mockito
+ 
+#### and CI Tools
+- Circle CI 
+- Travis CI
