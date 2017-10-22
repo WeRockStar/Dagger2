@@ -4,13 +4,10 @@ package com.werocksta.dagger2demo.di.module
 import android.app.Application
 import android.content.Context
 import android.view.inputmethod.InputMethodManager
-
 import com.werocksta.dagger2demo.di.ApplicationContext
-
-import javax.inject.Singleton
-
 import dagger.Module
 import dagger.Provides
+import javax.inject.Singleton
 
 @Module
 class ApplicationModule(private val application: Application) {
@@ -18,7 +15,7 @@ class ApplicationModule(private val application: Application) {
     @Provides
     @Singleton
     @ApplicationContext
-    fun provideContext(): Context = this.application
+    fun provideContext(): Application = this.application
 
     @Provides
     @Singleton

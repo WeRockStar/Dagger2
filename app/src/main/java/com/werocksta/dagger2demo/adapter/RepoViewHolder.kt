@@ -13,9 +13,7 @@ import butterknife.ButterKnife
 class RepoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     @BindView(R.id.tvName) lateinit var tvName: TextView
-
     @BindView(R.id.card) lateinit var cvRepo: CardView
-
     @BindView(R.id.tvLanguage) lateinit var tvLanguage: TextView
 
     init {

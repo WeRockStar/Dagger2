@@ -1,6 +1,5 @@
 package com.werocksta.dagger2demo.util
 
-import android.content.Context
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import org.junit.Before
@@ -12,7 +11,6 @@ import org.mockito.MockitoAnnotations
 
 class KeyboardUtilTest {
 
-    @Mock lateinit var context: Context
     @Mock lateinit var view: View
     @Mock lateinit var inputMethodManager: InputMethodManager
     lateinit var keyboard: KeyboardUtil
@@ -20,7 +18,7 @@ class KeyboardUtilTest {
     @Before
     fun setUp() {
         MockitoAnnotations.initMocks(this)
-        keyboard = KeyboardUtil(context, inputMethodManager)
+        keyboard = KeyboardUtil(inputMethodManager)
     }
 
     @Test

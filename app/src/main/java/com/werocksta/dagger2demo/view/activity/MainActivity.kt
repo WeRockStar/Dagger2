@@ -43,6 +43,8 @@ class MainActivity : AppCompatActivity() {
                 .commit()
     }
 
+    fun getComponent() = component
+
     fun onClickRepoList(user: String) {
         changeFragment(RepoFragment.newInstance(user))
     }

@@ -21,7 +21,9 @@ class RepoAdapter constructor(private val repositories: List<RepoCollection>,
         viewHolder.tvName.text = repository.nameRepo
         viewHolder.tvLanguage.text = repository.language
 
-        viewHolder.cvRepo.setOnClickListener { clickRepository.onClickRepoItem(repository) }
+        viewHolder.cvRepo.apply {
+            setOnClickListener { clickRepository.onClickRepoItem(repository) }
+        }
     }
 
     override fun getItemCount(): Int = repositories.size
