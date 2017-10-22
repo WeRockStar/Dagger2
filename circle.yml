@@ -12,6 +12,6 @@ dependencies:
         - echo y | android update sdk --no-ui --all --filter build-tools-26.0.2
 test:
     override:
-        - (./gradlew clean build jacocoTestReport assembleAndroidTest lint):
+        - (./gradlew build jacocoTestReportDebug assembleAndroidTest lint):
             timeout: 520
         - cp -r app/build/reports $CIRCLE_ARTIFACTS
