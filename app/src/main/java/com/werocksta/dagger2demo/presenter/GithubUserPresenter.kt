@@ -2,15 +2,13 @@ package com.werocksta.dagger2demo.presenter
 
 import com.werocksta.dagger2demo.api.GithubAPI
 import com.werocksta.dagger2demo.model.GithubUserCollection
-
+import com.werocksta.dagger2demo.rx.RxThread
+import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.schedulers.Schedulers
 
-
-class GithubUserPresenter @Inject constructor(private val api: GithubAPI) {
+class GithubUserPresenter @Inject constructor(private val api: GithubAPI,
+                                              private val rxThread: RxThread) {
 
     private lateinit var view: View
     private val subscription = CompositeDisposable()
@@ -32,8 +30,7 @@ class GithubUserPresenter @Inject constructor(private val api: GithubAPI) {
     fun getUserInfo(username: String) {
         view.loading()
         subscription.add(api.getUser(username)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
+                .compose(rxThread.applyAsync())
                 .doOnTerminate { view.getUserInfoComplete() }
                 .subscribe({
                     view.getUserInfoSuccess(it)

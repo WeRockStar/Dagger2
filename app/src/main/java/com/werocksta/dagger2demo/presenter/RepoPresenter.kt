@@ -2,15 +2,13 @@ package com.werocksta.dagger2demo.presenter
 
 import com.werocksta.dagger2demo.api.GithubAPI
 import com.werocksta.dagger2demo.model.RepoCollection
-import io.reactivex.android.schedulers.AndroidSchedulers
+import com.werocksta.dagger2demo.rx.RxThread
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.schedulers.Schedulers
-import java.util.*
 import javax.inject.Inject
 
 
 open class RepoPresenter @Inject
-constructor(private val api: GithubAPI) {
+constructor(private val api: GithubAPI, private val rxThread: RxThread) {
 
     private lateinit var view: View
     private val subscription = CompositeDisposable()
@@ -30,8 +28,7 @@ constructor(private val api: GithubAPI) {
     fun getRepo(user: String) {
         view.loading()
         subscription.add(api.getRepo(user)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
+                .compose(rxThread.applyAsync())
                 .doOnTerminate { view.loadComplete() }
                 .onErrorReturnItem(emptyList())
                 .subscribe({ view.displayRepo(it) }))
