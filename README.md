@@ -24,10 +24,10 @@ dependencies {
 - Dagger 2 
 - ButterKnife 
 
-#### or Testing framework 
+#### Testing framework 
 - Junit 
 - Mockito
  
-#### and CI Tools
+#### CI Tools
 - Circle CI 
 - Travis CI
