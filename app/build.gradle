@@ -50,7 +50,6 @@ android {
                     '**/*Module_*Factory.class',
                     '**/*ViewBinding.class'
         ]
-        includeNoLocationClasses = false
     }
 }
 

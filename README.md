@@ -27,7 +27,8 @@ dependencies {
 #### Testing framework 
 - Junit 
 - Mockito
- 
+- Jacoco (Test report)
+
 #### CI Tools
 - Circle CI 
 - Travis CI
