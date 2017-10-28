@@ -43,8 +43,11 @@ class GithubUserPresenterTest {
     @Throws(Exception::class)
     fun getUserInfoShouldHaveUserInfo() {
         val userInfo = GithubUserCollection()
+
         `when`(api.getUser("WeRockStar")).thenReturn(Observable.just(userInfo))
+
         presenter.getUserInfo("WeRockStar")
+
         verify<GithubUserPresenter.View>(view).loading()
         verify<GithubUserPresenter.View>(view).getUserInfoSuccess(userInfo)
         verify<GithubUserPresenter.View>(view).getUserInfoComplete()
@@ -55,7 +58,9 @@ class GithubUserPresenterTest {
     fun getUserInfoErrorShouldHaveException() {
         val exception = Throwable()
         `when`(api.getUser("WeRockStar")).thenReturn(Observable.error(exception))
+
         presenter.getUserInfo("WeRockStar")
+
         verify<GithubUserPresenter.View>(view).loading()
         verify<GithubUserPresenter.View>(view).getUserInfoError(exception.message)
         verify<GithubUserPresenter.View>(view).getUserInfoComplete()
