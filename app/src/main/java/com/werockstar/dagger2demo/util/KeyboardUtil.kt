@@ -1,4 +1,4 @@
-package com.werocksta.dagger2demo.util
+package com.werockstar.dagger2demo.util
 
 import android.view.View
 import android.view.inputmethod.InputMethodManager

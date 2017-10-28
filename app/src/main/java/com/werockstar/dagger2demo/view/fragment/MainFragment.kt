@@ -13,7 +13,7 @@ import butterknife.ButterKnife
 import butterknife.OnClick
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.werocksta.dagger2demo.util.KeyboardUtil
+import com.werockstar.dagger2demo.util.KeyboardUtil
 import com.werockstar.dagger2demo.MainApplication
 import com.werockstar.dagger2demo.R
 import com.werockstar.dagger2demo.model.GithubUserCollection
