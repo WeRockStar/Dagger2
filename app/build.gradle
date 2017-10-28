@@ -36,6 +36,21 @@ android {
     }
     junitJacoco {
         jacocoVersion = '0.7.2.201409121644'
+        excludes = ['**/R*.class',
+                    '**/*$InjectAdapter.class',
+                    '**/*$ModuleAdapter.class',
+                    '**/*$ViewInjector*.class',
+                    '**/*Fragment*.class',
+                    '**/*Activity*.class',
+                    '**/*Module.class',
+                    '**/*Factory.class',
+                    '**/*_MembersInjector.class',
+                    '**/Dagger*Component.class',
+                    '**/Dagger*Component$Builder.class',
+                    '**/*Module_*Factory.class',
+                    '**/*ViewBinding.class'
+        ]
+        includeNoLocationClasses = false
     }
 }
 
