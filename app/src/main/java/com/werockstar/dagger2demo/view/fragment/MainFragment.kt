@@ -36,23 +36,25 @@ class MainFragment : Fragment(), GithubUserPresenter.View {
     override fun onAttach(context: Context?) {
         super.onAttach(context)
 
-        (activity.application as MainApplication).component
+        (activity?.application as MainApplication).component
                 .inject(this)
     }
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        val view = inflater!!.inflate(R.layout.fragment_main, container, false)
+        val view = inflater.inflate(R.layout.fragment_main, container, false)
         ButterKnife.bind(this, view)
         presenter.injectView(this)
         return view
     }
 
-    @OnClick(R.id.btnLoad) fun onClickLoadUserInfo() {
+    @OnClick(R.id.btnLoad)
+    fun onClickLoadUserInfo() {
         presenter.getUserInfo(edtUsername.text.toString())
     }
 
-    @OnClick(R.id.rootLayout) fun hideKeyboard() {
+    @OnClick(R.id.rootLayout)
+    fun hideKeyboard() {
         keyboard.hideKeyboard(edtUsername)
     }
 
