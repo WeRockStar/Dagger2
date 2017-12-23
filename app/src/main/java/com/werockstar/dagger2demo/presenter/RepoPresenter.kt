@@ -31,7 +31,8 @@ constructor(private val api: GithubAPI, private val rxThread: RxThread) {
                 .compose(rxThread.applyAsync())
                 .doOnTerminate { view.loadComplete() }
                 .onErrorReturnItem(emptyList())
-                .subscribe({ view.displayRepo(it) }))
+                .subscribe { view.displayRepo(it) }
+        )
     }
 
 

@@ -34,10 +34,9 @@ class GithubUserPresenter @Inject constructor(private val api: GithubAPI,
                 .doOnTerminate { view.getUserInfoComplete() }
                 .subscribe({
                     view.getUserInfoSuccess(it)
-                }
-                ) {
+                }, {
                     view.getUserInfoError(it.message)
-                }
+                })
         )
     }
 
