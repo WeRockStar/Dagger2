@@ -53,7 +53,7 @@ class RepoFragment : Fragment(), RepoPresenter.View, RepoAdapter.OnClickReposito
         return view
     }
 
-    private val user get() = arguments?.getString(EXTRA_USER) ?: ""
+    private val user: String get() = arguments?.getString(EXTRA_USER) ?: ""
 
     private fun configurationRecyclerView() {
         rvList.apply {
