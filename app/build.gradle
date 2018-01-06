@@ -6,7 +6,7 @@ apply plugin: 'com.vanniktech.android.junit.jacoco'
 
 android {
     compileSdkVersion 27
-    buildToolsVersion '27.0.1'
+    buildToolsVersion '27.0.3'
     defaultConfig {
         applicationId "com.werockstar.dagger2demo"
         minSdkVersion 15
