@@ -5,3 +5,6 @@
 .DS_Store
 /build
 /captures
+.settings
+fastlane/report.xml
+fastlane/README.md
