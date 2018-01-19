@@ -3,7 +3,7 @@ package com.werockstar.dagger2demo.di.module
 
 import com.werockstar.dagger2demo.BuildConfig
 import com.werockstar.dagger2demo.api.GithubAPI
-import com.werockstar.dagger2demo.util.Constant
+import com.werockstar.dagger2demo.util.URL
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -29,7 +29,7 @@ class HttpModule {
     @Provides
     @Singleton
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
-            .baseUrl(Constant.BASE_URL)
+            .baseUrl(URL.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .client(okHttpClient)

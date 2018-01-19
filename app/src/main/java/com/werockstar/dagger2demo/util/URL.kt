@@ -1,5 +1,5 @@
 package com.werockstar.dagger2demo.util
 
-object Constant {
+object URL {
     val BASE_URL = "https://api.github.com/"
 }
