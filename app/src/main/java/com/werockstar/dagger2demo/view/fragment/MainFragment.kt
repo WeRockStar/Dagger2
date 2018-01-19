@@ -53,8 +53,7 @@ class MainFragment : Fragment(), GithubUserPresenter.View {
         presenter.getUserInfo(edtUsername.text.toString())
     }
 
-    @OnClick(R.id.rootLayout)
-    fun hideKeyboard() {
+    override fun hideKeyboard() {
         keyboard.hideKeyboard(edtUsername)
     }
 
@@ -81,9 +80,8 @@ class MainFragment : Fragment(), GithubUserPresenter.View {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
 
-    override fun getUserInfoComplete() {
+    override fun dismissLoading() {
         progressBar.visibility = View.GONE
-        keyboard.hideKeyboard(edtUsername)
     }
 
     override fun onStop() {

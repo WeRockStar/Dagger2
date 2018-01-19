@@ -16,11 +16,13 @@ class GithubUserPresenter @Inject constructor(private val api: GithubAPI,
     interface View {
         fun loading()
 
+        fun dismissLoading()
+
         fun getUserInfoSuccess(userInfo: GithubUserCollection)
 
         fun getUserInfoError(message: String?)
 
-        fun getUserInfoComplete()
+        fun hideKeyboard()
     }
 
     fun injectView(view: View) {
@@ -31,7 +33,10 @@ class GithubUserPresenter @Inject constructor(private val api: GithubAPI,
         view.loading()
         subscription.add(api.getUser(username)
                 .compose(rxThread.applyAsync())
-                .doOnTerminate { view.getUserInfoComplete() }
+                .doOnTerminate {
+                    view.dismissLoading()
+                    view.hideKeyboard()
+                }
                 .subscribe({
                     view.getUserInfoSuccess(it)
                 }, {

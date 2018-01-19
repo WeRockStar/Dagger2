@@ -48,9 +48,10 @@ class GithubUserPresenterTest {
 
         presenter.getUserInfo("WeRockStar")
 
-        verify<GithubUserPresenter.View>(view).loading()
-        verify<GithubUserPresenter.View>(view).getUserInfoSuccess(userInfo)
-        verify<GithubUserPresenter.View>(view).getUserInfoComplete()
+        verify(view).loading()
+        verify(view).getUserInfoSuccess(userInfo)
+        verify(view).dismissLoading()
+        verify(view).hideKeyboard()
     }
 
     @Test
@@ -61,9 +62,10 @@ class GithubUserPresenterTest {
 
         presenter.getUserInfo("WeRockStar")
 
-        verify<GithubUserPresenter.View>(view).loading()
-        verify<GithubUserPresenter.View>(view).getUserInfoError(exception.message)
-        verify<GithubUserPresenter.View>(view).getUserInfoComplete()
+        verify(view).loading()
+        verify(view).getUserInfoError(exception.message)
+        verify(view).dismissLoading()
+        verify(view).hideKeyboard()
     }
 
     @After
