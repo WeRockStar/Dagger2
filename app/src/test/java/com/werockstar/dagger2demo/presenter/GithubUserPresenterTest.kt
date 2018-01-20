@@ -1,9 +1,8 @@
 package com.werockstar.dagger2demo.presenter
 
 import com.werockstar.dagger2demo.api.GithubAPI
-import com.werockstar.dagger2demo.model.GithubUserCollection
+import com.werockstar.dagger2demo.model.GithubUser
 import com.werockstar.dagger2demo.rx.RxThread
-import com.werockstar.dagger2demo.presenter.GithubUserPresenter
 import io.reactivex.Observable
 import io.reactivex.schedulers.Schedulers
 import org.junit.After
@@ -42,7 +41,7 @@ class GithubUserPresenterTest {
     @Test
     @Throws(Exception::class)
     fun getUserInfoShouldHaveUserInfo() {
-        val userInfo = GithubUserCollection()
+        val userInfo = GithubUser()
 
         `when`(api.getUser("WeRockStar")).thenReturn(Observable.just(userInfo))
 

@@ -7,16 +7,16 @@ import org.junit.Assert.assertNotNull
 import org.junit.Before
 import org.junit.Test
 
-class GithubUserCollectionTest {
+class GithubUserTest {
 
     private lateinit var response: String
-    private lateinit var collection: GithubUserCollection
+    private lateinit var collection: GithubUser
 
     @Before
     @Throws(Exception::class)
     fun setUp() {
         response = JsonResource.fromResource("github_profile.json")
-        collection = Gson().fromJson(response, GithubUserCollection::class.java)
+        collection = Gson().fromJson(response, GithubUser::class.java)
     }
 
     @Test

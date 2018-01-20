@@ -6,17 +6,17 @@ import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 
-class RepoCollectionTest {
+class RepoTest {
 
     private lateinit var response: String
-    private lateinit var collection: RepoCollection
+    private lateinit var collection: Repo
 
 
     @Before
     @Throws(Exception::class)
     fun setUp() {
         response = JsonResource.fromResource("repo.json")
-        collection = Gson().fromJson(response, RepoCollection::class.java)
+        collection = Gson().fromJson(response, Repo::class.java)
     }
 
     @Test

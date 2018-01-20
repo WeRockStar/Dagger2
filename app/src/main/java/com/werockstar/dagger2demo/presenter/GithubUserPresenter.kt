@@ -1,7 +1,7 @@
 package com.werockstar.dagger2demo.presenter
 
 import com.werockstar.dagger2demo.api.GithubAPI
-import com.werockstar.dagger2demo.model.GithubUserCollection
+import com.werockstar.dagger2demo.model.GithubUser
 import com.werockstar.dagger2demo.rx.RxThread
 import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
@@ -18,7 +18,7 @@ class GithubUserPresenter @Inject constructor(private val api: GithubAPI,
 
         fun dismissLoading()
 
-        fun getUserInfoSuccess(userInfo: GithubUserCollection)
+        fun getUserInfoSuccess(userInfo: GithubUser)
 
         fun getUserInfoError(message: String?)
 

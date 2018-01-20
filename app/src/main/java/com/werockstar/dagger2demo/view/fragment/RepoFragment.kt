@@ -17,7 +17,7 @@ import butterknife.ButterKnife
 import com.werockstar.dagger2demo.MainApplication
 import com.werockstar.dagger2demo.R
 import com.werockstar.dagger2demo.adapter.RepoAdapter
-import com.werockstar.dagger2demo.model.RepoCollection
+import com.werockstar.dagger2demo.model.Repo
 import com.werockstar.dagger2demo.presenter.RepoPresenter
 import fr.castorflex.android.smoothprogressbar.SmoothProgressBar
 import javax.inject.Inject
@@ -71,7 +71,7 @@ class RepoFragment : Fragment(), RepoPresenter.View, RepoAdapter.OnClickReposito
         smoothProgressBar.progressiveStop()
     }
 
-    override fun onClickRepoItem(repo: RepoCollection) {
+    override fun onClickRepoItem(repo: Repo) {
         customTabsIntent.launchUrl(activity, Uri.parse(repo.htmlUrl))
     }
 
@@ -81,7 +81,7 @@ class RepoFragment : Fragment(), RepoPresenter.View, RepoAdapter.OnClickReposito
         presenter.onStop()
     }
 
-    override fun displayRepo(repos: List<RepoCollection>) {
+    override fun displayRepo(repos: List<Repo>) {
         githubAdapter = RepoAdapter(repos, this)
         githubAdapter.notifyDataSetChanged()
         rvList.adapter = githubAdapter

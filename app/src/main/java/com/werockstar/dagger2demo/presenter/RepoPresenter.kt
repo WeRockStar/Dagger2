@@ -2,7 +2,7 @@ package com.werockstar.dagger2demo.presenter
 
 import com.werockstar.dagger2demo.rx.RxThread
 import com.werockstar.dagger2demo.api.GithubAPI
-import com.werockstar.dagger2demo.model.RepoCollection
+import com.werockstar.dagger2demo.model.Repo
 import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
@@ -16,7 +16,7 @@ constructor(private val api: GithubAPI, private val rxThread: RxThread) {
     interface View {
         fun loading()
 
-        fun displayRepo(repos: List<RepoCollection>)
+        fun displayRepo(repos: List<Repo>)
 
         fun loadComplete()
     }

@@ -2,7 +2,7 @@ package com.werocksta.dagger2demo.presenter
 
 
 import com.werockstar.dagger2demo.api.GithubAPI
-import com.werockstar.dagger2demo.model.RepoCollection
+import com.werockstar.dagger2demo.model.Repo
 import com.werockstar.dagger2demo.presenter.RepoPresenter
 import com.werockstar.dagger2demo.rx.RxThread
 import io.reactivex.Observable
@@ -42,7 +42,7 @@ class RepoPresenterTest {
     @Throws(Exception::class)
     fun getRepoShouldDisplayListRepo() {
         val user = "WeRockStar"
-        val collections = ArrayList<RepoCollection>()
+        val collections = ArrayList<Repo>()
 
         `when`(api.getRepo(user)).thenReturn(Observable.just(collections))
         presenter.getRepo(user)
@@ -61,7 +61,7 @@ class RepoPresenterTest {
         presenter.getRepo(emptyUser)
 
         verify<RepoPresenter.View>(view).loading()
-        verify<RepoPresenter.View>(view).displayRepo(ArrayList<RepoCollection>())
+        verify<RepoPresenter.View>(view).displayRepo(ArrayList<Repo>())
         verify<RepoPresenter.View>(view).loadComplete()
     }
 

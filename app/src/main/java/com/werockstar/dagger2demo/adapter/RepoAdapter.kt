@@ -4,9 +4,9 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.werockstar.dagger2demo.R
-import com.werockstar.dagger2demo.model.RepoCollection
+import com.werockstar.dagger2demo.model.Repo
 
-class RepoAdapter constructor(private val repositories: List<RepoCollection>,
+class RepoAdapter constructor(private val repositories: List<Repo>,
                               private val clickRepository: OnClickRepository)
     : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -29,7 +29,7 @@ class RepoAdapter constructor(private val repositories: List<RepoCollection>,
     override fun getItemCount(): Int = repositories.size
 
     interface OnClickRepository {
-        fun onClickRepoItem(repo: RepoCollection)
+        fun onClickRepoItem(repo: Repo)
     }
 
 }

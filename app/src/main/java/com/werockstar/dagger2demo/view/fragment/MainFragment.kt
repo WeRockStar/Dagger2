@@ -16,7 +16,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.werockstar.dagger2demo.util.KeyboardUtil
 import com.werockstar.dagger2demo.MainApplication
 import com.werockstar.dagger2demo.R
-import com.werockstar.dagger2demo.model.GithubUserCollection
+import com.werockstar.dagger2demo.model.GithubUser
 import com.werockstar.dagger2demo.presenter.GithubUserPresenter
 import com.werockstar.dagger2demo.view.activity.MainActivity
 import javax.inject.Inject
@@ -61,7 +61,7 @@ class MainFragment : Fragment(), GithubUserPresenter.View {
         progressBar.visibility = View.VISIBLE
     }
 
-    override fun getUserInfoSuccess(userInfo: GithubUserCollection) {
+    override fun getUserInfoSuccess(userInfo: GithubUser) {
         tvUsername.text = userInfo.username
         tvRepo.apply {
             isClickable = true
