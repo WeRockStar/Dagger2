@@ -10,13 +10,18 @@ import javax.inject.Singleton
 @Module
 class RxThreadModule {
 
+    companion object {
+        const val mainThread = "mainThread"
+        const val ioThread = "ioThread"
+    }
+
     @Singleton
     @Provides
-    @Named("mainThread")
+    @Named(mainThread)
     fun provideAndroidSchedulers() = AndroidSchedulers.mainThread()
 
     @Provides
     @Singleton
-    @Named("ioThread")
+    @Named(ioThread)
     fun provideSchedulersIO() = Schedulers.io()
 }
