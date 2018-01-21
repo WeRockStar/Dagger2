@@ -36,7 +36,7 @@ dependencies {
 
 ### Run ui-test
 ```shell
-./gralew connectAndroidTest
+./gradlew connectAndroidTest
 ```
 <p align="left">
     <img width="300" src="ui-testing.gif" />
