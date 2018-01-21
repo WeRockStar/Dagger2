@@ -99,6 +99,12 @@ dependencies {
         exclude module: 'support-annotations'
     }
     androidTestImplementation 'com.jakewharton.espresso:okhttp3-idling-resource:1.0.0'
+    androidTestImplementation("com.android.support.test.espresso:espresso-contrib:$espressoVersion") {
+        exclude module: 'support-annotations'
+        exclude module: 'support-v4'
+        exclude module: 'design'
+        exclude module: 'recyclerview-v7'
+    }
 
     kapt "com.google.dagger:dagger-compiler:$daggerVersion"
     kapt "com.jakewharton:butterknife-compiler:$butterknifeVersion"

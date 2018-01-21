@@ -65,12 +65,28 @@ class MainActivityTest {
     }
 
     @Test
-    fun typeUserWeRockStar() {
+    fun type_user_we_rock_star_should_see_WeRockStar_and_repo_url() {
+        val idling = registerIdleResource("searchUser")
+        typeUserWeRockStar()
+        unregisterIdleResource(idling)
+    }
+
+    @Test
+    fun type_user_we_rock_star_and_click_on_repo_url_should_see_list_of_repo() {
+        val idling = registerIdleResource("clickRepo")
+
+        typeUserWeRockStar()
+
+        onView(withId(R.id.tvRepo)).perform(click())
+        onView(withId(R.id.smootProgressBar)).check(matches(isDisplayed()))
+        onView(withId(R.id.rvList)).check(matches(isDisplayed()))
+
+        unregisterIdleResource(idling)
+    }
+
+    private fun typeUserWeRockStar() {
         onView(withId(R.id.edtUsername))
                 .perform(typeText("WeRockStar"))
-
-        val idling = OkHttp3IdlingResource.create("okhttp", okHttp)
-        IdlingRegistry.getInstance().register(idling)
 
         onView(withId(R.id.btnLoad))
                 .perform(click())
@@ -80,7 +96,15 @@ class MainActivityTest {
 
         onView(withId(R.id.tvRepo))
                 .check(matches(withText("https://api.github.com/users/WeRockStar/repos")))
+    }
 
-        IdlingRegistry.getInstance().unregister(idling)
+    private fun unregisterIdleResource(idlingResource: OkHttp3IdlingResource) {
+        IdlingRegistry.getInstance().unregister(idlingResource)
+    }
+
+    private fun registerIdleResource(idleName: String): OkHttp3IdlingResource {
+        val idling = OkHttp3IdlingResource.create(idleName, okHttp)
+        IdlingRegistry.getInstance().register(idling)
+        return idling
     }
 }
