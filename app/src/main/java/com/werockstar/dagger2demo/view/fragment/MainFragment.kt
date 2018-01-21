@@ -30,7 +30,6 @@ class MainFragment : Fragment(), GithubUserPresenter.View {
     @BindView(R.id.progressBar) lateinit var progressBar: ProgressBar
 
     @Inject lateinit var keyboard: KeyboardUtil
-
     @Inject lateinit var presenter: GithubUserPresenter
 
     override fun onAttach(context: Context?) {

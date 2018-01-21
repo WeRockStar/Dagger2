@@ -14,10 +14,10 @@ import javax.inject.Singleton
 @Component(modules = arrayOf(HttpModule::class,
         ApplicationModule::class, AndroidModule::class,
         RxThreadModule::class))
-interface AppComponent {
+interface DiComponent {
     fun inject(fragment: MainFragment)
 
-    fun inject(fragment: MainActivity)
+    fun inject(activity: MainActivity)
 
     fun inject(fragment: RepoFragment)
 }
