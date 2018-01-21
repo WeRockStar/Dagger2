@@ -28,6 +28,7 @@ dependencies {
 - Junit 
 - Mockito
 - Jacoco (Test coverage)
+- Espresso (UI Testing from `Google`)
 
 #### CI Tools
 - Circle CI 
