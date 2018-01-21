@@ -38,6 +38,6 @@ dependencies {
 ```shell
 ./gralew connectAndroidTest
 ```
-<p align="center">
-    <img width="200" src="ui-testing.gif" />
+<p align="left">
+    <img width="3¬00" src="ui-testing.gif" />
 </p>
