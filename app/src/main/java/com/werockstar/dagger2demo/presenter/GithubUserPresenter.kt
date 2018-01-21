@@ -46,7 +46,7 @@ class GithubUserPresenter @Inject constructor(private val api: GithubAPI,
     }
 
 
-    fun onStop() {
+    fun onDestroy() {
         subscription.clear()
     }
 }

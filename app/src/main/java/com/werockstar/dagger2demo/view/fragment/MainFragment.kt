@@ -83,10 +83,9 @@ class MainFragment : Fragment(), GithubUserPresenter.View {
         progressBar.visibility = View.GONE
     }
 
-    override fun onStop() {
-        super.onStop()
-
-        presenter.onStop()
+    override fun onDestroy() {
+        presenter.onDestroy()
+        super.onDestroy()
     }
 
 }

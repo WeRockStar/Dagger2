@@ -70,6 +70,6 @@ class GithubUserPresenterTest {
     @After
     @Throws(Exception::class)
     fun tearDown() {
-        presenter.onStop()
+        presenter.onDestroy()
     }
 }

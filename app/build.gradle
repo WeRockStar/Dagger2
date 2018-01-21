@@ -98,6 +98,7 @@ dependencies {
     androidTestImplementation ("com.android.support.test.espresso:espresso-core:$espressoVersion") {
         exclude module: 'support-annotations'
     }
+    androidTestImplementation 'com.jakewharton.espresso:okhttp3-idling-resource:1.0.0'
 
     kapt "com.google.dagger:dagger-compiler:$daggerVersion"
     kapt "com.jakewharton:butterknife-compiler:$butterknifeVersion"
