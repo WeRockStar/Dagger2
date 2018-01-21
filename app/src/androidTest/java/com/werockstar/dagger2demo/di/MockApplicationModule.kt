@@ -2,10 +2,10 @@ package com.werockstar.dagger2demo.di
 
 
 import android.app.Application
+import android.content.Context
 import android.view.inputmethod.InputMethodManager
 import dagger.Module
 import dagger.Provides
-import org.mockito.Mockito.mock
 import javax.inject.Singleton
 
 @Module
@@ -18,7 +18,7 @@ class MockApplicationModule(val application: Application) {
 
     @Provides
     @Singleton
-    fun provideInputMethod() = mock(InputMethodManager::class.java)
+    fun provideInputMethod() = application.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
 
 
 }
