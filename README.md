@@ -33,3 +33,11 @@ dependencies {
 #### CI Tools
 - Circle CI 
 - Travis CI
+
+### Run ui-test
+```shell
+./gralew connectAndroidTest
+```
+<p align="center">
+    <img width="200" src="ui-testing.gif" />
+</p>
