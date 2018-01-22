@@ -4,22 +4,13 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import com.werockstar.dagger2demo.R
-import com.werockstar.dagger2demo.di.component.ActivityComponent
-import com.werockstar.dagger2demo.di.component.DaggerActivityComponent
-import com.werockstar.dagger2demo.di.module.ActivityModule
 import com.werockstar.dagger2demo.view.fragment.MainFragment
 import com.werockstar.dagger2demo.view.fragment.RepoFragment
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var component: ActivityComponent
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        component = DaggerActivityComponent.builder()
-                .activityModule(ActivityModule(this))
-                .build()
 
         setContentView(R.layout.activity_main)
 
@@ -39,8 +30,6 @@ class MainActivity : AppCompatActivity() {
                 .addToBackStack(null)
                 .commit()
     }
-
-    fun getComponent() = component
 
     fun onClickRepoList(user: String) {
         changeFragment(RepoFragment.newInstance(user))

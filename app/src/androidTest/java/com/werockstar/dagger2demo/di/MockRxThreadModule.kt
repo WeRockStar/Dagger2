@@ -1,27 +1,21 @@
 package com.werockstar.dagger2demo.di
 
-import dagger.Module
-import dagger.Provides
+import com.werockstar.dagger2demo.di.module.RxThreadModule
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Named
-import javax.inject.Singleton
 
-@Module
-class MockRxThreadModule {
+class MockRxThreadModule : RxThreadModule() {
 
     companion object {
         const val mainThread = "mainThread"
         const val ioThread = "ioThread"
     }
 
-    @Singleton
-    @Provides
-    @Named(mainThread)
-    fun provideAndroidSchedulers() = Schedulers.trampoline()
 
-    @Provides
-    @Singleton
+    @Named(mainThread)
+    override fun provideAndroidSchedulers() = AndroidSchedulers.mainThread()
+
     @Named(ioThread)
-    fun provideSchedulersIO() = Schedulers.trampoline()
+    override fun provideSchedulersIO() = Schedulers.trampoline()
 }

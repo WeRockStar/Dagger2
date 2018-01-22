@@ -14,11 +14,11 @@ import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
 @Module
-class HttpModule {
+open class HttpModule {
 
     @Provides
     @Singleton
-    fun provideHttpLogging(): OkHttpClient {
+    open fun provideHttpLogging(): OkHttpClient {
         val logging = HttpLoggingInterceptor()
         logging.level = if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
         return OkHttpClient.Builder()
@@ -28,7 +28,7 @@ class HttpModule {
 
     @Provides
     @Singleton
-    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
+    open fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
             .baseUrl(URL.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
@@ -37,6 +37,6 @@ class HttpModule {
 
     @Provides
     @Singleton
-    fun provideApiService(retrofit: Retrofit): GithubAPI = retrofit.create(GithubAPI::class.java)
+    open fun provideApiService(retrofit: Retrofit): GithubAPI = retrofit.create(GithubAPI::class.java)
 
 }
