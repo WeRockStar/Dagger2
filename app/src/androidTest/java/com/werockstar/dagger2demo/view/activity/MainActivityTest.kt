@@ -12,7 +12,7 @@ import android.support.test.runner.AndroidJUnit4
 import com.werockstar.dagger2demo.MainApplication
 import com.werockstar.dagger2demo.R
 import com.werockstar.dagger2demo.api.GithubAPI
-import com.werockstar.dagger2demo.di.component.DiComponent
+import com.werockstar.dagger2demo.di.component.AppComponent
 import com.werockstar.dagger2demo.di.module.AndroidModule
 import com.werockstar.dagger2demo.di.module.ApplicationModule
 import com.werockstar.dagger2demo.di.module.HttpModule
@@ -43,7 +43,7 @@ class MainActivityTest {
             AndroidModule::class,
             RxThreadModule::class)
     )
-    interface TestComponent : DiComponent {
+    interface TestComponent : AppComponent {
         fun inject(activity: MainActivityTest)
     }
 

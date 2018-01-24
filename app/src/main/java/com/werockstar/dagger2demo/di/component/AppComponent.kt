@@ -14,7 +14,7 @@ import javax.inject.Singleton
 @Component(modules = arrayOf(HttpModule::class,
         ApplicationModule::class, AndroidModule::class,
         RxThreadModule::class))
-interface DiComponent {
+interface AppComponent {
     fun inject(fragment: MainFragment)
 
     fun inject(activity: MainActivity)

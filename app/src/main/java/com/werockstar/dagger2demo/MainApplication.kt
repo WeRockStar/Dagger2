@@ -1,7 +1,7 @@
 package com.werockstar.dagger2demo
 
 import android.app.Application
-import com.werockstar.dagger2demo.di.component.DiComponent
+import com.werockstar.dagger2demo.di.component.AppComponent
 import com.werockstar.dagger2demo.di.module.AndroidModule
 import com.werockstar.dagger2demo.di.module.ApplicationModule
 import com.werockstar.dagger2demo.di.module.HttpModule
@@ -16,9 +16,9 @@ open class MainApplication : Application() {
             ApplicationModule::class,
             AndroidModule::class,
             RxThreadModule::class))
-    interface ApplicationComponent : DiComponent
+    interface ApplicationComponent : AppComponent
 
-    lateinit var component: DiComponent
+    lateinit var component: AppComponent
 
     override fun onCreate() {
         super.onCreate()
@@ -26,7 +26,7 @@ open class MainApplication : Application() {
         component = createComponent()
     }
 
-    protected open fun createComponent(): DiComponent {
+    protected open fun createComponent(): AppComponent {
         return DaggerMainApplication_ApplicationComponent.builder()
                 .applicationModule(ApplicationModule(this))
                 .build()
