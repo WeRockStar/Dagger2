@@ -48,7 +48,8 @@ android {
                     '**/Dagger*Component.class',
                     '**/Dagger*Component$Builder.class',
                     '**/*Module_*Factory.class',
-                    '**/*ViewBinding.class'
+                    '**/*ViewBinding.class',
+                    '**/MainApplication.class'
         ]
     }
 }
