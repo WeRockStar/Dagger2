@@ -5,6 +5,7 @@ import com.werockstar.dagger2demo.api.GithubAPI
 import com.werockstar.dagger2demo.model.Repo
 import com.werockstar.dagger2demo.presenter.RepoPresenter
 import com.werockstar.dagger2demo.rx.RxThread
+import com.werockstar.dagger2demo.util.RxScheduler
 import io.reactivex.Observable
 import io.reactivex.schedulers.Schedulers
 import org.junit.After
@@ -28,7 +29,7 @@ class RepoPresenterTest {
     @Throws(Exception::class)
     fun setUp() {
         MockitoAnnotations.initMocks(this)
-        presenter = RepoPresenter(api, RxThread(Schedulers.trampoline(), Schedulers.trampoline()))
+        presenter = RepoPresenter(api, RxScheduler.rxScheduler)
         presenter.injectView(view)
     }
 

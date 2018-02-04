@@ -3,6 +3,7 @@ package com.werockstar.dagger2demo.presenter
 import com.werockstar.dagger2demo.api.GithubAPI
 import com.werockstar.dagger2demo.model.GithubUser
 import com.werockstar.dagger2demo.rx.RxThread
+import com.werockstar.dagger2demo.util.RxScheduler
 import io.reactivex.Observable
 import io.reactivex.schedulers.Schedulers
 import org.junit.After
@@ -28,7 +29,7 @@ class GithubUserPresenterTest {
     @Throws(Exception::class)
     fun setUp() {
         MockitoAnnotations.initMocks(this)
-        presenter = GithubUserPresenter(api, RxThread(Schedulers.trampoline(), Schedulers.trampoline()))
+        presenter = GithubUserPresenter(api, RxScheduler.rxScheduler)
         presenter.injectView(view)
     }
 
