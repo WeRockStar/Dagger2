@@ -88,7 +88,7 @@ class RepoFragment : Fragment(), RepoPresenter.View, RepoAdapter.OnClickReposito
     }
 
     companion object {
-        val EXTRA_USER = "EXTRA_USER"
+        private const val EXTRA_USER = "EXTRA_USER"
 
         fun newInstance(user: String): RepoFragment {
             val fragment = RepoFragment()
