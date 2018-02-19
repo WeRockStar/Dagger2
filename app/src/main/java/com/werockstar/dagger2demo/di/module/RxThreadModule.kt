@@ -2,6 +2,7 @@ package com.werockstar.dagger2demo.di.module
 
 import dagger.Module
 import dagger.Provides
+import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Named
@@ -18,10 +19,10 @@ open class RxThreadModule {
     @Singleton
     @Provides
     @Named(mainThread)
-    open fun provideAndroidSchedulers() = AndroidSchedulers.mainThread()
+    open fun provideAndroidSchedulers(): Scheduler = AndroidSchedulers.mainThread()
 
     @Provides
     @Singleton
     @Named(ioThread)
-    open fun provideSchedulersIO() = Schedulers.io()
+    open fun provideSchedulersIO(): Scheduler = Schedulers.io()
 }
