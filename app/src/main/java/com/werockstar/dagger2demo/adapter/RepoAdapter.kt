@@ -17,8 +17,7 @@ class RepoAdapter constructor(private val repositories: List<Repo>,
 
     override fun onBindViewHolder(holder: RepoViewHolder, position: Int) {
         val repository = repositories[position]
-        holder.tvName.text = repository.nameRepo
-        holder.tvLanguage.text = repository.language
+        holder.bind(repository)
 
         holder.cvRepo.apply {
             setOnClickListener { clickRepository.onClickRepoItem(repository) }
