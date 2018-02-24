@@ -37,13 +37,13 @@ class MainFragment : Fragment(), GithubUserPresenter.View {
 
         (activity?.application as MainApplication).component
                 .inject(this)
+        presenter.injectView(this)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_main, container, false)
         ButterKnife.bind(this, view)
-        presenter.injectView(this)
         return view
     }
 

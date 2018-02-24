@@ -37,14 +37,13 @@ class RepoFragment : Fragment(), RepoPresenter.View, OnClickRepository {
         super.onAttach(context)
 
         (activity?.application as MainApplication).component.inject(this)
+        presenter.injectView(this)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_repo, container, false)
         ButterKnife.bind(this, view)
-
-        presenter.injectView(this)
 
         presenter.getRepo(user)
 
