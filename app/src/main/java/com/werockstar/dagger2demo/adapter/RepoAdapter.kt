@@ -8,20 +8,19 @@ import com.werockstar.dagger2demo.model.Repo
 
 class RepoAdapter constructor(private val repositories: List<Repo>,
                               private val clickRepository: OnClickRepository)
-    : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+    : RecyclerView.Adapter<RepoViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RepoViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.repo_item_row, parent, false)
         return RepoViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: RepoViewHolder, position: Int) {
         val repository = repositories[position]
-        val viewHolder = holder as RepoViewHolder
-        viewHolder.tvName.text = repository.nameRepo
-        viewHolder.tvLanguage.text = repository.language
+        holder.tvName.text = repository.nameRepo
+        holder.tvLanguage.text = repository.language
 
-        viewHolder.cvRepo.apply {
+        holder.cvRepo.apply {
             setOnClickListener { clickRepository.onClickRepoItem(repository) }
         }
     }
