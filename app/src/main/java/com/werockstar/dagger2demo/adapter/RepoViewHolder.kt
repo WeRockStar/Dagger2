@@ -21,8 +21,10 @@ class RepoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         ButterKnife.bind(this, view)
     }
 
-    fun bind(repo: Repo) {
+    fun bind(repo: Repo, clickRepository: OnClickRepository) {
         tvName.text = repo.nameRepo
         tvLanguage.text = repo.language
+
+        cvRepo.setOnClickListener({ clickRepository.onClickRepoItem(repo) })
     }
 }

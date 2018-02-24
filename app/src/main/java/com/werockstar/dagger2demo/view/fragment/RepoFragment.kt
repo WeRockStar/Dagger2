@@ -16,20 +16,19 @@ import butterknife.BindView
 import butterknife.ButterKnife
 import com.werockstar.dagger2demo.MainApplication
 import com.werockstar.dagger2demo.R
+import com.werockstar.dagger2demo.adapter.OnClickRepository
 import com.werockstar.dagger2demo.adapter.RepoAdapter
 import com.werockstar.dagger2demo.model.Repo
 import com.werockstar.dagger2demo.presenter.RepoPresenter
 import fr.castorflex.android.smoothprogressbar.SmoothProgressBar
 import javax.inject.Inject
 
-class RepoFragment : Fragment(), RepoPresenter.View, RepoAdapter.OnClickRepository {
+class RepoFragment : Fragment(), RepoPresenter.View, OnClickRepository {
 
     @BindView(R.id.rvList) lateinit var rvList: RecyclerView
-
     @BindView(R.id.smootProgressBar) lateinit var smoothProgressBar: SmoothProgressBar
 
     @Inject lateinit var customTabsIntent: CustomTabsIntent
-
     @Inject lateinit var presenter: RepoPresenter
 
     private lateinit var githubAdapter: RepoAdapter
@@ -52,8 +51,6 @@ class RepoFragment : Fragment(), RepoPresenter.View, RepoAdapter.OnClickReposito
         configurationRecyclerView()
         return view
     }
-
-    private val user: String get() = arguments?.getString(EXTRA_USER) ?: ""
 
     private fun configurationRecyclerView() {
         rvList.apply {
@@ -86,6 +83,8 @@ class RepoFragment : Fragment(), RepoPresenter.View, RepoAdapter.OnClickReposito
         githubAdapter.notifyDataSetChanged()
         rvList.adapter = githubAdapter
     }
+
+    private val user: String get() = arguments?.getString(EXTRA_USER) ?: ""
 
     companion object {
         private const val EXTRA_USER = "EXTRA_USER"

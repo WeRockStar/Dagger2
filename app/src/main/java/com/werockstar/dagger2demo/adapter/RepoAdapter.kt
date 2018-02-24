@@ -17,17 +17,9 @@ class RepoAdapter constructor(private val repositories: List<Repo>,
 
     override fun onBindViewHolder(holder: RepoViewHolder, position: Int) {
         val repository = repositories[position]
-        holder.bind(repository)
-
-        holder.cvRepo.apply {
-            setOnClickListener { clickRepository.onClickRepoItem(repository) }
-        }
+        holder.bind(repository, clickRepository)
     }
 
     override fun getItemCount(): Int = repositories.size
-
-    interface OnClickRepository {
-        fun onClickRepoItem(repo: Repo)
-    }
 
 }
