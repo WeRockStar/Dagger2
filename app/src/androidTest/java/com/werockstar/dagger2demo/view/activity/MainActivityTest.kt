@@ -83,7 +83,6 @@ class MainActivityTest {
 
         typeUserWeRockStar()
 
-
         onView(withId(R.id.tvRepo)).perform(click())
         onView(withId(R.id.smootProgressBar)).check(matches(isDisplayed()))
         onView(withId(R.id.rvList)).check(matches(isDisplayed()))
