@@ -35,13 +35,7 @@ class GithubUserPresenterTest {
 
     @Test
     @Throws(Exception::class)
-    fun presenterShouldBeNotNull() {
-        assertNotNull(presenter)
-    }
-
-    @Test
-    @Throws(Exception::class)
-    fun getUserInfoShouldHaveUserInfo() {
+    fun `get user information should have user data`() {
         val userInfo = GithubUser()
 
         `when`(api.getUser("WeRockStar")).thenReturn(Observable.just(userInfo))
@@ -56,7 +50,7 @@ class GithubUserPresenterTest {
 
     @Test
     @Throws(Exception::class)
-    fun getUserInfoErrorShouldHaveException() {
+    fun `get user information error should have exception on stream`() {
         val exception = Throwable()
         `when`(api.getUser("WeRockStar")).thenReturn(Observable.error(exception))
 

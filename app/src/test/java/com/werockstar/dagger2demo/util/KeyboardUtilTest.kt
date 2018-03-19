@@ -22,7 +22,7 @@ class KeyboardUtilTest {
     }
 
     @Test
-    fun keyboard_should_hide() {
+    fun `keyboard should hide`() {
         Mockito.`when`(inputMethodManager.hideSoftInputFromWindow(view.windowToken, InputMethodManager.HIDE_NOT_ALWAYS))
                 .thenReturn(true)
 

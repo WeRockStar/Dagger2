@@ -35,13 +35,7 @@ class RepoPresenterTest {
 
     @Test
     @Throws(Exception::class)
-    fun presenterShouldNotNull() {
-        assertNotNull(presenter)
-    }
-
-    @Test
-    @Throws(Exception::class)
-    fun getRepoShouldDisplayListRepo() {
+    fun `get repo should display list repository`() {
         val user = "WeRockStar"
         val collections = ArrayList<Repo>()
 
@@ -55,7 +49,7 @@ class RepoPresenterTest {
 
     @Test
     @Throws(Exception::class)
-    fun getRepoErrorShouldReturnEmptyArray() {
+    fun `get repo error should return empty array`() {
         val emptyUser = ""
 
         `when`(api.getRepo(emptyUser)).thenReturn(Observable.error(Throwable()))
