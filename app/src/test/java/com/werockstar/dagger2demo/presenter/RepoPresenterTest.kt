@@ -1,15 +1,12 @@
-package com.werocksta.dagger2demo.presenter
+package com.werockstar.dagger2demo.presenter
 
 
 import com.werockstar.dagger2demo.api.GithubAPI
 import com.werockstar.dagger2demo.model.Repo
 import com.werockstar.dagger2demo.presenter.RepoPresenter
-import com.werockstar.dagger2demo.rx.RxThread
 import com.werockstar.dagger2demo.util.RxScheduler
 import io.reactivex.Observable
-import io.reactivex.schedulers.Schedulers
 import org.junit.After
-import org.junit.Assert.assertNotNull
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mock
@@ -42,9 +39,9 @@ class RepoPresenterTest {
         `when`(api.getRepo(user)).thenReturn(Observable.just(collections))
         presenter.getRepo(user)
 
-        verify<RepoPresenter.View>(view).loading()
-        verify<RepoPresenter.View>(view).displayRepo(collections)
-        verify<RepoPresenter.View>(view).loadComplete()
+        verify(view).loading()
+        verify(view).displayRepo(collections)
+        verify(view).loadComplete()
     }
 
     @Test
@@ -55,9 +52,9 @@ class RepoPresenterTest {
         `when`(api.getRepo(emptyUser)).thenReturn(Observable.error(Throwable()))
         presenter.getRepo(emptyUser)
 
-        verify<RepoPresenter.View>(view).loading()
-        verify<RepoPresenter.View>(view).displayRepo(ArrayList<Repo>())
-        verify<RepoPresenter.View>(view).loadComplete()
+        verify(view).loading()
+        verify(view).displayRepo(ArrayList<Repo>())
+        verify(view).loadComplete()
     }
 
     @After
