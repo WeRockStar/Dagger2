@@ -3,7 +3,6 @@ package com.werockstar.dagger2demo.presenter
 
 import com.werockstar.dagger2demo.api.GithubAPI
 import com.werockstar.dagger2demo.model.Repo
-import com.werockstar.dagger2demo.presenter.RepoPresenter
 import com.werockstar.dagger2demo.util.RxScheduler
 import io.reactivex.Observable
 import org.junit.After
