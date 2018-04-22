@@ -9,52 +9,40 @@ import android.support.test.espresso.matcher.ViewMatchers.*
 import android.support.test.filters.LargeTest
 import android.support.test.rule.ActivityTestRule
 import android.support.test.runner.AndroidJUnit4
+import com.werockstar.dagger2demo.LoadJsonResource
 import com.werockstar.dagger2demo.MainApplication
 import com.werockstar.dagger2demo.R
-import com.werockstar.dagger2demo.api.GithubAPI
-import com.werockstar.dagger2demo.di.component.AppComponent
-import com.werockstar.dagger2demo.di.module.AndroidModule
-import com.werockstar.dagger2demo.di.module.ApplicationModule
-import com.werockstar.dagger2demo.di.module.HttpModule
-import com.werockstar.dagger2demo.di.module.RxThreadModule
-import com.werockstar.dagger2demo.model.GithubUser
-import com.werockstar.dagger2demo.model.Repo
-import dagger.Component
-import io.reactivex.Observable
+import com.werockstar.dagger2demo.di.component.TestComponent
+import com.werockstar.dagger2demo.util.URL
+import okhttp3.OkHttpClient
+import okhttp3.mockwebserver.Dispatcher
+import okhttp3.mockwebserver.MockResponse
+import okhttp3.mockwebserver.MockWebServer
+import okhttp3.mockwebserver.RecordedRequest
 import org.hamcrest.CoreMatchers.not
+import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.mockito.Mockito
-import org.mockito.MockitoAnnotations
 import javax.inject.Inject
-import javax.inject.Singleton
 
 
 @LargeTest
 @RunWith(AndroidJUnit4::class)
 class MainActivityTest {
 
-    @Singleton
-    @Component(modules = arrayOf(
-            HttpModule::class,
-            ApplicationModule::class,
-            AndroidModule::class,
-            RxThreadModule::class)
-    )
-    interface TestComponent : AppComponent {
-        fun inject(activity: MainActivityTest)
-    }
+    @Inject lateinit var okHttp: OkHttpClient
 
-    @Inject lateinit var api: GithubAPI
+    private val server = MockWebServer()
 
-    @get:Rule
-    val activityRule = ActivityTestRule<MainActivity>(MainActivity::class.java, true, true)
+    @get:Rule val activityRule = ActivityTestRule<MainActivity>(MainActivity::class.java, true, false)
 
     @Before
     fun setUp() {
-        MockitoAnnotations.initMocks(this)
+        server.start(4000)
+        URL.BASE_URL = server.url("/").toString()
+
         val instrument = InstrumentationRegistry.getInstrumentation()
         val app = instrument.targetContext.applicationContext as MainApplication
         val component = app.component as TestComponent
@@ -63,6 +51,7 @@ class MainActivityTest {
 
     @Test
     fun launchActivity() {
+        activityRule.launchActivity(null)
         onView(withId(R.id.btnLoad))
                 .check(matches(withText("Load")))
                 .check(matches(isClickable()))
@@ -73,13 +62,14 @@ class MainActivityTest {
 
     @Test
     fun type_user_we_rock_star_should_see_WeRockStar_and_repo_url() {
+        activityRule.launchActivity(null)
+
         typeUserWeRockStar()
     }
 
     @Test
     fun type_user_we_rock_star_and_click_on_repo_url_should_see_list_of_repo() {
-        val repoUrl = "https://api.github.com/users/WeRockStar/repos"
-        Mockito.`when`(api.getRepo(repoUrl)).thenReturn(Observable.just(listOf(Repo(1, "Kotlin", "Kotlin", "kotlin", ""))))
+        activityRule.launchActivity(null)
 
         typeUserWeRockStar()
 
@@ -91,7 +81,8 @@ class MainActivityTest {
     private fun typeUserWeRockStar() {
         val username = "WeRockStar"
         val repoUrl = "https://api.github.com/users/WeRockStar/repos"
-        Mockito.`when`(api.getUser(username)).thenReturn(Observable.just(GithubUser(username, repoUrl = repoUrl)))
+
+        setUpMockReponse()
 
         onView(withId(R.id.edtUsername))
                 .perform(typeText(username))
@@ -104,5 +95,25 @@ class MainActivityTest {
 
         onView(withId(R.id.tvRepo))
                 .check(matches(withText(repoUrl)))
+    }
+
+    private fun setUpMockReponse() {
+        server.setDispatcher(object : Dispatcher() {
+            override fun dispatch(request: RecordedRequest?): MockResponse {
+                val path = request?.path?.split("/")
+                val endpoint = path?.last()
+                return when (endpoint) {
+                    "repos" -> MockResponse().setBody(LoadJsonResource.fromResource("repo.json"))
+                    else -> MockResponse()
+                            .setResponseCode(200)
+                            .setBody(LoadJsonResource.fromResource("github_profile.json"))
+                }
+            }
+        })
+    }
+
+    @After
+    fun tearDown() {
+        server.shutdown()
     }
 }
