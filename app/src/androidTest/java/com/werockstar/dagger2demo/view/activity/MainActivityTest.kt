@@ -14,7 +14,6 @@ import com.werockstar.dagger2demo.MainApplication
 import com.werockstar.dagger2demo.R
 import com.werockstar.dagger2demo.di.component.TestComponent
 import com.werockstar.dagger2demo.util.URL
-import okhttp3.OkHttpClient
 import okhttp3.mockwebserver.Dispatcher
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
@@ -25,15 +24,11 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import javax.inject.Inject
 
 
 @LargeTest
 @RunWith(AndroidJUnit4::class)
 class MainActivityTest {
-
-    @Inject lateinit var okHttp: OkHttpClient
-
     private val server = MockWebServer()
 
     @get:Rule val activityRule = ActivityTestRule<MainActivity>(MainActivity::class.java, true, false)
@@ -82,7 +77,7 @@ class MainActivityTest {
         val username = "WeRockStar"
         val repoUrl = "https://api.github.com/users/WeRockStar/repos"
 
-        setUpMockReponse()
+        setUpMockResponse()
 
         onView(withId(R.id.edtUsername))
                 .perform(typeText(username))
@@ -97,7 +92,7 @@ class MainActivityTest {
                 .check(matches(withText(repoUrl)))
     }
 
-    private fun setUpMockReponse() {
+    private fun setUpMockResponse() {
         server.setDispatcher(object : Dispatcher() {
             override fun dispatch(request: RecordedRequest?): MockResponse {
                 val path = request?.path?.split("/")
