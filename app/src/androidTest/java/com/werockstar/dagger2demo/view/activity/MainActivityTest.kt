@@ -73,6 +73,23 @@ class MainActivityTest {
         onView(withId(R.id.rvList)).check(matches(isDisplayed()))
     }
 
+    @Test
+    fun user_not_found_should_no_see_username() {
+        MockResponse().setResponseCode(404)
+
+        activityRule.launchActivity(null)
+
+        onView(withId(R.id.edtUsername))
+                .perform(typeText(""))
+        onView(withId(R.id.btnLoad))
+                .perform(click())
+
+        onView(withId(R.id.tvUsername))
+                .check(matches(withText("")))
+        onView(withId(R.id.tvRepo))
+                .check(matches(withText("")))
+    }
+
     private fun typeUserWeRockStar() {
         val username = "WeRockStar"
         val repoUrl = "https://api.github.com/users/WeRockStar/repos"
@@ -81,13 +98,10 @@ class MainActivityTest {
 
         onView(withId(R.id.edtUsername))
                 .perform(typeText(username))
-
         onView(withId(R.id.btnLoad))
                 .perform(click())
-
         onView(withId(R.id.tvUsername))
                 .check(matches(withText(username)))
-
         onView(withId(R.id.tvRepo))
                 .check(matches(withText(repoUrl)))
     }
