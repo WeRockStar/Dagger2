@@ -29,7 +29,8 @@ import org.junit.runner.RunWith
 @LargeTest
 @RunWith(AndroidJUnit4::class)
 class MainActivityTest {
-    private val server = MockWebServer()
+
+    private val server by lazy { MockWebServer() }
 
     @get:Rule val activityRule = ActivityTestRule<MainActivity>(MainActivity::class.java, true, false)
 
