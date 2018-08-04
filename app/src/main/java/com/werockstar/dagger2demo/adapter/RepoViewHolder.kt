@@ -7,7 +7,6 @@ import android.widget.TextView
 
 
 import butterknife.BindView
-import butterknife.ButterKnife
 import com.werockstar.dagger2demo.R
 import com.werockstar.dagger2demo.model.Repo
 
@@ -25,6 +24,6 @@ class RepoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         tvName.text = repo.nameRepo
         tvLanguage.text = repo.language
 
-        cvRepo.setOnClickListener({ clickRepository.onClickRepoItem(repo) })
+        cvRepo.setOnClickListener { clickRepository.onClickRepoItem(repo) }
     }
 }
