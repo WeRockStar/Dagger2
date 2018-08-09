@@ -12,18 +12,14 @@ import com.werockstar.dagger2demo.model.Repo
 
 class RepoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-    @BindView(R.id.tvName) lateinit var tvName: TextView
-    @BindView(R.id.card) lateinit var cvRepo: CardView
-    @BindView(R.id.tvLanguage) lateinit var tvLanguage: TextView
-
-    init {
-        ButterKnife.bind(this, view)
-    }
+    val tvName by lazy { view.findViewById(R.id.tvName) as TextView }
+    val card by lazy { view.findViewById(R.id.card) as CardView }
+    val tvLanguage by lazy { view.findViewById(R.id.tvLanguage) as TextView }
 
     fun bind(repo: Repo, clickRepository: OnClickRepository) {
         tvName.text = repo.nameRepo
         tvLanguage.text = repo.language
 
-        cvRepo.setOnClickListener { clickRepository.onClickRepoItem(repo) }
+        card.setOnClickListener { clickRepository.onClickRepoItem(repo) }
     }
 }
