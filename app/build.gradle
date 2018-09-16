@@ -62,8 +62,8 @@ ext {
     butterknifeVersion = "8.8.1"
     mockitoVersion = "1.10.19"
     okHttpVersion = "3.7.0"
-    rxJavaVersion = "2.1.10"
-    rxAndroidVersion = "2.0.2"
+    rxJavaVersion = "2.2.0"
+    rxAndroidVersion = "2.1.0"
     glideVersion = "3.7.0"
     espressoVersion = "3.0.1"
 }
