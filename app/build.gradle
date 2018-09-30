@@ -5,12 +5,12 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.vanniktech.android.junit.jacoco'
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 28
     buildToolsVersion '28.0.3'
     defaultConfig {
         applicationId "com.werockstar.dagger2demo"
         minSdkVersion 15
-        targetSdkVersion 27
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "com.werockstar.dagger2demo.MockTestRunner"
@@ -56,7 +56,7 @@ android {
 }
 
 ext {
-    supportVersion = "27.1.1"
+    supportVersion = "28.0.0"
     daggerVersion = "2.13"
     retrofitVersion = "2.2.0"
     butterknifeVersion = "8.8.1"
