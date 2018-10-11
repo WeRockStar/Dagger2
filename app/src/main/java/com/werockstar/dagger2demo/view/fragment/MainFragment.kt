@@ -7,27 +7,19 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
-import butterknife.BindView
-import butterknife.ButterKnife
-import butterknife.OnClick
+import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.werockstar.dagger2demo.util.KeyboardUtil
 import com.werockstar.dagger2demo.MainApplication
 import com.werockstar.dagger2demo.R
 import com.werockstar.dagger2demo.model.GithubUser
 import com.werockstar.dagger2demo.presenter.GithubUserPresenter
+import com.werockstar.dagger2demo.util.KeyboardUtil
 import com.werockstar.dagger2demo.view.activity.MainActivity
+import kotlinx.android.synthetic.main.fragment_main.*
 import javax.inject.Inject
 
 class MainFragment : Fragment(), GithubUserPresenter.View {
-
-    @BindView(R.id.edtUsername) lateinit var edtUsername: EditText
-    @BindView(R.id.ivProfile) lateinit var ivProfile: ImageView
-    @BindView(R.id.tvUsername) lateinit var tvUsername: TextView
-    @BindView(R.id.tvRepo) lateinit var tvRepo: TextView
-    @BindView(R.id.progressBar) lateinit var progressBar: ProgressBar
 
     @Inject lateinit var keyboard: KeyboardUtil
     @Inject lateinit var presenter: GithubUserPresenter
@@ -42,13 +34,16 @@ class MainFragment : Fragment(), GithubUserPresenter.View {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_main, container, false)
-        ButterKnife.bind(this, view)
-        return view
+        return inflater.inflate(R.layout.fragment_main, container, false)
     }
 
-    @OnClick(R.id.btnLoad)
-    fun onClickLoadUserInfo() {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        btnLoad.setOnClickListener { loadUserInfo() }
+    }
+
+    private fun loadUserInfo() {
         presenter.getUserInfo(edtUsername.text.toString())
     }
 

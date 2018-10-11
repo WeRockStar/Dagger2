@@ -8,25 +8,19 @@ import android.support.customtabs.CustomTabsIntent
 import android.support.v4.app.Fragment
 import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import butterknife.BindView
-import butterknife.ButterKnife
 import com.werockstar.dagger2demo.MainApplication
 import com.werockstar.dagger2demo.R
 import com.werockstar.dagger2demo.adapter.OnClickRepository
 import com.werockstar.dagger2demo.adapter.RepoAdapter
 import com.werockstar.dagger2demo.model.Repo
 import com.werockstar.dagger2demo.presenter.RepoPresenter
-import fr.castorflex.android.smoothprogressbar.SmoothProgressBar
+import kotlinx.android.synthetic.main.fragment_repo.*
 import javax.inject.Inject
 
 class RepoFragment : Fragment(), RepoPresenter.View, OnClickRepository {
-
-    @BindView(R.id.rvList) lateinit var rvList: RecyclerView
-    @BindView(R.id.smootProgressBar) lateinit var smoothProgressBar: SmoothProgressBar
 
     @Inject lateinit var customTabsIntent: CustomTabsIntent
     @Inject lateinit var presenter: RepoPresenter
@@ -42,13 +36,19 @@ class RepoFragment : Fragment(), RepoPresenter.View, OnClickRepository {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_repo, container, false)
-        ButterKnife.bind(this, view)
+        return inflater.inflate(R.layout.fragment_repo, container, false)
+    }
 
-        presenter.getRepo(user)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        getRepoInfo()
 
         configurationRecyclerView()
-        return view
+    }
+
+    private fun getRepoInfo() {
+        user?.let { presenter.getRepo(it) }
     }
 
     private fun configurationRecyclerView() {
@@ -60,11 +60,11 @@ class RepoFragment : Fragment(), RepoPresenter.View, OnClickRepository {
     }
 
     override fun loading() {
-        smoothProgressBar.progressiveStart()
+        smootProgressBar.progressiveStart()
     }
 
     override fun dismissLoading() {
-        smoothProgressBar.progressiveStop()
+        smootProgressBar.progressiveStop()
     }
 
     override fun onClickRepoItem(repo: Repo) {
@@ -83,16 +83,17 @@ class RepoFragment : Fragment(), RepoPresenter.View, OnClickRepository {
         rvList.adapter = githubAdapter
     }
 
-    private val user: String get() = arguments?.getString(EXTRA_USER) ?: ""
+    private val user: String? get() = arguments?.getString(EXTRA_USER)
 
     companion object {
         private const val EXTRA_USER = "EXTRA_USER"
 
         fun newInstance(user: String): RepoFragment {
             val fragment = RepoFragment()
-            val bundle = Bundle()
-            bundle.putString(EXTRA_USER, user)
-            fragment.arguments = bundle
+            Bundle().apply {
+                putString(EXTRA_USER, user)
+                fragment.arguments = this
+            }
             return fragment
         }
     }
