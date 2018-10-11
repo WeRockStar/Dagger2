@@ -11,14 +11,10 @@ open class RepoPresenter @Inject
 constructor(private val api: GithubAPI, private val rxThread: RxThread) {
 
     private lateinit var view: View
-    private val subscription = CompositeDisposable()
+    private val disposable = CompositeDisposable()
 
-    interface View {
-        fun loading()
-
+    interface View : BaseView {
         fun displayRepo(repos: List<Repo>)
-
-        fun loadComplete()
     }
 
     fun injectView(view: View) {
@@ -27,9 +23,9 @@ constructor(private val api: GithubAPI, private val rxThread: RxThread) {
 
     fun getRepo(user: String) {
         view.loading()
-        subscription.add(api.getRepo(user)
+        disposable.add(api.getRepo(user)
                 .compose(rxThread.applyAsync())
-                .doOnTerminate { view.loadComplete() }
+                .doOnTerminate { view.dismissLoading() }
                 .onErrorReturnItem(emptyList())
                 .subscribe { view.displayRepo(it) }
         )
@@ -37,6 +33,6 @@ constructor(private val api: GithubAPI, private val rxThread: RxThread) {
 
 
     fun onStop() {
-        subscription.clear()
+        disposable.clear()
     }
 }

@@ -13,14 +13,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import butterknife.BindView
-import butterknife.ButterKnife
 import com.werockstar.dagger2demo.MainApplication
 import com.werockstar.dagger2demo.R
 import com.werockstar.dagger2demo.adapter.OnClickRepository
 import com.werockstar.dagger2demo.adapter.RepoAdapter
 import com.werockstar.dagger2demo.model.Repo
 import com.werockstar.dagger2demo.presenter.RepoPresenter
-import fr.castorflex.android.smoothprogressbar.SmoothProgressBar
 import javax.inject.Inject
 
 class RepoFragment : Fragment(), RepoPresenter.View, OnClickRepository {
@@ -63,7 +61,7 @@ class RepoFragment : Fragment(), RepoPresenter.View, OnClickRepository {
         smoothProgressBar.progressiveStart()
     }
 
-    override fun loadComplete() {
+    override fun dismissLoading() {
         smoothProgressBar.progressiveStop()
     }
 

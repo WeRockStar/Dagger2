@@ -11,13 +11,9 @@ class GithubUserPresenter @Inject constructor(private val api: GithubAPI,
                                               private val rxThread: RxThread) {
 
     private lateinit var view: View
-    private val subscription = CompositeDisposable()
+    private val disposable = CompositeDisposable()
 
-    interface View {
-        fun loading()
-
-        fun dismissLoading()
-
+    interface View : BaseView {
         fun getUserInfoSuccess(userInfo: GithubUser)
 
         fun getUserInfoError(message: String?)
@@ -31,7 +27,7 @@ class GithubUserPresenter @Inject constructor(private val api: GithubAPI,
 
     fun getUserInfo(username: String) {
         view.loading()
-        subscription.add(api.getUser(username)
+        disposable.add(api.getUser(username)
                 .compose(rxThread.applyAsync())
                 .doOnTerminate {
                     view.dismissLoading()
@@ -47,6 +43,6 @@ class GithubUserPresenter @Inject constructor(private val api: GithubAPI,
 
 
     fun onDestroy() {
-        subscription.clear()
+        disposable.clear()
     }
 }
