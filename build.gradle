@@ -6,7 +6,7 @@ buildscript {
         google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.4.0-alpha04'
+        classpath 'com.android.tools.build:gradle:3.4.0-alpha07'
         classpath 'com.vanniktech:gradle-android-junit-jacoco-plugin:0.13.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
