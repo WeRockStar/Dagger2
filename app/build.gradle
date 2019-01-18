@@ -2,7 +2,6 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'com.vanniktech.android.junit.jacoco'
 
 android {
     compileSdkVersion 28
@@ -36,7 +35,7 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
     junitJacoco {
-        jacocoVersion = '0.7.2.201409121644'
+        jacocoVersion = '0.8.2'
         excludes = ['**/R*.class',
                     '**/*$InjectAdapter.class',
                     '**/*$ModuleAdapter.class',
