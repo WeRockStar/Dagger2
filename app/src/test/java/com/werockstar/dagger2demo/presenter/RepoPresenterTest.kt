@@ -40,7 +40,7 @@ class RepoPresenterTest {
 
         verify(view).loading()
         verify(view).displayRepo(collections)
-        verify(view).loadComplete()
+        verify(view).dismissLoading()
     }
 
     @Test
@@ -53,7 +53,7 @@ class RepoPresenterTest {
 
         verify(view).loading()
         verify(view).displayRepo(ArrayList<Repo>())
-        verify(view).loadComplete()
+        verify(view).dismissLoading()
     }
 
     @After
