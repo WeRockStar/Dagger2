@@ -22,7 +22,6 @@ dependencies {
 - Retrofit, OkHttp, OkHttp logging 
 - Gson
 - Dagger 2 
-- ButterKnife 
 
 #### Testing framework 
 - Junit 
