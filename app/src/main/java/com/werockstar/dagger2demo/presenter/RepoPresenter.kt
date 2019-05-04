@@ -7,14 +7,13 @@ import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
 
-open class RepoPresenter @Inject
-constructor(private val api: GithubAPI, private val rxThread: RxThread) {
+open class RepoPresenter @Inject constructor(private val api: GithubAPI, private val rxThread: RxThread) {
 
     private lateinit var view: View
     private val disposable = CompositeDisposable()
 
     interface View : BaseView {
-        fun displayRepo(repos: List<Repo>)
+        fun showRepo(repos: List<Repo>)
     }
 
     fun injectView(view: View) {
@@ -27,7 +26,7 @@ constructor(private val api: GithubAPI, private val rxThread: RxThread) {
                 .compose(rxThread.applyAsync())
                 .doOnTerminate { view.dismissLoading() }
                 .onErrorReturnItem(emptyList())
-                .subscribe { view.displayRepo(it) }
+                .subscribe { view.showRepo(it) }
         )
     }
 

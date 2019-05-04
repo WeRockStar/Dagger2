@@ -14,9 +14,9 @@ class GithubUserPresenter @Inject constructor(private val api: GithubAPI,
     private val disposable = CompositeDisposable()
 
     interface View : BaseView {
-        fun getUserInfoSuccess(userInfo: GithubUser)
+        fun showUserInfo(userInfo: GithubUser)
 
-        fun getUserInfoError(message: String?)
+        fun showUserInfoError(message: String?)
 
         fun hideKeyboard()
     }
@@ -34,9 +34,9 @@ class GithubUserPresenter @Inject constructor(private val api: GithubAPI,
                     view.hideKeyboard()
                 }
                 .subscribe({
-                    view.getUserInfoSuccess(it)
+                    view.showUserInfo(it)
                 }, {
-                    view.getUserInfoError(it.message)
+                    view.showUserInfoError(it.message)
                 })
         )
     }

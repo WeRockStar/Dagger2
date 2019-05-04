@@ -77,7 +77,7 @@ class RepoFragment : Fragment(), RepoPresenter.View, OnClickRepository {
         presenter.onStop()
     }
 
-    override fun displayRepo(repos: List<Repo>) {
+    override fun showRepo(repos: List<Repo>) {
         githubAdapter = RepoAdapter(repos, this)
         githubAdapter.notifyDataSetChanged()
         rvList.adapter = githubAdapter

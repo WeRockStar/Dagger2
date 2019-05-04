@@ -40,7 +40,7 @@ class GithubUserPresenterTest {
         presenter.getUserInfo("WeRockStar")
 
         verify(view).loading()
-        verify(view).getUserInfoSuccess(userInfo)
+        verify(view).showUserInfo(userInfo)
         verify(view).dismissLoading()
         verify(view).hideKeyboard()
     }
@@ -54,7 +54,7 @@ class GithubUserPresenterTest {
         presenter.getUserInfo("WeRockStar")
 
         verify(view).loading()
-        verify(view).getUserInfoError(exception.message)
+        verify(view).showUserInfoError(exception.message)
         verify(view).dismissLoading()
         verify(view).hideKeyboard()
     }

@@ -39,7 +39,7 @@ class RepoPresenterTest {
         presenter.getRepo(user)
 
         verify(view).loading()
-        verify(view).displayRepo(collections)
+        verify(view).showRepo(collections)
         verify(view).dismissLoading()
     }
 
@@ -52,7 +52,7 @@ class RepoPresenterTest {
         presenter.getRepo(emptyUser)
 
         verify(view).loading()
-        verify(view).displayRepo(ArrayList<Repo>())
+        verify(view).showRepo(ArrayList<Repo>())
         verify(view).dismissLoading()
     }
 

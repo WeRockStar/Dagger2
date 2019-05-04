@@ -55,7 +55,7 @@ class MainFragment : Fragment(), GithubUserPresenter.View {
         progressBar.visibility = View.VISIBLE
     }
 
-    override fun getUserInfoSuccess(userInfo: GithubUser) {
+    override fun showUserInfo(userInfo: GithubUser) {
         tvUsername.text = userInfo.username
         tvRepo.apply {
             isClickable = true
@@ -63,14 +63,14 @@ class MainFragment : Fragment(), GithubUserPresenter.View {
             setOnClickListener { (activity as MainActivity).onClickRepoList(userInfo.username) }
         }
 
-        displayAvatarImage(userInfo.imageUrl)
+        showAvatarImage(userInfo.imageUrl)
     }
 
-    private fun displayAvatarImage(avatarUrl: String) {
+    private fun showAvatarImage(avatarUrl: String) {
         Glide.with(this).load(avatarUrl).diskCacheStrategy(DiskCacheStrategy.RESULT).into(ivProfile)
     }
 
-    override fun getUserInfoError(message: String?) {
+    override fun showUserInfoError(message: String?) {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
 
