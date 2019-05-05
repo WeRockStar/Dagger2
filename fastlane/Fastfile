@@ -12,7 +12,7 @@ platform :android do
 
   desc "Run unit test with test coverage report"
   lane :test do
-    gradle(task: "build jacocoTestReportDebug")
+    gradle(task: "test jacocoTestReportDebug")
   end
 
   desc "Deploy a new version to the Google Play"
