@@ -3,11 +3,11 @@ package com.werockstar.dagger2demo.view.fragment
 
 import android.content.Context
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.werockstar.dagger2demo.MainApplication
@@ -24,7 +24,7 @@ class MainFragment : Fragment(), GithubUserPresenter.View {
     @Inject lateinit var keyboard: KeyboardUtil
     @Inject lateinit var presenter: GithubUserPresenter
 
-    override fun onAttach(context: Context?) {
+    override fun onAttach(context: Context) {
         super.onAttach(context)
 
         (activity?.application as MainApplication).component
@@ -67,7 +67,7 @@ class MainFragment : Fragment(), GithubUserPresenter.View {
     }
 
     private fun showAvatarImage(avatarUrl: String) {
-        Glide.with(this).load(avatarUrl).diskCacheStrategy(DiskCacheStrategy.RESULT).into(ivProfile)
+        Glide.with(context).load(avatarUrl).diskCacheStrategy(DiskCacheStrategy.RESULT).into(ivProfile)
     }
 
     override fun showUserInfoError(message: String?) {

@@ -1,6 +1,6 @@
 package com.werockstar.dagger2demo.di.module
 
-import android.support.customtabs.CustomTabsIntent
+import androidx.browser.customtabs.CustomTabsIntent
 
 import javax.inject.Singleton
 
