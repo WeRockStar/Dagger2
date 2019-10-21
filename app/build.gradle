@@ -93,11 +93,11 @@ dependencies {
     androidTestImplementation ('androidx.test:rules:1.1.1') {
         exclude module: 'support-annotations'
     }
-    androidTestImplementation ('androidx.test.espresso:espresso-core:3.1.0') {
+    androidTestImplementation ('androidx.test.espresso:espresso-core:3.1.1') {
         exclude module: 'support-annotations'
     }
     androidTestImplementation 'com.jakewharton.espresso:okhttp3-idling-resource:1.0.0'
-    androidTestImplementation('androidx.test.espresso:espresso-contrib:3.1.0') {
+    androidTestImplementation('androidx.test.espresso:espresso-contrib:3.1.1') {
         exclude module: 'support-annotations'
         exclude module: 'support-v4'
         exclude module: 'design'
