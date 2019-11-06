@@ -40,15 +40,12 @@ android {
                     '**/*$InjectAdapter.class',
                     '**/*$ModuleAdapter.class',
                     '**/*$ViewInjector*.class',
-                    '**/*Fragment*.class',
-                    '**/*Activity*.class',
                     '**/*Module.class',
                     '**/*Factory.class',
                     '**/*_MembersInjector.class',
                     '**/Dagger*Component.class',
                     '**/Dagger*Component$Builder.class',
                     '**/*Module_*Factory.class',
-                    '**/*ViewBinding.class',
                     '**/MainApplication.class'
         ]
     }
