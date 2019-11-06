@@ -1,6 +1,6 @@
 # Google Dagger 2 (Demo)
 
-[![Build Status](https://travis-ci.org/WeRockStar/Dagger2.svg?branch=master)](https://travis-ci.org/WeRockStar/Dagger2) [![CircleCI](https://circleci.com/gh/WeRockStar/Dagger2/tree/master.svg?style=svg)](https://circleci.com/gh/WeRockStar/Dagger2/tree/master) [![codecov](https://codecov.io/gh/WeRockStar/Dagger2/branch/master/graph/badge.svg)](https://codecov.io/gh/WeRockStar/Dagger2)
+[![Build Status](https://travis-ci.org/WeRockStar/Dagger2.svg?branch=master)](https://travis-ci.org/WeRockStar/Dagger2) [![codecov](https://codecov.io/gh/WeRockStar/Dagger2/branch/master/graph/badge.svg)](https://codecov.io/gh/WeRockStar/Dagger2)
 
 ### Production code drive by Testing :) 
 
