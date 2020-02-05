@@ -11,9 +11,7 @@ import dagger.Component
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = arrayOf(HttpModule::class,
-        ApplicationModule::class, AndroidModule::class,
-        RxThreadModule::class))
+@Component(modules = [HttpModule::class, ApplicationModule::class, AndroidModule::class, RxThreadModule::class])
 interface AppComponent {
     fun inject(fragment: MainFragment)
 

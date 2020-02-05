@@ -13,10 +13,10 @@ class RepoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     private val card by lazy { view.findViewById(R.id.card) as CardView }
     private val tvLanguage by lazy { view.findViewById(R.id.tvLanguage) as TextView }
 
-    fun bind(repo: Repo, clickRepository: OnClickRepository) {
+    fun bind(repo: Repo, didTap: (repo: Repo) -> Unit) {
         tvName.text = repo.nameRepo
         tvLanguage.text = repo.language
 
-        card.setOnClickListener { clickRepository.onClickRepoItem(repo) }
+        card.setOnClickListener { didTap(repo) }
     }
 }

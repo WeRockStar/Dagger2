@@ -7,7 +7,7 @@ import com.werockstar.dagger2demo.R
 import com.werockstar.dagger2demo.model.Repo
 
 class RepoAdapter constructor(private val repositories: List<Repo>,
-                              private val clickRepository: OnClickRepository)
+                              private val didTap: (repo: Repo) -> Unit)
     : RecyclerView.Adapter<RepoViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RepoViewHolder {
@@ -17,7 +17,7 @@ class RepoAdapter constructor(private val repositories: List<Repo>,
 
     override fun onBindViewHolder(holder: RepoViewHolder, position: Int) {
         val repository = repositories[position]
-        holder.bind(repository, clickRepository)
+        holder.bind(repository, didTap)
     }
 
     override fun getItemCount(): Int = repositories.size

@@ -20,10 +20,12 @@ import com.werockstar.dagger2demo.presenter.RepoPresenter
 import kotlinx.android.synthetic.main.fragment_repo.*
 import javax.inject.Inject
 
-class RepoFragment : Fragment(), RepoPresenter.View, OnClickRepository {
+class RepoFragment : Fragment(), RepoPresenter.View {
 
-    @Inject lateinit var customTabsIntent: CustomTabsIntent
-    @Inject lateinit var presenter: RepoPresenter
+    @Inject
+    lateinit var customTabsIntent: CustomTabsIntent
+    @Inject
+    lateinit var presenter: RepoPresenter
 
     private lateinit var githubAdapter: RepoAdapter
 
@@ -67,10 +69,6 @@ class RepoFragment : Fragment(), RepoPresenter.View, OnClickRepository {
         smootProgressBar.progressiveStop()
     }
 
-    override fun onClickRepoItem(repo: Repo) {
-        customTabsIntent.launchUrl(activity, Uri.parse(repo.htmlUrl))
-    }
-
     override fun onStop() {
         super.onStop()
 
@@ -78,7 +76,10 @@ class RepoFragment : Fragment(), RepoPresenter.View, OnClickRepository {
     }
 
     override fun showRepo(repos: List<Repo>) {
-        githubAdapter = RepoAdapter(repos, this)
+        val didTap: (Repo) -> Unit = { repo ->
+            customTabsIntent.launchUrl(activity, Uri.parse(repo.htmlUrl))
+        }
+        githubAdapter = RepoAdapter(repos, didTap)
         githubAdapter.notifyDataSetChanged()
         rvList.adapter = githubAdapter
     }
