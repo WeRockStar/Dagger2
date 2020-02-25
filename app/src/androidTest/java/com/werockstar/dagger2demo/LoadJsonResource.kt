@@ -2,10 +2,7 @@ package com.werockstar.dagger2demo
 
 import okio.Okio
 
-object LoadJsonResource {
-    @Throws(Exception::class)
-    fun fromResource(file: String): String {
-        val classLoader = Thread.currentThread().contextClassLoader
-        classLoader.getResourceAsStream(file).use { `is` -> return Okio.buffer(Okio.source(`is`)).readUtf8() }
-    }
+fun String.toJsonString(): String {
+	val classLoader = Thread.currentThread().contextClassLoader
+	return classLoader.getResourceAsStream(this).use { `is` -> return Okio.buffer(Okio.source(`is`)).readUtf8() }
 }

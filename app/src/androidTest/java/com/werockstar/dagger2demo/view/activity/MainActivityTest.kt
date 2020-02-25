@@ -9,10 +9,10 @@ import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.filters.LargeTest
 import androidx.test.rule.ActivityTestRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.werockstar.dagger2demo.LoadJsonResource
 import com.werockstar.dagger2demo.MainApplication
 import com.werockstar.dagger2demo.R
 import com.werockstar.dagger2demo.di.component.TestComponent
+import com.werockstar.dagger2demo.toJsonString
 import com.werockstar.dagger2demo.util.URL
 import okhttp3.mockwebserver.Dispatcher
 import okhttp3.mockwebserver.MockResponse
@@ -113,10 +113,10 @@ class MainActivityTest {
                 val path = request?.path?.split("/")
                 val endpoint = path?.last()
                 return when (endpoint) {
-                    "repos" -> MockResponse().setBody(LoadJsonResource.fromResource("repo.json"))
+                    "repos" -> MockResponse().setBody("repo.json".toJsonString())
                     else -> MockResponse()
                             .setResponseCode(200)
-                            .setBody(LoadJsonResource.fromResource("github_profile.json"))
+                            .setBody("github_profile.json".toJsonString())
                 }
             }
         })
