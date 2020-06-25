@@ -8,7 +8,7 @@ android {
     buildToolsVersion '29.0.3'
     defaultConfig {
         applicationId "com.werockstar.dagger2demo"
-        minSdkVersion 15
+        minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -31,24 +31,9 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-    junitJacoco {
-        jacocoVersion = '0.8.2'
-        excludes = ['**/R*.class',
-                    '**/*$InjectAdapter.class',
-                    '**/*$ModuleAdapter.class',
-                    '**/*$ViewInjector*.class',
-                    '**/*Module.class',
-                    '**/*Factory.class',
-                    '**/*_MembersInjector.class',
-                    '**/Dagger*Component.class',
-                    '**/Dagger*Component$Builder.class',
-                    '**/*Module_*Factory.class',
-                    '**/MainApplication.class'
-        ]
-    }
+		sourceCompatibility JavaVersion.VERSION_1_8
+		targetCompatibility JavaVersion.VERSION_1_8
+	}
 }
 
 ext {
