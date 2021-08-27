@@ -2,6 +2,7 @@ package com.werockstar.dagger2demo.view.fragment
 
 
 import android.content.Context
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import androidx.browser.customtabs.CustomTabsIntent
@@ -24,6 +25,7 @@ class RepoFragment : Fragment(), RepoPresenter.View {
 
     @Inject
     lateinit var customTabsIntent: CustomTabsIntent
+
     @Inject
     lateinit var presenter: RepoPresenter
 
@@ -77,7 +79,8 @@ class RepoFragment : Fragment(), RepoPresenter.View {
 
     override fun showRepo(repos: List<Repo>) {
         val didTap: (Repo) -> Unit = { repo ->
-            customTabsIntent.launchUrl(activity, Uri.parse(repo.htmlUrl))
+            customTabsIntent.intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            customTabsIntent.launchUrl(activity!!.baseContext, Uri.parse(repo.htmlUrl))
         }
         githubAdapter = RepoAdapter(repos, didTap)
         githubAdapter.notifyDataSetChanged()
